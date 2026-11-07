@@ -1,3 +1,4 @@
+#include "2s2h/Enhancements/BenDrowned/BenDrowned.h"
 #include "NameTag.h"
 #include <libultraship/bridge/consolevariablebridge.h>
 #include <vector>
@@ -41,7 +42,8 @@ void FreeNameTag(NameTag* nameTag) {
         nameTag->vtx = nullptr;
     }
     if (nameTag->mtx != nullptr) {
-        free(nameTag->mtx);
+        // Matrices are allocated with new Mtx() when a tag is registered.
+        delete nameTag->mtx;
         nameTag->mtx = nullptr;
     }
 }
@@ -205,7 +207,7 @@ void UpdateNameTags() {
         return aDistToCamera > bDistToCamera;
     });
 
-    sMirrorWorldActive = CVarGetInteger("gModes.MirroredWorld.State", 0);
+    sMirrorWorldActive = Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0));
 }
 
 extern "C" void NameTag_RegisterForActorWithOptions(Actor* actor, const char* text, NameTagOptions options) {

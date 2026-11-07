@@ -286,17 +286,25 @@ typedef struct {
     /* 0x18 */ u16 ocFlags;
 } OcLine; // size = 0x1C
 
+// 2Ship player-bot population: the original 50/60/50 lists are too small
+// for 20 adventurers plus ordinary monsters (a Wolfos uses up to three ACs).
+// This context is runtime-only, never part of SRAM/save-file serialization.
+// All registrations/clear loops use ARRAY_COUNT; no unbounded allocations.
+#define COLLISION_CHECK_AT_CAPACITY 128
+#define COLLISION_CHECK_AC_CAPACITY 192
+#define COLLISION_CHECK_OC_CAPACITY 128
+
 typedef struct {
-    /* 0x000 */ s16 colATCount;
-    /* 0x002 */ u16 sacFlags; // Controls whether new collidors can be added or removed, or only swapped
-    /* 0x004 */ Collider* colAT[50];
-    /* 0x0CC */ s32 colACCount;
-    /* 0x0D0 */ Collider* colAC[60];
-    /* 0x1C0 */ s32 colOCCount;
-    /* 0x1C4 */ Collider* colOC[50];
-    /* 0x28C */ s32 colLineCount;
-    /* 0x290 */ OcLine* colLine[3];
-} CollisionCheckContext; // size = 0x29C
+    s16 colATCount;
+    u16 sacFlags; // Controls whether new colliders can be added or only swapped
+    Collider* colAT[COLLISION_CHECK_AT_CAPACITY];
+    s32 colACCount;
+    Collider* colAC[COLLISION_CHECK_AC_CAPACITY];
+    s32 colOCCount;
+    Collider* colOC[COLLISION_CHECK_OC_CAPACITY];
+    s32 colLineCount;
+    OcLine* colLine[3];
+} CollisionCheckContext; // Port-sized runtime context; original N64 offsets no longer apply.
 
 typedef struct {
     /* 0x0 */ u8 blood;

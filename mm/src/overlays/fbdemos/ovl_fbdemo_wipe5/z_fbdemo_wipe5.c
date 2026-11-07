@@ -8,6 +8,7 @@
 #include "PR/gs2dex.h"
 #include "sys_cfb.h"
 #include "z_fbdemo_wipe5.h"
+#include <stdint.h>
 #include <string.h>
 #include <libultraship/bridge/gfxbridge.h>
 
@@ -94,7 +95,7 @@ void TransitionWipe5_Draw(void* thisx, Gfx** gfxP) {
                         G_AD_PATTERN | G_CD_MAGICSQ | G_CK_NONE | G_TC_CONV | G_TF_POINT | G_TT_NONE | G_TL_TILE |
                             G_TD_CLAMP | G_TP_NONE | G_CYC_COPY | G_PM_NPRIMITIVE,
                         G_AC_NONE | G_ZS_PIXEL | G_RM_NOOP | G_RM_NOOP2);
-        VisFbuf_SetBgSimple(&gfx, D_0F000000_TO_SEGMENTED, workBuffer, width, height, VIS_FBUF_BG_CYC_COPY);
+        VisFbuf_SetBgSimple(&gfx, (void*)(uintptr_t)D_0F000000_TO_SEGMENTED, workBuffer, width, height, VIS_FBUF_BG_CYC_COPY);
     } else {
         if (alpha == 255) {
             gDPSetOtherMode(gfx++,
@@ -110,7 +111,7 @@ void TransitionWipe5_Draw(void* thisx, Gfx** gfxP) {
         gDPSetEnvColor(gfx++, 255, 255, 255, alpha);
         gDPSetCombineLERP(gfx++, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0,
                           ENVIRONMENT);
-        VisFbuf_SetBgSimple(&gfx, workBuffer, D_0F000000_TO_SEGMENTED, width, height, VIS_FBUF_BG_CYC_1CYC);
+        VisFbuf_SetBgSimple(&gfx, workBuffer, (void*)(uintptr_t)D_0F000000_TO_SEGMENTED, width, height, VIS_FBUF_BG_CYC_1CYC);
     }
     gDPPipeSync(gfx++);
     gSPLoadUcode(gfx++, SysUcode_GetUCode());

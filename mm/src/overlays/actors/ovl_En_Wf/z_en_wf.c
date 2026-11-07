@@ -1,3 +1,5 @@
+#include "2s2h/Enhancements/RpgFramework/RpgFramework.h"
+#include "2s2h/Enhancements/PlayerBots/PlayerBots.h"
 /*
  * File: z_en_wf.c
  * Overlay: ovl_En_Wf
@@ -297,7 +299,7 @@ void EnWf_Init(Actor* thisx, PlayState* play) {
                                         this->actor.world.pos.y, this->actor.world.pos.z, 0, this->actor.shape.rot.y, 0,
                                         OBJICEPOLY_PARAMS_ALT(temp_s0, OBJICEPOLY_SWITCH_FLAG_NONE));
         if (this->actor.child != NULL) {
-            Player* player = GET_PLAYER(play);
+            Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
 
             this->actor.child->xzDistToPlayer = Actor_WorldDistXZToActor(&this->actor, &player->actor);
             this->unk_2A4 = (temp_s0 * 0.5f) + 45.0f;
@@ -393,7 +395,7 @@ void EnWf_Blink(EnWf* this) {
 }
 
 s32 func_80990948(PlayState* play, EnWf* this, s16 arg2) {
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
     s32 sp38 = ABS_ALT(BINANG_SUB(this->actor.wallYaw, this->actor.shape.rot.y));
     s32 pad[2];
     s16 sp2E;
@@ -597,7 +599,7 @@ void func_80991200(EnWf* this) {
 }
 
 void func_80991280(EnWf* this, PlayState* play) {
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
     s16 temp_v0;
     s32 phi_v1;
 
@@ -619,7 +621,7 @@ void func_80991280(EnWf* this, PlayState* play) {
             this->actor.world.rot.y = this->actor.yawTowardsPlayer;
             func_80991948(this);
         } else {
-            this->unk_2A0--;
+            this->unk_2A0 = MAX(0, this->unk_2A0 - Rpg_TimerStep(&this->actor));
             if (this->unk_2A0 == 0) {
                 if (Actor_IsFacingPlayer(&this->actor, 0x1555)) {
                     if (Rand_ZeroOne() > 0.3f) {
@@ -651,7 +653,7 @@ void func_8099149C(EnWf* this, PlayState* play) {
     f32 sp2C;
     s32 sp28;
     s32 pad;
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
 
     if (!func_8099408C(play, this)) {
         Math_ScaledStepToS(&this->actor.shape.rot.y, this->actor.yawTowardsPlayer, 0x1F4);
@@ -770,7 +772,7 @@ void func_80991948(EnWf* this) {
 
 void func_809919F4(EnWf* this, PlayState* play) {
     s16 sp26;
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
     s16 temp_v0;
 
     Math_ScaledStepToS(&this->actor.shape.rot.y, this->actor.yawTowardsPlayer + this->unk_29A, 0x9C4);
@@ -796,7 +798,7 @@ void func_809919F4(EnWf* this, PlayState* play) {
             (this->actor.xzDistToPlayer <= 80.0f)) {
             func_80991C04(this);
         } else {
-            this->unk_2A0--;
+            this->unk_2A0 = MAX(0, this->unk_2A0 - Rpg_TimerStep(&this->actor));
             if (this->unk_2A0 == 0) {
                 if (Actor_OtherIsTargeted(play, &this->actor) && (Rand_ZeroOne() > 0.5f)) {
                     func_8099223C(this);
@@ -821,7 +823,7 @@ void func_80991C04(EnWf* this) {
 }
 
 void func_80991C80(EnWf* this, PlayState* play) {
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
     s32 sp30;
     s32 onAnim15thFrame;
     s16 sp2A;
@@ -890,7 +892,7 @@ void func_80991FD8(EnWf* this) {
 }
 
 void func_80992068(EnWf* this, PlayState* play) {
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
     s32 sp28;
     s16 sp26;
 
@@ -1066,7 +1068,7 @@ void func_8099282C(EnWf* this) {
 }
 
 void func_809928CC(EnWf* this, PlayState* play) {
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
     s16 sp2A;
 
     if (SkelAnime_Update(&this->skelAnime)) {
@@ -1099,7 +1101,7 @@ void func_80992A74(EnWf* this, PlayState* play) {
 
     this->collider2.base.acFlags |= AC_ON;
     Animation_MorphToLoop(&this->skelAnime, &gWolfosRunAnim, -4.0f);
-    player = GET_PLAYER(play);
+    player = PlayerBots_GetCombatTarget(play, &this->actor);
     temp_f0 = Math_SinS((player->actor.shape.rot.y + this->unk_29A) - this->actor.yawTowardsPlayer);
 
     if (temp_f0 > 0.0f) {
@@ -1121,7 +1123,7 @@ void func_80992A74(EnWf* this, PlayState* play) {
 void func_80992B8C(EnWf* this, PlayState* play) {
     s32 sp28;
     s32 sp2C;
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
 
     Math_ScaledStepToS(&this->actor.shape.rot.y, this->actor.yawTowardsPlayer + this->unk_29A, 0x7D0);
     if (this->actor.bgCheckFlags & BGCHECKFLAG_WALL) {

@@ -1,0 +1,22 @@
+PASS core_build
+PASS core_run
+PASS: 42334 assertions; 100 random graphs, 1200 A*/Dijkstra comparisons; scene policy, capacities, deterministic RNG.
+
+PASS combat_build
+PASS combat_run
+PASS: 88 headless integration assertions (explicit engine doubles; not an in-game test).
+
+PASS compile_z_actor
+PASS compile_z_collision_check
+PASS compile_z_play
+PASS compile_z_scene
+PASS compile_z_actor_dlftbls
+PASS compile_z_en_dekubaba
+PASS compile_z_en_dodongo
+PASS compile_z_en_firefly
+PASS compile_z_en_neo_reeba
+PASS compile_z_en_slime
+PASS compile_z_en_tite
+PASS compile_z_en_wf
+PASS compile_PlayerBots
+Completed. GUI compilation, complete game linking, graphics and in-game navigation are not covered.

@@ -1,3 +1,4 @@
+#include "2s2h/Enhancements/BenDrowned/BenDrowned.h"
 /*
  * File: z_en_trt.c
  * Overlay: ovl_En_Trt
@@ -171,7 +172,7 @@ void EnTrt_UpdateCursorPos(PlayState* play, EnTrt* this) {
     this->cursorPos.y = screenPosY + yOffset;
     this->cursorPos.z = 1.2f;
 
-    if (CVarGetInteger("gModes.MirroredWorld.State", 0)) {
+    if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0))) {
         this->cursorPos.x = SCREEN_WIDTH - this->cursorPos.x;
     }
 }
@@ -1666,7 +1667,7 @@ void EnTrt_DrawStickDirectionPrompt(PlayState* play, EnTrt* this) {
     s32 drawStickRightPrompt = this->stickLeftPrompt.isEnabled;
     s32 drawStickLeftPrompt = this->stickRightPrompt.isEnabled;
 
-    if (CVarGetInteger("gModes.MirroredWorld.State", 0) && (drawStickLeftPrompt != drawStickRightPrompt)) {
+    if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0)) && (drawStickLeftPrompt != drawStickRightPrompt)) {
         drawStickLeftPrompt = !drawStickLeftPrompt;
         drawStickRightPrompt = !drawStickRightPrompt;
     }

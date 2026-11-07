@@ -1,5 +1,6 @@
 
 #include "Notification.h"
+#include <cstddef>
 #include <libultraship/libultraship.h>
 
 extern "C" {
@@ -47,9 +48,9 @@ void Window::Draw() {
     ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(8.0f * CVarGetFloat("gNotifications.Size", 1.8f), 6.0f));
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(8.0f * CVarGetFloat("gNotifications.Size", 1.8f), 8.0f));
 
-    for (int index = 0; index < notifications.size(); ++index) {
+    for (std::size_t index = 0; index < notifications.size(); ++index) {
         auto& notification = notifications[index];
-        int inverseIndex = -ABS(index - (notifications.size() - 1));
+        const float inverseIndex = static_cast<float>(notifications.size() - 1 - index);
 
         ImGui::SetNextWindowViewport(vp->ID);
         if (notification.remainingTime < 4.0f) {
@@ -115,16 +116,15 @@ void Window::Draw() {
 }
 
 void Window::UpdateElement() {
-    for (int index = 0; index < notifications.size(); ++index) {
-        auto& notification = notifications[index];
-
+    for (auto notification = notifications.begin(); notification != notifications.end();) {
         // decrement remainingTime
-        notification.remainingTime -= ImGui::GetIO().DeltaTime;
+        notification->remainingTime -= ImGui::GetIO().DeltaTime;
 
         // remove notification if it has expired
-        if (notification.remainingTime <= 0) {
-            notifications.erase(notifications.begin() + index);
-            --index;
+        if (notification->remainingTime <= 0) {
+            notification = notifications.erase(notification);
+        } else {
+            ++notification;
         }
     }
 }

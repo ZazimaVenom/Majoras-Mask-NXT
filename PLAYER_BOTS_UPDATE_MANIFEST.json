@@ -1,0 +1,275 @@
+{
+  "format": "targeted source update; merge with original source archive",
+  "baseline_commit": "a89c41a5f432d54bdd9d94ec88f87f8a9a44c847",
+  "original_archive": "MajoraWithBots.rar",
+  "original_archive_sha256": "07d014a189d11f4400499af438fd6a828fda9614be74404dedf9a73a7a5832e0",
+  "file_count": 52,
+  "patch_checks": {
+    "git_diff_check": "PASS",
+    "git_apply_check_against_baseline": "PASS",
+    "applied_changed_file_byte_comparison": "PASS"
+  },
+  "runtime_status": "Not full-game-built or in-game-tested; no runnable game executable included",
+  "files": [
+    {
+      "path": "Build-PlayerBots.ps1",
+      "bytes": 1926,
+      "sha256": "616685f8b7b34ce125beff96dd7384e865ce6ea5ece810d7cbe67e14edd9ead6"
+    },
+    {
+      "path": "CMakeLists.txt",
+      "bytes": 14845,
+      "sha256": "2139565f0d5abf6645451dede81f23496a4a964cb9c7b7c237938097082a530f"
+    },
+    {
+      "path": "README_PLAYER_BOTS.md",
+      "bytes": 7119,
+      "sha256": "55c44350ad49cded451b4bf7c98cc57fbd5d851e8fac504117753fc99563528d"
+    },
+    {
+      "path": "build-player-bots.sh",
+      "bytes": 673,
+      "sha256": "9f9bccc8477833e23fcc35898cf1aa3aa8decfdd35804b160fa31fbc5a401e8c"
+    },
+    {
+      "path": "docs/PLAYER_BOTS.md",
+      "bytes": 11962,
+      "sha256": "33ad91b7dd0913eb90892723fadbae468e071bec48dca49ffba463359b9b823e"
+    },
+    {
+      "path": "docs/PLAYER_BOTS_SCENE_COVERAGE.md",
+      "bytes": 10282,
+      "sha256": "fbfae893fec2a6907f80dbd4f62a12bb1d0d130ddc0b4949f971c52723bc3f89"
+    },
+    {
+      "path": "docs/PLAYER_BOTS_VALIDATION.md",
+      "bytes": 7184,
+      "sha256": "884cd20f34c2e95d771beee9f3dbb02c629d4c5bffbfef242be1e6eb2ab934ac"
+    },
+    {
+      "path": "mm/2s2h/BenGui/BenMenu.cpp",
+      "bytes": 142866,
+      "sha256": "e088a9947a383c3b88cca5289fb19830017058134015c2bd692cdeaaf8e69f7e"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/PlayerBots/BotNavigation.h",
+      "bytes": 5144,
+      "sha256": "928a7e607d453170fab393174bceec3f3edec944fbf960313b6643f94785b0b4"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/PlayerBots/BotScenePolicy.h",
+      "bytes": 2473,
+      "sha256": "4af22d40786e02b83ce4ab679ad64064eb8bcb041b0567a4c0d47896d0842a9e"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/PlayerBots/PlayerBots.cpp",
+      "bytes": 57007,
+      "sha256": "5d9855669065f3f22a229fed175f7eaefa8c3bc6e1f275b679953d96b7f82d0d"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/PlayerBots/PlayerBots.h",
+      "bytes": 1247,
+      "sha256": "ffacf449ea51d6f1c4445b1aca8f126d1647939a61202dfd04b2da4172fd910a"
+    },
+    {
+      "path": "mm/2s2h/NameTag/NameTag.cpp",
+      "bytes": 13323,
+      "sha256": "8e1707ddb321bfeb09c6bc1cb3f01f690f81bc9cb5d710b48556c4b292a22ad3"
+    },
+    {
+      "path": "mm/include/tables/actor_table.h",
+      "bytes": 92942,
+      "sha256": "d17c9a36dccbb624a047802503aa9a8aaa0c243af4e89f69d9c33de03c4fe2d4"
+    },
+    {
+      "path": "mm/include/z64collision_check.h",
+      "bytes": 39980,
+      "sha256": "09faf264e5ba32736b56e5061107fa6d30915b974685ed079db45a2e936a71aa"
+    },
+    {
+      "path": "mm/src/code/z_actor.c",
+      "bytes": 217553,
+      "sha256": "34a637ff27390c1acff57c22102266cf05d16eec3a35f9198ad955a826af062a"
+    },
+    {
+      "path": "mm/src/code/z_collision_check.c",
+      "bytes": 151876,
+      "sha256": "2a422cd18e53cf8444fdde16af0ea391e041184671079001ded498ab1ebf0efa"
+    },
+    {
+      "path": "mm/src/code/z_play.c",
+      "bytes": 93432,
+      "sha256": "4e5b60ae639f3985de64addc9927e500338cc09717a4fc9d069a453f36ebe0f1"
+    },
+    {
+      "path": "mm/src/code/z_scene.c",
+      "bytes": 24139,
+      "sha256": "9494c90e6632d1f9dae535868a0e800fa96df636bfe5db1d6db131945f97ebb4"
+    },
+    {
+      "path": "mm/src/overlays/actors/ovl_En_Dekubaba/z_en_dekubaba.c",
+      "bytes": 54011,
+      "sha256": "1d842d96a56d30594070568a0a970e41a9a64259f20e239acc1680b1a2e45dd7"
+    },
+    {
+      "path": "mm/src/overlays/actors/ovl_En_Dodongo/z_en_dodongo.c",
+      "bytes": 42764,
+      "sha256": "194a5721f0711cc490f203f7f02cd57748023ff04439cd0af8f67f0c55c599c7"
+    },
+    {
+      "path": "mm/src/overlays/actors/ovl_En_Firefly/z_en_firefly.c",
+      "bytes": 32188,
+      "sha256": "bbe22c2ec055634d018d838df237aec954d1f48ad4a62782bac7b1a360b8264e"
+    },
+    {
+      "path": "mm/src/overlays/actors/ovl_En_Neo_Reeba/z_en_neo_reeba.c",
+      "bytes": 28677,
+      "sha256": "daec9f594c4ccf2c00e8dc7a1c63f532614b61299f4fcd9321a62c892ff5e91e"
+    },
+    {
+      "path": "mm/src/overlays/actors/ovl_En_Slime/z_en_slime.c",
+      "bytes": 50278,
+      "sha256": "dacce4e07f638cbc25962c4684d0eba618fef08e05a4ecb5084c6f6319cb6bbe"
+    },
+    {
+      "path": "mm/src/overlays/actors/ovl_En_Tite/z_en_tite.c",
+      "bytes": 45803,
+      "sha256": "1aa5e3ff9d9c6f629c933a59bf12e711f447cafe94a849a5f8f7a7c04d49f7b2"
+    },
+    {
+      "path": "mm/src/overlays/actors/ovl_En_Wf/z_en_wf.c",
+      "bytes": 58904,
+      "sha256": "23c38cfb2b4ef447cd3ea9ea1ab9ecfa006426624d2780785e7b24d660f5dd9c"
+    },
+    {
+      "path": "tests/player_bots/combat_api_tests.cpp",
+      "bytes": 10927,
+      "sha256": "7b7ab14bfadd6acc091a5c7e0f109afb2598197550312549fa697b2ac88c8f11"
+    },
+    {
+      "path": "tests/player_bots/core_tests.cpp",
+      "bytes": 7080,
+      "sha256": "f57ff2202395e17336875d235b42dfdc6a44f859d3ba6c5869a0d653e21b6daf"
+    },
+    {
+      "path": "tests/player_bots/run_tests.py",
+      "bytes": 5073,
+      "sha256": "24537ea9ff5b4c19d42c012a0d651121c6aa07d11ca0bd217fb72c1718d21be3"
+    },
+    {
+      "path": "tests/player_bots/validation/PlayerBots_undefined_symbols.txt",
+      "bytes": 3037,
+      "sha256": "ea2b6d57886abbcdcf0cac791a8ce5c16c68e176879087a0778ff82640b376e8"
+    },
+    {
+      "path": "tests/player_bots/validation/README.md",
+      "bytes": 413,
+      "sha256": "a1e9d0faad0a0e55066ec6a35a28fba06a4057fdb9a88ba3b9b2eb49d839fd60"
+    },
+    {
+      "path": "tests/player_bots/validation/combat_build.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/player_bots/validation/combat_run.log",
+      "bytes": 89,
+      "sha256": "145166ac5af3197214dfa0396940ceb77ebc67429eb4a67550aebab7db7c84ac"
+    },
+    {
+      "path": "tests/player_bots/validation/compile_PlayerBots.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/player_bots/validation/compile_z_actor.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/player_bots/validation/compile_z_actor_dlftbls.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/player_bots/validation/compile_z_collision_check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/player_bots/validation/compile_z_en_dekubaba.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/player_bots/validation/compile_z_en_dodongo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/player_bots/validation/compile_z_en_firefly.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/player_bots/validation/compile_z_en_neo_reeba.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/player_bots/validation/compile_z_en_slime.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/player_bots/validation/compile_z_en_tite.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/player_bots/validation/compile_z_en_wf.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/player_bots/validation/compile_z_play.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/player_bots/validation/compile_z_scene.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/player_bots/validation/core_build.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/player_bots/validation/core_run.log",
+      "bytes": 118,
+      "sha256": "f5fbf5d7a5f153533a8e7bf132f0ccad249396ba8857086cc3bd72e9180e816c"
+    },
+    {
+      "path": "tests/player_bots/validation/dependency_install_attempt.log",
+      "bytes": 1102,
+      "sha256": "78202772d54fe55bdb8ed9eeb686f40f040bd2de8da6f5ea65348750cc094a0c"
+    },
+    {
+      "path": "tests/player_bots/validation/full_build_configure.log",
+      "bytes": 823,
+      "sha256": "c898dbf1abe5f0f454a0a8f9aa923cf391233d681161348d841c1f3b12e6bfbc"
+    },
+    {
+      "path": "tests/player_bots/validation/report.json",
+      "bytes": 11825,
+      "sha256": "d34f950711574ed45a5baec30882ba3013e7aecba9ef6d34b5ebb5f4a814611d"
+    },
+    {
+      "path": "tests/player_bots/validation/run_summary.log",
+      "bytes": 694,
+      "sha256": "eecfe9c0258485f4fe1a9f64a9b013d820919537cce615c146c377e9945d808e"
+    }
+  ]
+}

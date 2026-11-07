@@ -1,3 +1,5 @@
+#include "2s2h/Enhancements/RpgFramework/RpgFramework.h"
+#include "2s2h/Enhancements/PlayerBots/PlayerBots.h"
 /*
  * File: z_en_firefly.c
  * Overlay: ovl_En_Firefly
@@ -201,7 +203,7 @@ void EnFirefly_Ignite(EnFirefly* this) {
 }
 
 s32 EnFirefly_ReturnToPerch(EnFirefly* this, PlayState* play) {
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
     f32 distFromHome;
 
     if (this->actor.params != KEESE_NORMAL_PERCH) {
@@ -287,7 +289,7 @@ void EnFirefly_FlyIdle(EnFirefly* this, PlayState* play) {
 
     SkelAnime_Update(&this->skelAnime);
     if (this->timer != 0) {
-        this->timer--;
+        this->timer = MAX(0, this->timer - Rpg_TimerStep(&this->actor));
     }
 
     onAnimFirstFrame = Animation_OnFrame(&this->skelAnime, 0.0f);
@@ -332,7 +334,7 @@ void EnFirefly_FlyIdle(EnFirefly* this, PlayState* play) {
         Math_SmoothStepToS(&this->actor.shape.rot.y, this->actor.wallYaw, 2, 0xC00, 0x300);
     }
 
-    if ((this->timer == 0) && (this->actor.xzDistToPlayer < 200.0f) && (Player_GetMask(play) != PLAYER_MASK_STONE)) {
+    if ((this->timer == 0) && (this->actor.xzDistToPlayer < 200.0f) && (PlayerBots_GetTargetMask(play, &this->actor) != PLAYER_MASK_STONE)) {
         EnFirefly_SetupDiveAttack(this);
     }
 }
@@ -426,7 +428,7 @@ void EnFirefly_SetupDiveAttack(EnFirefly* this) {
 }
 
 void EnFirefly_DiveAttack(EnFirefly* this, PlayState* play) {
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
     Vec3f preyPos;
 
     SkelAnime_Update(&this->skelAnime);
@@ -471,7 +473,7 @@ void EnFirefly_DiveAttack(EnFirefly* this, PlayState* play) {
         Math_ScaledStepToS(&this->actor.shape.rot.x, this->pitchTarget, 0x100);
     }
 
-    if ((this->timer == 0) || (Player_GetMask(play) == PLAYER_MASK_STONE) || (player->stateFlags2 & PLAYER_STATE2_80) ||
+    if ((this->timer == 0) || (PlayerBots_GetTargetMask(play, &this->actor) == PLAYER_MASK_STONE) || (player->stateFlags2 & PLAYER_STATE2_80) ||
         (player->actor.freezeTimer > 0)) {
         EnFirefly_SetupFlyAway(this);
     }
@@ -512,7 +514,7 @@ void EnFirefly_FlyAway(EnFirefly* this, PlayState* play) {
     SkelAnime_Update(&this->skelAnime);
 
     if (this->timer != 0) {
-        this->timer--;
+        this->timer = MAX(0, this->timer - Rpg_TimerStep(&this->actor));
     }
 
     if (((fabsf(this->actor.world.pos.y - this->maxAltitude) < 10.0f) &&
@@ -617,7 +619,7 @@ void EnFirefly_SetupDisturbDiveAttack(EnFirefly* this) {
 }
 
 void EnFirefly_DisturbDiveAttack(EnFirefly* this, PlayState* play) {
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
     Vec3f preyPos;
 
     SkelAnime_Update(&this->skelAnime);
@@ -656,6 +658,15 @@ void EnFirefly_UpdateDamage(EnFirefly* this, PlayState* play) {
             this->drawDmgEffScale = 0.55f;
             EnFirefly_SetupStunned(this);
         } else {
+            int rpgHealth = Rpg_ApplyActorDamage(&this->actor, this->actor.colChkInfo.damage, false);
+            if (rpgHealth > 0) {
+                this->actor.colChkInfo.health = rpgHealth;
+                // A living RPG Keese recoils rather than entering the native
+                // one-hit death sequence. No ice/freeze state is fabricated.
+                EnFirefly_SetupRebound(this);
+                Actor_SetColorFilter(&this->actor, COLORFILTER_COLORFLAG_RED, 180, COLORFILTER_BUFFLAG_OPA, 8);
+                return;
+            }
             Enemy_StartFinishingBlow(play, &this->actor);
             this->actor.colChkInfo.health = 0;
             this->actor.flags &= ~ACTOR_FLAG_ATTENTION_ENABLED;

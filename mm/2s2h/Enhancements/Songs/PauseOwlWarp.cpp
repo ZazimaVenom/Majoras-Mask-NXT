@@ -1,3 +1,4 @@
+#include "2s2h/Enhancements/BenDrowned/BenDrowned.h"
 #include <libultraship/bridge/consolevariablebridge.h>
 #include "2s2h/GameInteractor/GameInteractor.h"
 #include "2s2h/ShipInit.hpp"
@@ -86,7 +87,7 @@ static void UpdateCursorForOwlWarpPoints(PauseContext* pauseCtx) {
         InterfaceContext* interfaceCtx = &gPlayState->interfaceCtx;
         s16 oldCursorPoint = pauseCtx->cursorPoint[PAUSE_WORLD_MAP];
         s16 nextCursorPoint = pauseCtx->cursorPoint[PAUSE_WORLD_MAP];
-        bool mirrorWorldActive = CVarGetInteger("gModes.MirroredWorld.State", 0);
+        bool mirrorWorldActive = Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0));
         bool goingLeft = pauseCtx->stickAdjX < -30;
         bool goingRight = pauseCtx->stickAdjX > 30;
         bool cursorMoving = goingLeft || goingRight;
@@ -238,7 +239,7 @@ static void HandlePauseOwlWarp(PauseContext* pauseCtx) {
                 pauseCtx->itemDescriptionOn = true;
                 Audio_PlaySfx(NA_SE_SY_DECIDE);
                 // Use Kaleido's open text variant that sets the dark black message box
-                Message_PauseMenu_ShowDescription(gPlayState, 0x1B93, 3);
+                func_801514B0(gPlayState, 0x1B93, 3);
                 gPlayState->msgCtx.choiceIndex = 0;
             }
         }

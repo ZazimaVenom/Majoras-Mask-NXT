@@ -1,0 +1,18 @@
+Native compiler-warning repair validation
+
+Files changed:
+- mm/src/overlays/actors/ovl_player_actor/z_player.c
+- mm/src/overlays/fbdemos/ovl_fbdemo_wipe5/z_fbdemo_wipe5.c
+
+Player: 35 resource-name operands in 17 conditional expressions (18 reported MSVC C4048 diagnostics including nested expressions plus one related GCC finding) now explicitly use PlayerAnimationHeader* handles. The addresses and selected assets remain the same. PlayerAnimation_Change already recognizes __OTR__ resource handles and resolves them before dereferencing the animation header. No animation branches, timing, or resource names changed.
+
+Wipe5: Both segmented framebuffer-address arguments now explicitly convert through uintptr_t to void*. The encoded address remains 0x0F000001 and the source/destination order remains unchanged.
+
+Validation:
+- Actual z_player.c and z_fbdemo_wipe5.c compiled to object files using GCC, real native headers, and the repository's C port definitions. No engine mocks were used.
+- Unsuppressed GCC player diagnostics: 17 conditional pointer mismatches before; 0 afterward. The additional pre-existing line16674 mixed a resource-name array with a typed animation-table entry; the same explicit resource-handle conversion fixes it. The diagnostic gate fails if the compiler exits nonzero or produces any conditional pointer mismatch. GCC does not attach a selectable warning category to this diagnostic, so a standalone -Werror=<category> is unavailable. General -Werror cannot be enabled for this legacy translation unit without also failing on unrelated resource pointer conversions and comparisons.
+- Wipe5 compiled with -Werror=int-conversion: before patch fails at both posted VisFbuf_SetBgSimple call sites; after patch passes.
+- Both source files retain their original CRLF line endings.
+- Other pre-existing native C warnings remain in the complete GCC diagnostic logs. This is translation-unit compilation, not a complete Windows/MSVC executable link or live game test.
+
+See before-after-report.json for exact compiler commands and exit codes.

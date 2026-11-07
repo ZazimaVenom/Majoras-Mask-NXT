@@ -1,0 +1,10 @@
+PASS gpp_original_plain
+PASS gpp_original_windows_macro
+PASS gpp_fixed_plain
+PASS gpp_fixed_windows_macro
+PASS clangpp_original_plain
+PASS clangpp_original_windows_macro
+PASS clangpp_fixed_plain
+PASS clangpp_fixed_windows_macro
+All nine changes are identifier-only. The original fails with small=char; corrected source compiles with it.
+No actual MSVC/Windows SDK, full ImGui, game linking or rendering test was performed.

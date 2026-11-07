@@ -1,0 +1,23 @@
+{
+  "command": [
+    "g++",
+    "-std=c++20",
+    "-fsyntax-only",
+    "-Werror=sign-compare",
+    "-DF3DEX_GBI_2",
+    "-DCONTROLLERBUTTONS_T=uint32_t",
+    "-Imm",
+    "-Imm/2s2h",
+    "-Imm/include",
+    "-Imm/src",
+    "-Imm/assets",
+    "-Ilibultraship/include",
+    "-Ilibultraship/include/libultraship",
+    "-Imm/include/PR",
+    "-Ilibultraship/src",
+    "-Ilibultraship/extern/fast3d/include",
+    "mm/2s2h/Enhancements/BenDrowned/BenDrowned.cpp"
+  ],
+  "returncode": 0,
+  "log": "signed_day_compile.log"
+}

@@ -1,0 +1,38 @@
+/tmp/rpg-hud-macro-qqz2zg57/RpgHud.before.cpp:44:32: error: expected unqualified-id
+   44 |     const float font=16*scale, small=13*scale;
+      |                                ^
+<command line>:3:15: note: expanded from macro 'small'
+    3 | #define small char
+      |               ^
+/tmp/rpg-hud-macro-qqz2zg57/RpgHud.before.cpp:44:31: error: expected ';' at end of declaration
+   44 |     const float font=16*scale, small=13*scale;
+      |                               ^
+      |                               ;
+/tmp/rpg-hud-macro-qqz2zg57/RpgHud.before.cpp:44:37: error: expected unqualified-id
+   44 |     const float font=16*scale, small=13*scale;
+      |                                     ^
+/tmp/rpg-hud-macro-qqz2zg57/RpgHud.before.cpp:65:49: error: expected '(' for function-style cast or type construction
+   65 |         Text(draw,ImVec2(xpX,xpY-19*scale),small,Color(235,242,250),line);
+      |                                            ~~~~~^
+/tmp/rpg-hud-macro-qqz2zg57/RpgHud.before.cpp:69:68: error: expected '(' for function-style cast or type construction
+   69 |         const float textWidth=ImGui::GetFont()->CalcTextSizeA(small,1.0e6f,0,line).x;
+      |                                                               ~~~~~^
+/tmp/rpg-hud-macro-qqz2zg57/RpgHud.before.cpp:70:67: error: expected '(' for function-style cast or type construction
+   70 |         Text(draw,ImVec2(xpX+xpWidth-textWidth,xpY-19*scale),small,Color(157,209,250),line);
+      |                                                              ~~~~~^
+/tmp/rpg-hud-macro-qqz2zg57/RpgHud.before.cpp:85:50: error: expected '(' for function-style cast or type construction
+   85 |             const float actionFont=std::min(small,(w-24*scale)/std::max(1.0f,
+      |                                             ~~~~~^
+/tmp/rpg-hud-macro-qqz2zg57/RpgHud.before.cpp:86:54: error: expected '(' for function-style cast or type construction
+   86 |                 ImGui::GetFont()->CalcTextSizeA(small,1.0e6f,0,h.bossAction).x)*small);
+      |                                                 ~~~~~^
+/tmp/rpg-hud-macro-qqz2zg57/RpgHud.before.cpp:86:86: error: expected '(' for function-style cast or type construction
+   86 |                 ImGui::GetFont()->CalcTextSizeA(small,1.0e6f,0,h.bossAction).x)*small);
+      |                                                                                 ~~~~~^
+/tmp/rpg-hud-macro-qqz2zg57/RpgHud.before.cpp:93:56: error: expected '(' for function-style cast or type construction
+   93 |             CenterText(draw,center,bossY+25*scale,small*0.86f,Color(255,247,239),line);
+      |                                                   ~~~~~^
+/tmp/rpg-hud-macro-qqz2zg57/RpgHud.before.cpp:105:56: error: expected '(' for function-style cast or type construction
+  105 |             CenterText(draw,center,bossY+24*scale,small,Color(255,245,232),line);
+      |                                                   ~~~~~^
+11 errors generated.

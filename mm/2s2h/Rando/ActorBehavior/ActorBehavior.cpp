@@ -27,8 +27,6 @@ void MiscVanillaBehaviorHandler(GIVanillaBehavior id, bool* should, va_list opti
         case VB_TOILET_HAND_TAKE_ITEM:
             *should = false;
             break;
-        default: // Every other vanilla behavior is left alone.
-            break;
     }
 }
 

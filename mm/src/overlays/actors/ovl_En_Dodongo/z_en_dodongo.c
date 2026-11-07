@@ -1,3 +1,5 @@
+#include "2s2h/Enhancements/RpgFramework/RpgFramework.h"
+#include "2s2h/Enhancements/PlayerBots/PlayerBots.h"
 /*
  * File: z_en_dodongo.c
  * Overlay: ovl_En_Dodongo
@@ -391,16 +393,16 @@ void func_80876930(EnDodongo* this, PlayState* play, Vec3f* arg2) {
 }
 
 void func_80876B08(EnDodongo* this, PlayState* play) {
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
     s16 yDiff = this->actor.yawTowardsPlayer - this->actor.shape.rot.y;
 
     if (ABS_ALT(yDiff) < 0x4000) {
-        if (!(player->stateFlags1 & 0x00800000) && (Player_GetMask(play) != PLAYER_MASK_STONE)) {
+        if (!(player->stateFlags1 & 0x00800000) && (PlayerBots_GetTargetMask(play, &this->actor) != PLAYER_MASK_STONE)) {
             func_808777A8(this);
         } else {
             func_80877494(this);
         }
-    } else if (Player_GetMask(play) != PLAYER_MASK_STONE) {
+    } else if (PlayerBots_GetTargetMask(play, &this->actor) != PLAYER_MASK_STONE) {
         func_80878354(this);
     } else {
         func_80877494(this);
@@ -524,7 +526,7 @@ s32 func_8087721C(EnDodongo* this) {
 }
 
 s32 func_80877278(EnDodongo* this, PlayState* play) {
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
     Actor* explosive = play->actorCtx.actorLists[ACTORCAT_EXPLOSIVES].first;
     Vec3f sp44;
 
@@ -556,7 +558,7 @@ void func_808773C4(EnDodongo* this) {
 void func_80877424(EnDodongo* this, PlayState* play) {
     SkelAnime_Update(&this->skelAnime);
     if (this->timer != 0) {
-        this->timer--;
+        this->timer = MAX(0, this->timer - Rpg_TimerStep(&this->actor));
     }
 
     if (this->timer == 0) {
@@ -574,7 +576,7 @@ void func_80877494(EnDodongo* this) {
 }
 
 void func_80877500(EnDodongo* this, PlayState* play) {
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
     Vec3f sp30;
     s16 temp_v1;
 
@@ -594,7 +596,7 @@ void func_80877500(EnDodongo* this, PlayState* play) {
     }
 
     if ((Math_Vec3f_DistXZ(&this->actor.home.pos, &player->actor.world.pos) < 400.0f) &&
-        (Player_GetMask(play) != PLAYER_MASK_STONE)) {
+        (PlayerBots_GetTargetMask(play, &this->actor) != PLAYER_MASK_STONE)) {
         temp_v1 = this->actor.yawTowardsPlayer - this->actor.shape.rot.y;
         Math_ScaledStepToS(&this->actor.world.rot.y, this->actor.yawTowardsPlayer, 0x1F4);
         if (this->actor.xzDistToPlayer < (100.0f * this->unk_334)) {
@@ -605,7 +607,7 @@ void func_80877500(EnDodongo* this, PlayState* play) {
         }
     } else {
         if ((Actor_WorldDistXZToPoint(&this->actor, &this->actor.home.pos) > 150.0f) ||
-            (Player_GetMask(play) == PLAYER_MASK_STONE)) {
+            (PlayerBots_GetTargetMask(play, &this->actor) == PLAYER_MASK_STONE)) {
             Math_ScaledStepToS(&this->actor.world.rot.y, Actor_WorldYawTowardPoint(&this->actor, &this->actor.home.pos),
                                0x1F4);
         }
@@ -766,7 +768,12 @@ void func_80877E60(EnDodongo* this, PlayState* play) {
             }
 
             Actor_PlaySfx(&this->actor, NA_SE_IT_BOMB_EXPLOSION);
-            if (this->actor.colChkInfo.health <= 4) {
+            Rpg_RecordPlayerAttack(&this->actor, 4, DMG_EXPLOSIVES);
+            int rpgHealth = Rpg_ApplyActorDamage(&this->actor, 4, false);
+            if (rpgHealth >= 0) {
+                this->actor.colChkInfo.health = rpgHealth;
+                if (rpgHealth == 0) Enemy_StartFinishingBlow(play, &this->actor);
+            } else if (this->actor.colChkInfo.health <= 4) {
                 this->actor.colChkInfo.health = 0;
                 Enemy_StartFinishingBlow(play, &this->actor);
             } else {
@@ -833,12 +840,12 @@ void func_80878354(EnDodongo* this) {
 }
 
 void func_80878424(EnDodongo* this, PlayState* play) {
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
     Vec3f sp20;
 
     this->timer++;
     if (SkelAnime_Update(&this->skelAnime)) {
-        if (!(player->stateFlags1 & PLAYER_STATE1_800000) && (Player_GetMask(play) != PLAYER_MASK_STONE)) {
+        if (!(player->stateFlags1 & PLAYER_STATE1_800000) && (PlayerBots_GetTargetMask(play, &this->actor) != PLAYER_MASK_STONE)) {
             this->collider1.base.atFlags &= ~AT_ON;
             func_808777A8(this);
         } else {

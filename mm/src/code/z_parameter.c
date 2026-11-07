@@ -1,3 +1,5 @@
+#include "2s2h/Enhancements/BenDrowned/BenDrowned.h"
+#include "2s2h/Enhancements/RpgFramework/RpgFramework.h"
 #include "global.h"
 #include "PR/gs2dex.h"
 #include "sys_cfb.h"
@@ -2959,7 +2961,7 @@ void Interface_UpdateButtonsPart2(PlayState* play) {
         // #endregion
 
         Interface_SetHudVisibility(HUD_VISIBILITY_B);
-    } else if (CHECK_WEEKEVENTREG(WEEKEVENTREG_PLAYING_SWORDSMAN_MINIGAME)) {
+    } else if (CHECK_WEEKEVENTREG(WEEKEVENTREG_82_08)) {
         // Swordsman's log minigame
         for (i = EQUIP_SLOT_C_LEFT; i <= EQUIP_SLOT_C_RIGHT; i++) {
             if (gSaveContext.buttonStatus[i] == BTN_ENABLED) {
@@ -3779,7 +3781,7 @@ void Interface_UpdateButtonsPart1(PlayState* play) {
                         Interface_SetHudVisibility(HUD_VISIBILITY_A_B_MINIMAP);
                     } else if ((gSaveContext.minigameStatus == MINIGAME_STATUS_ACTIVE) && CHECK_EVENTINF(EVENTINF_35)) {
                         Interface_SetHudVisibility(HUD_VISIBILITY_B_MINIMAP);
-                    } else if (!CHECK_WEEKEVENTREG(WEEKEVENTREG_PLAYING_SWORDSMAN_MINIGAME) &&
+                    } else if (!CHECK_WEEKEVENTREG(WEEKEVENTREG_82_08) &&
                                (gSaveContext.minigameStatus == MINIGAME_STATUS_ACTIVE)) {
                         Interface_SetHudVisibility(HUD_VISIBILITY_B);
                     } else if (play->bButtonAmmoPlusOne >= 2) {
@@ -5150,6 +5152,7 @@ s32 Health_ChangeBy(PlayState* play, s16 healthChange) {
         healthChange >>= 1;
     }
 
+    healthChange = Rpg_AdjustPlayerHealthChange(play, healthChange);
     gSaveContext.save.saveInfo.playerData.health += healthChange;
 
     if (((void)0, gSaveContext.save.saveInfo.playerData.health) >
@@ -8689,10 +8692,7 @@ void Interface_UpdateBottleTimers(PlayState* play) {
                     // Time has passed, and the time limit has been exceeded.
                     gSaveContext.bottleTimerCurTimes[i] = SECONDS_TO_TIMER(0);
 
-                    if (GameInteractor_Should(VB_COOL_HOT_WATER,
-                                              gSaveContext.save.saveInfo.inventory.items[i + SLOT_BOTTLE_1] ==
-                                                  ITEM_HOT_SPRING_WATER,
-                                              i)) {
+                    if (gSaveContext.save.saveInfo.inventory.items[i + SLOT_BOTTLE_1] == ITEM_HOT_SPRING_WATER) {
                         Inventory_UpdateItem(play, i + SLOT_BOTTLE_1, ITEM_SPRING_WATER);
                         Message_StartTextbox(play, 0xFA, NULL);
                     }
@@ -9321,12 +9321,12 @@ void Interface_Draw(PlayState* play) {
         Map_DrawMinimap(play);
 
         if ((R_PAUSE_BG_PRERENDER_STATE != 2) && (R_PAUSE_BG_PRERENDER_STATE != 3)) {
-            if (CVarGetInteger("gModes.MirroredWorld.State", 0)) {
+            if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0))) {
                 gSPMatrix(OVERLAY_DISP++, interfaceCtx->view.shipMirrorProjectionPtr,
                           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
             }
             Attention_Draw(&play->actorCtx.attention, play);
-            if (CVarGetInteger("gModes.MirroredWorld.State", 0)) {
+            if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0))) {
                 gSPMatrix(OVERLAY_DISP++, interfaceCtx->view.projectionPtr,
                           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
             }

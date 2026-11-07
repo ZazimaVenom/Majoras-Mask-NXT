@@ -5,13 +5,13 @@ set(CMAKE_CXX_STANDARD 20 CACHE STRING "The C++ standard to use")
 
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
 set(GAME_STR "MM")
-project(2s2h VERSION 5.1.0 LANGUAGES C CXX)
+project(2s2h VERSION 5.0.1 LANGUAGES C CXX)
 include(CMake/2ship-cvars.cmake)
 include(CMake/lus-cvars.cmake)
 set(SPDLOG_LEVEL_TRACE 0)
 set(SPDLOG_LEVEL_OFF 6)
 set(SPDLOG_MIN_CUTOFF SPDLOG_LEVEL_TRACE CACHE STRING "cutoff at trace")
-set(PROJECT_BUILD_NAME "Beatrice Alfa" CACHE STRING "" FORCE)
+set(PROJECT_BUILD_NAME "Battler Bravo" CACHE STRING "" FORCE)
 set(PROJECT_TEAM "github.com/2ship2harkinian" CACHE STRING "" FORCE)
 
 execute_process(
@@ -48,6 +48,11 @@ if(DEFINED ENV{GITHUB_EVENT_PATH} AND EXISTS "$ENV{GITHUB_EVENT_PATH}")
     if(PR_HEAD_SHA AND PR_HEAD_SHA_ERROR STREQUAL "NOTFOUND")
         set(GIT_COMMIT_HASH "${PR_HEAD_SHA}")
     endif()
+endif()
+
+# Source archives may not contain .git metadata.
+if(NOT GIT_COMMIT_HASH)
+    set(GIT_COMMIT_HASH "source-archive")
 endif()
 
 # Get only the first 7 characters of the hash
@@ -206,28 +211,6 @@ endif()
 
 add_subdirectory(ZAPDTR/ZAPD ${CMAKE_BINARY_DIR}/ZAPD)
 add_subdirectory(OTRExporter)
-
-function(ship_quiet_vendored_warnings target)
-    if (NOT TARGET ${target})
-        message(STATUS "ship_quiet_vendored_warnings: no target '${target}', skipping")
-        return()
-    endif()
-    set(_common -Wno-missing-braces -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused-result)
-    set(_clang_only -Wno-mismatched-tags -Wno-inconsistent-missing-override -Wno-braced-scalar-init)
-    set(_msvc /wd4244 /wd4267 /wd4477)
-    target_compile_options(${target} PRIVATE
-        "$<$<COMPILE_LANG_AND_ID:C,GNU,Clang,AppleClang>:${_common}>"
-        "$<$<COMPILE_LANG_AND_ID:CXX,GNU>:${_common}>"
-        "$<$<COMPILE_LANG_AND_ID:CXX,Clang,AppleClang>:${_common};${_clang_only}>"
-        "$<$<COMPILE_LANG_AND_ID:C,MSVC>:${_msvc}>"
-        "$<$<COMPILE_LANG_AND_ID:CXX,MSVC>:${_msvc}>"
-    )
-endfunction()
-
-foreach(_vendored libultraship ZAPDLib ZAPD libgfxd OTRExporter prism)
-    ship_quiet_vendored_warnings(${_vendored})
-endforeach()
-
 add_subdirectory(mm)
 
 set_property(TARGET 2ship PROPERTY APPIMAGE_DESKTOP_FILE_TERMINAL YES)
@@ -337,3 +320,40 @@ endif()
 
 set(CPACK_PROJECT_CONFIG_FILE ${CMAKE_SOURCE_DIR}/CMake/Packaging-2.cmake)
 include(CMake/Packaging.cmake)
+
+# Optional production-policy and real-JSON migration regressions. The RPG Windows
+# release helper explicitly enables and runs both before creating its package.
+option(BUILD_RPG_TESTS "Build RPG policy and save migration regression tests" OFF)
+if(BUILD_RPG_TESTS)
+    enable_testing()
+    add_subdirectory(tests/rpg_framework)
+endif()
+
+option(BUILD_BEN_TESTS "Build BEN DROWNED director, save migration, and world draw linkage tests" OFF)
+if(BUILD_BEN_TESTS)
+    enable_testing()
+    add_subdirectory(tests/ben_drowned)
+endif()
+
+# The original Visual Studio property sheets may emit binaries under the source
+# tree. The new release helper opts into isolated output, so a clean build does
+# not replace binaries from a previously successful build directory.
+option(RPG_ISOLATED_OUTPUT "Keep RPG build binaries inside its build directory" OFF)
+if(RPG_ISOLATED_OUTPUT)
+    foreach(rpg_target IN ITEMS 2ship libultraship OTRExporter ZAPD ZAPDLib RpgCoreTests RpgSaveTests BenCoreTests BenSaveTests BenWorldTests)
+        if(TARGET ${rpg_target})
+            foreach(rpg_config IN ITEMS DEBUG RELEASE RELWITHDEBINFO MINSIZEREL)
+                set_target_properties(${rpg_target} PROPERTIES
+                    OUTPUT_DIRECTORY_${rpg_config} "${CMAKE_BINARY_DIR}/rpg-bin/${rpg_config}"
+                    RUNTIME_OUTPUT_DIRECTORY_${rpg_config} "${CMAKE_BINARY_DIR}/rpg-bin/${rpg_config}"
+                    LIBRARY_OUTPUT_DIRECTORY_${rpg_config} "${CMAKE_BINARY_DIR}/rpg-bin/${rpg_config}"
+                    ARCHIVE_OUTPUT_DIRECTORY_${rpg_config} "${CMAKE_BINARY_DIR}/rpg-bin/${rpg_config}"
+                    PDB_OUTPUT_DIRECTORY_${rpg_config} "${CMAKE_BINARY_DIR}/rpg-bin/${rpg_config}")
+            endforeach()
+        endif()
+    endforeach()
+endif()
+# Resolve the generator's actual runtime path; the packaging helper must never
+# guess a folder name or choose an executable from another build.
+file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/rpg-runtime-$<CONFIG>.txt"
+     CONTENT "$<TARGET_FILE_DIR:2ship>\n")

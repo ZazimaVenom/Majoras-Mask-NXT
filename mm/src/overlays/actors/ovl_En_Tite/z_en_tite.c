@@ -1,3 +1,5 @@
+#include "2s2h/Enhancements/RpgFramework/RpgFramework.h"
+#include "2s2h/Enhancements/PlayerBots/PlayerBots.h"
 /*
  * File: z_en_tite.c
  * Overlay: ovl_En_Tite
@@ -294,8 +296,8 @@ void func_80893F30(EnTite* this, PlayState* play) {
     SkelAnime_Update(&this->skelAnime);
     func_80893B70(this);
     if (this->unk_2BC > 0) {
-        this->unk_2BC--;
-    } else if ((Player_GetMask(play) != PLAYER_MASK_STONE) && (this->actor.xzDistToPlayer < 300.0f) &&
+        this->unk_2BC = MAX(0, this->unk_2BC - Rpg_TimerStep(&this->actor));
+    } else if ((PlayerBots_GetTargetMask(play, &this->actor) != PLAYER_MASK_STONE) && (this->actor.xzDistToPlayer < 300.0f) &&
                (this->actor.playerHeightRel < 80.0f)) {
         func_808945EC(this);
     }
@@ -398,7 +400,7 @@ void func_80894414(EnTite* this) {
 
 void func_80894454(EnTite* this, PlayState* play) {
     if (SkelAnime_Update(&this->skelAnime)) {
-        if ((Player_GetMask(play) == PLAYER_MASK_STONE) || (this->actor.xzDistToPlayer > 450.0f) ||
+        if ((PlayerBots_GetTargetMask(play, &this->actor) == PLAYER_MASK_STONE) || (this->actor.xzDistToPlayer > 450.0f) ||
             (this->actor.playerHeightRel > 80.0f)) {
             func_80893ED4(this);
         } else if (!Actor_IsFacingPlayer(&this->actor, 0x2328)) {
@@ -461,7 +463,7 @@ void func_80894638(EnTite* this, PlayState* play) {
         }
     }
 
-    if ((Player_GetMask(play) == PLAYER_MASK_STONE) || (this->actor.xzDistToPlayer > 450.0f) ||
+    if ((PlayerBots_GetTargetMask(play, &this->actor) == PLAYER_MASK_STONE) || (this->actor.xzDistToPlayer > 450.0f) ||
         (this->actor.playerHeightRel > 80.0f)) {
         func_80893ED4(this);
     } else if (((this->actor.bgCheckFlags & BGCHECKFLAG_GROUND) ||
@@ -524,7 +526,7 @@ void func_80894910(EnTite* this, PlayState* play) {
             }
         }
 
-        if ((Player_GetMask(play) == PLAYER_MASK_STONE) || (this->actor.xzDistToPlayer > 450.0f) ||
+        if ((PlayerBots_GetTargetMask(play, &this->actor) == PLAYER_MASK_STONE) || (this->actor.xzDistToPlayer > 450.0f) ||
             (this->actor.playerHeightRel > 80.0f)) {
             func_80893ED4(this);
         } else if ((this->actor.xzDistToPlayer <= 180.0f) && (this->actor.playerHeightRel <= 80.0f)) {
@@ -568,7 +570,7 @@ void func_80894BC8(EnTite* this, PlayState* play) {
     if ((this->actor.speed == 0.0f) && ((this->actor.bgCheckFlags & BGCHECKFLAG_GROUND) || func_80893ADC(this))) {
         this->actor.world.rot.y = this->actor.shape.rot.y;
         this->collider.base.acFlags |= AC_ON;
-        if ((Player_GetMask(play) == PLAYER_MASK_STONE) ||
+        if ((PlayerBots_GetTargetMask(play, &this->actor) == PLAYER_MASK_STONE) ||
             (((this->actor.xzDistToPlayer > 450.0f) || (this->actor.playerHeightRel > 80.0f)) &&
              (ABS_ALT(this->actor.shape.rot.x) < 4000) && (ABS_ALT(this->actor.shape.rot.z) < 4000))) {
             func_80893ED4(this);
@@ -613,7 +615,7 @@ void func_80894E0C(EnTite* this, PlayState* play) {
             func_80895020(this, play);
         } else if (this->unk_2B9 != 0) {
             func_808955E4(this);
-        } else if ((Player_GetMask(play) == PLAYER_MASK_STONE) ||
+        } else if ((PlayerBots_GetTargetMask(play, &this->actor) == PLAYER_MASK_STONE) ||
                    (((this->actor.xzDistToPlayer > 450.0f) || (this->actor.playerHeightRel > 80.0f)) &&
                     (ABS_ALT(this->actor.shape.rot.x) < 4000) && (ABS_ALT(this->actor.shape.rot.z) < 4000))) {
             func_80893ED4(this);
@@ -790,7 +792,7 @@ void func_80895738(EnTite* this, PlayState* play) {
     } else if ((this->unk_2BC == 0) && Math_StepToF(&this->actor.speed, 0.0f, 0.3f)) {
         this->actor.world.rot.y = this->actor.shape.rot.y;
         func_80893A18(this);
-        if ((Player_GetMask(play) == PLAYER_MASK_STONE) || (this->actor.xzDistToPlayer > 450.0f) ||
+        if ((PlayerBots_GetTargetMask(play, &this->actor) == PLAYER_MASK_STONE) || (this->actor.xzDistToPlayer > 450.0f) ||
             (this->actor.playerHeightRel > 80.0f)) {
             func_80893ED4(this);
         } else if (!Actor_IsFacingPlayer(&this->actor, 0x2328)) {
@@ -850,7 +852,7 @@ void func_80895AC0(EnTite* this, PlayState* play) {
         }
     }
 
-    if ((this->actor.xzDistToPlayer < 240.0f) && (Player_GetMask(play) != PLAYER_MASK_STONE)) {
+    if ((this->actor.xzDistToPlayer < 240.0f) && (PlayerBots_GetTargetMask(play, &this->actor) != PLAYER_MASK_STONE)) {
         func_8089408C(this, play);
     } else if (this->unk_2BC > 0) {
         this->unk_2BC--;
@@ -879,7 +881,7 @@ void func_80895D08(EnTite* this, PlayState* play) {
         }
         Actor_PlaySfx(&this->actor, NA_SE_EN_TEKU_WALK);
     }
-    if ((this->actor.xzDistToPlayer < 240.0f) && (Player_GetMask(play) != PLAYER_MASK_STONE)) {
+    if ((this->actor.xzDistToPlayer < 240.0f) && (PlayerBots_GetTargetMask(play, &this->actor) != PLAYER_MASK_STONE)) {
         func_8089408C(this, play);
     } else {
         this->unk_2BC--;

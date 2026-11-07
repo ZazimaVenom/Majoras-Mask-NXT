@@ -1,3 +1,4 @@
+#include "2s2h/Enhancements/BenDrowned/BenDrowned.h"
 #include <libultraship/bridge/consolevariablebridge.h>
 #include "2s2h/GameInteractor/GameInteractor.h"
 #include "2s2h/ShipInit.hpp"
@@ -503,7 +504,7 @@ extern "C" bool BetterOwlWarp_IsCutoffOnSide(s16 cursorPoint, PauseContext* paus
     bool goingLeft = pauseCtx->stickAdjX < -30;
     bool goingRight = pauseCtx->stickAdjX > 30;
 
-    if (CVarGetInteger("gModes.MirroredWorld.State", 0) && (goingLeft || goingRight)) {
+    if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0)) && (goingLeft || goingRight)) {
         goingLeft = !goingLeft;
         goingRight = !goingRight;
     }
@@ -544,7 +545,7 @@ extern "C" bool BetterOwlWarp_NextCursorPoint(s16* cursorPoint, PauseContext* pa
     s16 tmpCursorPoint, i;
     s16* navigationMap = nullptr;
 
-    if (CVarGetInteger("gModes.MirroredWorld.State", 0) && (goingLeft || goingRight)) {
+    if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0)) && (goingLeft || goingRight)) {
         goingLeft = !goingLeft;
         goingRight = !goingRight;
     }

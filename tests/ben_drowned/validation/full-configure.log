@@ -1,0 +1,39 @@
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+-- Linux Ubuntu 24.04 noble
+-- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.3")
+-- Could NOT find BZip2 (missing: BZIP2_LIBRARIES BZIP2_INCLUDE_DIR) 
+-- Linking against dependent libraries statically
+CMake Warning (deprecated) at /workspace/scratch/cda0e8a05ecb/validation/full-build-probe/_deps/prism-src/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+CMake Error at libultraship/cmake/dependencies/linux.cmake:2 (find_package):
+  By not providing "FindSDL2.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "SDL2", but
+  CMake did not find one.
+
+  Could not find a package configuration file provided by "SDL2" with any of
+  the following names:
+
+    SDL2.cps
+    sdl2.cps
+    SDL2Config.cmake
+    sdl2-config.cmake
+
+  Add the installation prefix of "SDL2" to CMAKE_PREFIX_PATH or set
+  "SDL2_DIR" to a directory containing one of the above files.  If "SDL2"
+  provides a separate development package or SDK, be sure it has been
+  installed.
+Call Stack (most recent call first):
+  libultraship/CMakeLists.txt:64 (include)
+
+
+-- Configuring incomplete, errors occurred!

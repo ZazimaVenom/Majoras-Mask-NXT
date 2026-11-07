@@ -1,0 +1,10 @@
+Source SHA256: d9b64a492b453436a0351aeb408d8826936d06c9e731e1c883032a8ff1325dcb
+Scope: extracted production notification loop prefix, both corner-position switches,
+and complete UpdateElement method. Explicit viewport/window/IO/Options doubles.
+This does not compile the complete Notification.cpp translation unit or Windows application.
+Checks: empty/single/four notification layout in all corners; hidden layout;
+empty/single/all/adjacent expiry while preserving remaining item order and decrement.
+Command: g++ -std=c++20 -Wall -Wextra -Wconversion -Wsign-conversion -Wsign-compare -Werror -pedantic -fsanitize=undefined -fno-sanitize-recover=all /workspace/scratch/cda0e8a05ecb/validation/msvc-compile-fix/notification/notification_extracted.cpp -o /workspace/scratch/cda0e8a05ecb/validation/msvc-compile-fix/notification/notification_extracted
+Compiler exit: 0
+PASS: 75 extracted notification checks
+Test exit: 0

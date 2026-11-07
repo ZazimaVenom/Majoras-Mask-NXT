@@ -1,3 +1,4 @@
+#include "2s2h/Enhancements/BenDrowned/BenDrowned.h"
 #include "global.h"
 #include "z64shrink_window.h"
 #include "z64view.h"
@@ -354,7 +355,7 @@ s32 View_ApplyPerspective(View* view) {
 
     guPerspective(projection, &view->perspNorm, view->fovy, aspect, view->zNear, view->zFar, view->scale);
 
-    if (CVarGetInteger("gModes.MirroredWorld.State", 0)) {
+    if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0))) {
         MtxF flipF;
         SkinMatrix_Clear(&flipF);
         flipF.xx = -1.0;
@@ -489,7 +490,7 @@ s32 View_ApplyOrtho(View* view) {
     guOrtho(projection, gScreenWidth * -0.5f, gScreenWidth * 0.5f, gScreenHeight * -0.5f, gScreenHeight * 0.5f,
             view->zNear, view->zFar, view->scale);
 
-    // if (CVarGetInteger("gModes.MirroredWorld.State", 0)) {
+    // if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0))) {
     //     MtxF flipF;
     //     SkinMatrix_Clear(&flipF);
     //     flipF.xx = -1.0;
@@ -546,7 +547,7 @@ s32 View_ApplyOrthoToOverlay(View* view) {
     guOrtho(projection, gScreenWidth * -0.5f, gScreenWidth * 0.5f, gScreenHeight * -0.5f, gScreenHeight * 0.5f,
             view->zNear, view->zFar, view->scale);
 
-    if (CVarGetInteger("gModes.MirroredWorld.State", 0)) {
+    if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0))) {
         MtxF flipF;
         SkinMatrix_Clear(&flipF);
         flipF.xx = -1.0;

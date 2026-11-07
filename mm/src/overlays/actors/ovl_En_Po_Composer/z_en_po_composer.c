@@ -30,7 +30,7 @@ void EnPoComposer_Roll(EnPoComposer* this, PlayState* play);
 void EnPoComposer_SetupAwaitPlayer(EnPoComposer* this);
 void EnPoComposer_SetupStartCutscene(EnPoComposer* this);
 void EnPoComposer_SetupStartedCutscene(EnPoComposer* this);
-void EnPoComposer_StepMainAlpha(EnPoComposer* this);
+void EnPoComposer_StepLightAlpha(EnPoComposer* this);
 
 ActorProfile En_Po_Composer_Profile = {
     /**/ ACTOR_EN_PO_COMPOSER,
@@ -93,7 +93,6 @@ static ColliderJntSphInit sJntSphInit = {
 
 static CollisionCheckInfoInit sColChkInfoInit = { 4, 25, 50, 40 };
 
-// Unused. Interesting that they had planned for a fight at some point, maybe flat?
 static DamageTable sDamageTable = {
     /* Deku Nut       */ DMG_ENTRY(0, 0x0),
     /* Deku Stick     */ DMG_ENTRY(2, 0x0),
@@ -121,7 +120,7 @@ static DamageTable sDamageTable = {
     /* Zora punch     */ DMG_ENTRY(4, 0x0),
     /* Spin attack    */ DMG_ENTRY(2, 0x0),
     /* Sword beam     */ DMG_ENTRY(2, 0x0),
-    /* Normal Roll    */ DMG_ENTRY(8, 0x0), // 8 damage? on rolling?
+    /* Normal Roll    */ DMG_ENTRY(8, 0x0),
     /* UNK_DMG_0x1B   */ DMG_ENTRY(4, 0x0),
     /* UNK_DMG_0x1C   */ DMG_ENTRY(0, 0x0),
     /* Unblockable    */ DMG_ENTRY(0, 0x0),
@@ -162,10 +161,9 @@ static AnimationInfo sAnimationInfo[POE_COMPOSER_ANIM_MAX] = {
     /* 12 */ { &gPoeComposerAttackAnim, 1.0f, 0.0f, 0.0f, ANIMMODE_LOOP, 0.0f },
 };
 
-// also used for robe hem base color, but it gets overridden by sSharpClothingColor2 (bug?)
-static Color_RGBA8 sEyeColor = { 255, 255, 210, 0 };
+static Color_RGBA8 sLightColorInit = { 255, 255, 210, 0 };
 
-static Color_RGBA8 sLightColorInit = { 0, 0, 0, 255 };
+static Color_RGBA8 sEnvColorInit = { 0, 0, 0, 255 };
 
 static Color_RGBA8 sSharpClothingColor1 = { 75, 20, 25, 255 };
 
@@ -197,29 +195,27 @@ void EnPoComposer_Init(Actor* thisx, PlayState* play) {
     Lights_PointGlowSetInfo(&this->lightInfo, this->actor.home.pos.x, this->actor.home.pos.y, this->actor.home.pos.z,
                             255, 255, 255, 0);
     this->actor.flags &= ~ACTOR_FLAG_ATTENTION_ENABLED;
-    this->eyeColor = sEyeColor;
     this->lightColor = sLightColorInit;
+    this->envColor = sEnvColorInit;
     this->cueId = POE_COMPOSER_CUEID_NONE;
 
     if (POE_COMPOSER_IS_FLAT(&this->actor)) {
         this->sharpCsNum = 0;
         this->inCutscene = true;
         EnPoComposer_SetupStartedCutscene(this);
-    } else if (POE_COMPOSER_SHARP_HEALED(&this->actor)) {
-        // Player spawned in the cave after music house river cutscene
+    } else if (POE_COMPOSER_4000(&this->actor)) {
         if (gSaveContext.save.entrance != ENTRANCE(IKANA_CANYON, 10)) {
             Actor_Kill(&this->actor);
             return;
         }
-
-        this->sharpCsNum = SHARP_CS_ENCOUNTER_HEALED_TALK;
+        this->sharpCsNum = SHARP_CS_ENCOUNTER_FIRST;
         this->inCutscene = true;
         EnPoComposer_SetupStartedCutscene(this);
-    } else { // Sharp (hostile)
+    } else {
         s32 i;
         s16 csId = this->actor.csId;
 
-        if (CHECK_WEEKEVENTREG(WEEKEVENTREG_IKANA_SPRING_RESTORED)) {
+        if (CHECK_WEEKEVENTREG(WEEKEVENTREG_14_04)) {
             Actor_Kill(&this->actor);
             return;
         }
@@ -232,12 +228,11 @@ void EnPoComposer_Init(Actor* thisx, PlayState* play) {
             csId = CutsceneManager_GetAdditionalCsId(csId);
         }
 
-        if (CHECK_WEEKEVENTREG(WEEKEVENTREG_SHARP_HOSTILE_CONVERSATION)) {
-            this->sharpCsNum = SHARP_CS_ENCOUNTER_AGRO_TALK;
+        if (CHECK_WEEKEVENTREG(WEEKEVENTREG_14_02)) {
+            this->sharpCsNum = SHARP_CS_ENCOUNTER_OTHER;
         } else {
-            this->sharpCsNum = SHARP_CS_ENCOUNTER_HEALED_TALK;
+            this->sharpCsNum = SHARP_CS_ENCOUNTER_FIRST;
         }
-
         this->inCutscene = false;
         EnPoComposer_SetupAwaitPlayer(this);
     }
@@ -302,7 +297,6 @@ void EnPoComposer_PlayCurse(EnPoComposer* this, PlayState* play) {
 
     // Damage the player every second
     if (this->actionTimer == 20) {
-        // Quarter heart damage (4)
         func_800B8D10(play, &this->actor, 0.0f, 0, 0.0f, 1, 4);
         this->actionTimer = 0;
     } else {
@@ -427,7 +421,7 @@ void EnPoComposer_Roll(EnPoComposer* this, PlayState* play) {
             Actor_PlaySfx(&this->actor, NA_SE_EN_SHARP_REACTION);
             Actor_ChangeAnimationByInfo(&this->skelAnime, sAnimationInfo, POE_COMPOSER_ANIM_ROLLING);
         }
-    } else if (Animation_OnFrame(&this->skelAnime, 1.0f) && (this->eyeColor.a > 32)) {
+    } else if (Animation_OnFrame(&this->skelAnime, 1.0f) && (this->lightColor.a > 32)) {
         if (this->csCueTimer == 1) {
             Actor_PlaySfx(&this->actor, NA_SE_EN_LAST3_DEAD_WIND2_OLD);
             this->csCueTimer = 2;
@@ -439,7 +433,7 @@ void EnPoComposer_Roll(EnPoComposer* this, PlayState* play) {
 }
 
 void EnPoComposer_SharpCutsceneDone(EnPoComposer* this) {
-    SET_WEEKEVENTREG(WEEKEVENTREG_IKANA_SPRING_RESTORED);
+    SET_WEEKEVENTREG(WEEKEVENTREG_14_04);
     Actor_Kill(&this->actor);
 }
 
@@ -514,7 +508,7 @@ s32 EnPoComposer_UpdateAction(EnPoComposer* this, PlayState* play) {
             Cutscene_ActorTranslate(&this->actor, play, cueChannel);
         }
 
-        EnPoComposer_StepMainAlpha(this);
+        EnPoComposer_StepLightAlpha(this);
 
         if ((this->sharpCsNum == SHARP_CS_SONG_STORMS) && (play->csCtx.curFrame == 204)) {
             Audio_PlaySfx(NA_SE_SY_DIZZY_EFFECT);
@@ -531,14 +525,14 @@ s32 EnPoComposer_UpdateAction(EnPoComposer* this, PlayState* play) {
 
         if (POE_COMPOSER_IS_FLAT(&this->actor)) {
             EnPoComposer_SetupStartedCutscene(this);
-        } else if (POE_COMPOSER_SHARP_HEALED(&this->actor)) {
+        } else if (POE_COMPOSER_4000(&this->actor)) {
             EnPoComposer_SetupStartedCutscene(this);
-        } else { // Sharp is hostile
+        } else {
             this->inCutscene = false;
 
             if (this->sharpCsNum < SHARP_CS_SONG_STORMS) {
-                if (!CHECK_WEEKEVENTREG(WEEKEVENTREG_SHARP_HOSTILE_CONVERSATION)) {
-                    SET_WEEKEVENTREG(WEEKEVENTREG_SHARP_HOSTILE_CONVERSATION);
+                if (!CHECK_WEEKEVENTREG(WEEKEVENTREG_14_02)) {
+                    SET_WEEKEVENTREG(WEEKEVENTREG_14_02);
                 }
                 EnPoComposer_SetupPlayCurse(this);
             } else {
@@ -551,57 +545,55 @@ s32 EnPoComposer_UpdateAction(EnPoComposer* this, PlayState* play) {
     return false;
 }
 
-void EnPoComposer_StepMainAlpha(EnPoComposer* this) {
-    if ((this->visible == true) && (this->mainAlpha.a != 255)) {
-        if (this->mainAlpha.a > 247) {
-            this->mainAlpha.a = 255;
+void EnPoComposer_StepLightAlpha(EnPoComposer* this) {
+    if ((this->visible == true) && (this->lightColor.a != 255)) {
+        if (this->lightColor.a > 247) {
+            this->lightColor.a = 255;
         } else {
-            this->mainAlpha.a += 7;
+            this->lightColor.a += 7;
         }
-    } else if (!this->visible && (this->mainAlpha.a != 0)) {
-        if (this->mainAlpha.a < 8) {
-            this->mainAlpha.a = 0;
+    } else if (!this->visible && (this->lightColor.a != 0)) {
+        if (this->lightColor.a < 8) {
+            this->lightColor.a = 0;
         } else {
-            this->mainAlpha.a -= 7;
+            this->lightColor.a -= 7;
         }
     }
 }
 
-void EnPoComposer_StepEyeColor(EnPoComposer* this) {
+void EnPoComposer_StepLightColor(EnPoComposer* this) {
     s16 color;
 
-    color = this->eyeColor.r + 5;
-    this->eyeColor.r = CLAMP_MAX(color, 255);
+    color = this->lightColor.r + 5;
+    this->lightColor.r = CLAMP_MAX(color, 255);
 
-    color = this->eyeColor.g + 5;
-    this->eyeColor.g = CLAMP_MAX(color, 255);
+    color = this->lightColor.g + 5;
+    this->lightColor.g = CLAMP_MAX(color, 255);
 
-    if (this->eyeColor.b > 210) {
-        color = this->eyeColor.b - 5;
-        this->eyeColor.b = CLAMP_MIN(color, 210);
+    if (this->lightColor.b > 210) {
+        color = this->lightColor.b - 5;
+        this->lightColor.b = CLAMP_MIN(color, 210);
     } else {
-        color = this->eyeColor.b + 5;
-        this->eyeColor.b = CLAMP_MAX(color, 210);
+        color = this->lightColor.b + 5;
+        this->lightColor.b = CLAMP_MAX(color, 210);
     }
 }
 
-void EnPoComposer_UpdateLightColor(EnPoComposer* this) {
+void EnPoComposer_UpdateEnvColor(EnPoComposer* this) {
     if ((this->actionFunc == EnPoComposer_Appear) && (this->skelAnime.curFrame < 12.0f)) {
         // Step rgb from 55 to 255 and alpha from 0 to 200 over the first 12 frames of the appear anim
-        this->lightColor.r = this->lightColor.g = this->lightColor.b = 55.0f + this->skelAnime.curFrame * 16.66f;
-        this->lightColor.a = this->skelAnime.curFrame * (200.0f / 12.0f);
+        this->envColor.r = this->envColor.g = this->envColor.b = 55.0f + this->skelAnime.curFrame * 16.66f;
+        this->envColor.a = this->skelAnime.curFrame * (200.0f / 12.0f);
     } else {
-        // Flame Flicker
-        f32 lightIntensity = Rand_ZeroOne();
+        f32 rand = Rand_ZeroOne();
 
-        this->lightColor.r = 225 + (s32)(lightIntensity * 30.0f);
-        this->lightColor.g = 155 + (s32)(lightIntensity * 100.0f);
-        this->lightColor.b = 95 + (s32)(lightIntensity * 160.0f);
-        this->lightColor.a = 200;
+        this->envColor.r = 225 + (s32)(rand * 30.0f);
+        this->envColor.g = 155 + (s32)(rand * 100.0f);
+        this->envColor.b = 95 + (s32)(rand * 160.0f);
+        this->envColor.a = 200;
     }
-
-    if (this->mainAlpha.a == 0) {
-        this->lightColor.a = 0;
+    if (this->lightColor.a == 0) {
+        this->envColor.a = 0;
     }
 }
 
@@ -614,7 +606,7 @@ void EnPoComposer_UpdateCollision(EnPoComposer* this, PlayState* play) {
 void EnPoComposer_Update(Actor* thisx, PlayState* play) {
     EnPoComposer* this = (EnPoComposer*)thisx;
 
-    EnPoComposer_UpdateLightColor(this);
+    EnPoComposer_UpdateEnvColor(this);
     SkelAnime_Update(&this->skelAnime);
     Actor_SetFocus(&this->actor, 42.0f);
 
@@ -629,19 +621,16 @@ s32 EnPoComposer_OverrideLimbDraw(PlayState* play, s32 limbIndex, Gfx** dList, V
                                   Gfx** gfx) {
     EnPoComposer* this = (EnPoComposer*)thisx;
 
-    if ((this->mainAlpha.a == 0) || (limbIndex == POE_COMPOSER_LIMB_LANTERN)) {
-        // The lantern limb is never drawn because the limb only contains the lantern base for some reason
-        // Instead, the whole lantern is drawn manually in EnPoComposer_Draw
-        // This was likely done to give tighter lantern color control
+    if ((this->lightColor.a == 0) || (limbIndex == POE_COMPOSER_LIMB_LANTERN)) {
         *dList = NULL;
     } else if (POE_COMPOSER_IS_FLAT(&this->actor) && (limbIndex == POE_COMPOSER_LIMB_HEAD)) {
         *dList = gPoeComposerFlatHeadDL;
     }
 
     if (limbIndex == 19) {
-        //! @Bug skeleton does not have a limb 19, this is leftover from OoT Poes
+        //! @bug skeleton does not have a limb 19, this is leftover from OoT Poes
         gDPPipeSync((*gfx)++);
-        gDPSetEnvColor((*gfx)++, this->eyeColor.r, this->eyeColor.g, this->eyeColor.b, this->eyeColor.a);
+        gDPSetEnvColor((*gfx)++, this->lightColor.r, this->lightColor.g, this->lightColor.b, this->lightColor.a);
     }
 
     return false;
@@ -659,43 +648,40 @@ void EnPoComposer_PostLimbDraw(PlayState* play, s32 limbIndex, Gfx** dList, Vec3
 void EnPoComposer_Draw(Actor* thisx, PlayState* play) {
     EnPoComposer* this = (EnPoComposer*)thisx;
     s32 pad;
-    Gfx* gfx;
-    // Clothing color draws on robe top, coat, hat, and the emblem on the lantern
+    Gfx* dl;
     Color_RGBA8* clothingColor;
-    // Overrides clothingColor: hat, robe top, robe hem (overrides eye color)
-    Color_RGBA8* clothingColor2;
+    Color_RGBA8* var_t0;
     Vec3f lightOffset;
     Vec3s lightPos;
 
     OPEN_DISPS(play->state.gfxCtx);
 
-    EnPoComposer_StepEyeColor(this);
+    EnPoComposer_StepLightColor(this);
 
     // Select colors
 
     if (POE_COMPOSER_IS_FLAT(&this->actor)) {
         clothingColor = &sFlatClothingColor1;
-        clothingColor2 = &sFlatClothingColor2;
+        var_t0 = &sFlatClothingColor2;
     } else {
         clothingColor = &sSharpClothingColor1;
-        clothingColor2 = &sSharpClothingColor2;
+        var_t0 = &sSharpClothingColor2;
     }
 
     // Draw skeleton
 
-    if ((this->mainAlpha.a == 255) || (this->mainAlpha.a == 0)) {
+    if ((this->lightColor.a == 255) || (this->lightColor.a == 0)) {
         Gfx_SetupDL25_Opa(play->state.gfxCtx);
 
-        gSPSegment(
-            POLY_OPA_DISP++, 0x08,
-            Gfx_EnvColor(play->state.gfxCtx, this->eyeColor.r, this->eyeColor.g, this->eyeColor.b, this->eyeColor.a));
+        gSPSegment(POLY_OPA_DISP++, 0x08,
+                   Gfx_EnvColor(play->state.gfxCtx, this->lightColor.r, this->lightColor.g, this->lightColor.b,
+                                this->lightColor.a));
         gSPSegment(
             POLY_OPA_DISP++, 0x0A,
-            Gfx_EnvColor(play->state.gfxCtx, clothingColor->r, clothingColor->g, clothingColor->b, this->mainAlpha.a));
+            Gfx_EnvColor(play->state.gfxCtx, clothingColor->r, clothingColor->g, clothingColor->b, this->lightColor.a));
         gSPSegment(POLY_OPA_DISP++, 0x0B,
-                   Gfx_EnvColor(play->state.gfxCtx, clothingColor2->r, clothingColor2->g, clothingColor2->b,
-                                this->mainAlpha.a));
-        gSPSegment(POLY_OPA_DISP++, 0x0C, gActorSetupOpaDL);
+                   Gfx_EnvColor(play->state.gfxCtx, var_t0->r, var_t0->g, var_t0->b, this->lightColor.a));
+        gSPSegment(POLY_OPA_DISP++, 0x0C, D_801AEFA0);
 
         POLY_OPA_DISP =
             SkelAnime_DrawFlex(play, this->skelAnime.skeleton, this->skelAnime.jointTable, this->skelAnime.dListCount,
@@ -704,51 +690,49 @@ void EnPoComposer_Draw(Actor* thisx, PlayState* play) {
         Gfx_SetupDL25_Opa(play->state.gfxCtx);
         Gfx_SetupDL25_Xlu(play->state.gfxCtx);
 
-        gSPSegment(
-            POLY_XLU_DISP++, 0x08,
-            Gfx_EnvColor(play->state.gfxCtx, this->eyeColor.r, this->eyeColor.g, this->eyeColor.b, this->eyeColor.a));
+        gSPSegment(POLY_XLU_DISP++, 0x08,
+                   Gfx_EnvColor(play->state.gfxCtx, this->lightColor.r, this->lightColor.g, this->lightColor.b,
+                                this->lightColor.a));
         gSPSegment(
             POLY_XLU_DISP++, 0x0A,
-            Gfx_EnvColor(play->state.gfxCtx, clothingColor->r, clothingColor->g, clothingColor->b, this->mainAlpha.a));
+            Gfx_EnvColor(play->state.gfxCtx, clothingColor->r, clothingColor->g, clothingColor->b, this->lightColor.a));
         gSPSegment(POLY_XLU_DISP++, 0x0B,
-                   Gfx_EnvColor(play->state.gfxCtx, clothingColor2->r, clothingColor2->g, clothingColor2->b,
-                                this->mainAlpha.a));
-        gSPSegment(POLY_XLU_DISP++, 0x0C, gActorSetupXluDL);
+                   Gfx_EnvColor(play->state.gfxCtx, var_t0->r, var_t0->g, var_t0->b, this->lightColor.a));
+        gSPSegment(POLY_XLU_DISP++, 0x0C, D_801AEF88);
 
         POLY_XLU_DISP =
             SkelAnime_DrawFlex(play, this->skelAnime.skeleton, this->skelAnime.jointTable, this->skelAnime.dListCount,
                                EnPoComposer_OverrideLimbDraw, EnPoComposer_PostLimbDraw, &this->actor, POLY_XLU_DISP);
     }
 
-    if (this->mainAlpha.a != 0) {
+    if (this->lightColor.a != 0) {
         // Draw lantern if visible
 
-        if (this->mainAlpha.a == 255) {
+        if (this->lightColor.a == 255) {
             Scene_SetRenderModeXlu(play, 0, 1);
-            gfx = POLY_OPA_DISP;
+            dl = POLY_OPA_DISP;
         } else {
             Scene_SetRenderModeXlu(play, 1, 2);
-            gfx = POLY_XLU_DISP;
+            dl = POLY_XLU_DISP;
         }
 
-        gDPPipeSync(&gfx[0]);
-        // Light color reused for lantern glass
-        gDPSetEnvColor(&gfx[1], this->lightColor.r, this->lightColor.g, this->lightColor.b, this->mainAlpha.a);
+        gDPPipeSync(&dl[0]);
+        gDPSetEnvColor(&dl[1], this->envColor.r, this->envColor.g, this->envColor.b, this->lightColor.a);
 
         Matrix_Put(&this->lanternMtxF);
-        MATRIX_FINALIZE_AND_LOAD(&gfx[2], play->state.gfxCtx);
+        MATRIX_FINALIZE_AND_LOAD(&dl[2], play->state.gfxCtx);
 
-        gSPDisplayList(&gfx[3], gPoeComposerLanternBaseDL);
-        gSPDisplayList(&gfx[4], gPoeComposerLanternGlassDL);
+        gSPDisplayList(&dl[3], gPoeComposerLanternBaseDL);
+        gSPDisplayList(&dl[4], gPoeComposerLanternGlassDL);
 
-        gDPPipeSync(&gfx[5]);
-        gDPSetEnvColor(&gfx[6], clothingColor->r, clothingColor->g, clothingColor->b, this->mainAlpha.a);
-        gSPDisplayList(&gfx[7], gPoeComposerLanternTopDL);
+        gDPPipeSync(&dl[5]);
+        gDPSetEnvColor(&dl[6], clothingColor->r, clothingColor->g, clothingColor->b, this->lightColor.a);
+        gSPDisplayList(&dl[7], gPoeComposerLanternTopDL);
 
-        if (this->mainAlpha.a == 255) {
-            POLY_OPA_DISP = &gfx[8];
+        if (this->lightColor.a == 255) {
+            POLY_OPA_DISP = &dl[8];
         } else {
-            POLY_XLU_DISP = &gfx[8];
+            POLY_XLU_DISP = &dl[8];
         }
     }
 
@@ -759,8 +743,8 @@ void EnPoComposer_Draw(Actor* thisx, PlayState* play) {
     lightPos.y += TRUNCF_BINANG(lightOffset.y);
     lightPos.z += TRUNCF_BINANG(lightOffset.z);
 
-    Lights_PointGlowSetInfo(&this->lightInfo, lightPos.x, lightPos.y, lightPos.z, this->lightColor.r,
-                            this->lightColor.g, this->lightColor.b, this->lightColor.a * (200.0f / 255.0f));
+    Lights_PointGlowSetInfo(&this->lightInfo, lightPos.x, lightPos.y, lightPos.z, this->envColor.r, this->envColor.g,
+                            this->envColor.b, this->envColor.a * (200.0f / 255.0f));
 
     CLOSE_DISPS(play->state.gfxCtx);
 }

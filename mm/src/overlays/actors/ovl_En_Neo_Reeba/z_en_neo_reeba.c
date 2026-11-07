@@ -1,3 +1,5 @@
+#include "2s2h/Enhancements/RpgFramework/RpgFramework.h"
+#include "2s2h/Enhancements/PlayerBots/PlayerBots.h"
 /*
  * File: z_en_neo_reeba.c
  * Overlay: ovl_En_Neo_Reeba
@@ -168,10 +170,10 @@ void EnNeoReeba_SetupWaitUnderground(EnNeoReeba* this) {
 
 void EnNeoReeba_WaitUnderground(EnNeoReeba* this, PlayState* play) {
     s32 pad;
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
 
     if ((Actor_WorldDistXZToPoint(&player->actor, &this->actor.home.pos) < 200.0f) &&
-        (Player_GetMask(play) != PLAYER_MASK_STONE) && (fabsf(this->actor.playerHeightRel) < 100.0f)) {
+        (PlayerBots_GetTargetMask(play, &this->actor) != PLAYER_MASK_STONE) && (fabsf(this->actor.playerHeightRel) < 100.0f)) {
         EnNeoReeba_SetupRise(this);
     }
 
@@ -197,7 +199,7 @@ void EnNeoReeba_SetupChooseAction(EnNeoReeba* this) {
 }
 
 void EnNeoReeba_ChooseAction(EnNeoReeba* this, PlayState* play) {
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
     f32 distToPlayer = Actor_WorldDistXZToPoint(&player->actor, &this->actor.home.pos);
 
     if ((distToPlayer > 200.0f) || (fabsf(this->actor.playerHeightRel) > 100.0f)) {
@@ -214,7 +216,7 @@ void EnNeoReeba_ChooseAction(EnNeoReeba* this, PlayState* play) {
     }
 
     if (this->actionTimer != 0) {
-        this->actionTimer--;
+        this->actionTimer = MAX(0, this->actionTimer - Rpg_TimerStep(&this->actor));
     }
 }
 
@@ -305,7 +307,7 @@ void EnNeoReeba_SetupReturnHome(EnNeoReeba* this) {
 }
 
 void EnNeoReeba_ReturnHome(EnNeoReeba* this, PlayState* play) {
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
     s32 pad;
     f32 remainingDist = Math_Vec3f_StepToXZ(&this->actor.world.pos, &this->actor.home.pos, this->actor.speed);
 
@@ -695,7 +697,7 @@ void EnNeoReeba_SpawnIce(EnNeoReeba* this, PlayState* play) {
 void EnNeoReeba_SinkIfStoneMask(EnNeoReeba* this, PlayState* play) {
     if ((this->actionFunc == EnNeoReeba_ChooseAction) || (this->actionFunc == EnNeoReeba_Move) ||
         (this->actionFunc == EnNeoReeba_ReturnHome)) {
-        if (Player_GetMask(play) == PLAYER_MASK_STONE) {
+        if (PlayerBots_GetTargetMask(play, &this->actor) == PLAYER_MASK_STONE) {
             EnNeoReeba_SetupSink(this);
         }
     }

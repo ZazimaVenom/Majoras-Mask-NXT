@@ -1,3 +1,4 @@
+#include "2s2h/Enhancements/BenDrowned/BenDrowned.h"
 /*
  * File: z_kaleido_scope_NES.c
  * Overlay: ovl_kaleido_scope
@@ -29,7 +30,9 @@
 #include "2s2h/Enhancements/Songs/Songs.h"
 #include <libultraship/bridge/consolevariablebridge.h>
 
+#ifdef __sgi
 #pragma increment_block_number "n64-us:128"
+#endif
 
 // Page Textures (Background of Page):
 // Broken up into multiple textures.
@@ -2946,7 +2949,7 @@ void KaleidoScope_UpdateCursorSize(PlayState* play) {
                         pauseCtx->cursorWidth = 15.0f;
                     }
                     // Flip the position of the cursor with an additional offset to align with flipped map points
-                    if (CVarGetInteger("gModes.MirroredWorld.State", 0)) {
+                    if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0))) {
                         pauseCtx->cursorX = (pauseCtx->cursorX * -1.0) + 5.0f;
                     }
                 } else {

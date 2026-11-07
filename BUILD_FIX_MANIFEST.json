@@ -1,0 +1,21 @@
+{
+  "hotfix": "RPG HUD Windows small macro collision",
+  "target_overlay": "MajoraWithBots_RPG_Framework_Update.zip",
+  "target_overlay_sha256": "1aff4a38cee1413cd0b39d6bb42cca50d531335664d989372779a19af33f2bae",
+  "source_files_changed": 1,
+  "changes": [
+    {
+      "path": "mm/2s2h/Enhancements/RpgFramework/RpgHud.cpp",
+      "sha256_before": "4bc6e16befdb2a27c31d45ab96acedd37a1d6f9fae420f3c57b40f96137a20f0",
+      "sha256_after": "d0b760eb1cb8bbc4c62d71bf4cdf4273674c820ad842c89778b36684366daef5",
+      "identifier_before": "small",
+      "identifier_after": "smallFontSize",
+      "tokens_changed": 9
+    }
+  ],
+  "uploaded_log_compiler_error_report_lines": 21,
+  "all_uploaded_log_compiler_errors_in": "RpgHud.cpp",
+  "no_gameplay_save_header_build_script_changes": true,
+  "validation": "8 expected-outcome compile checks passed; real engine/Ship headers with ImGui/CVar declaration doubles; not MSVC or full game",
+  "full_windows_build": "NOT_RUN in this environment; rerun existing Windows build helper"
+}

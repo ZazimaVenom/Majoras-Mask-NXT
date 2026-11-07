@@ -1,3 +1,4 @@
+#include "2s2h/Enhancements/BenDrowned/BenDrowned.h"
 #include "2s2h/ObjectExtension/ObjectExtension.h"
 #include "2s2h/GameInteractor/GameInteractor.h"
 #include "2s2h/Enhancements/FrameInterpolation/FrameInterpolation.h"
@@ -95,7 +96,7 @@ void Interface_DrawEnemyHealthBar(Attention* attention, PlayState* play) {
         Actor_GetProjectedPos(play, &actor->focus.pos, &projTargetCenter, &projTargetCappedInvW);
 
         projTargetCenter.x = (SCREEN_WIDTH / 2) * (projTargetCenter.x * projTargetCappedInvW);
-        projTargetCenter.x = projTargetCenter.x * (CVarGetInteger("gModes.MirroredWorld.State", 0) ? -1 : 1);
+        projTargetCenter.x = projTargetCenter.x * (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0)) ? -1 : 1);
         projTargetCenter.x =
             CLAMP(projTargetCenter.x, (-SCREEN_WIDTH / 2) + halfBarWidth, (SCREEN_WIDTH / 2) - halfBarWidth);
 

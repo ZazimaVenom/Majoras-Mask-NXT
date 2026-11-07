@@ -1,0 +1,869 @@
+In file included from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/z64.h:16,
+                 from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/global.h:4,
+                 from mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope.h:4,
+                 from mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:8:
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:6: warning: "BTN_A" redefined
+    6 | #define BTN_A           A_BUTTON
+      | 
+In file included from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/os.h:7,
+                 from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/PR/os_ai.h:4,
+                 from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/PR/os.h:4,
+                 from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/ultra64.h:10,
+                 from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/z64.h:13:
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:77: note: this is the location of the previous definition
+   77 | #define BTN_A 0x08000
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:7: warning: "BTN_B" redefined
+    7 | #define BTN_B           B_BUTTON
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:76: note: this is the location of the previous definition
+   76 | #define BTN_B 0x04000
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:8: warning: "BTN_Z" redefined
+    8 | #define BTN_Z           Z_TRIG
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:75: note: this is the location of the previous definition
+   75 | #define BTN_Z 0x02000
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:9: warning: "BTN_START" redefined
+    9 | #define BTN_START       START_BUTTON
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:74: note: this is the location of the previous definition
+   74 | #define BTN_START 0x01000
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:10: warning: "BTN_DUP" redefined
+   10 | #define BTN_DUP         U_JPAD
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:73: note: this is the location of the previous definition
+   73 | #define BTN_DUP 0x00800
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:11: warning: "BTN_DDOWN" redefined
+   11 | #define BTN_DDOWN       D_JPAD
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:72: note: this is the location of the previous definition
+   72 | #define BTN_DDOWN 0x00400
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:12: warning: "BTN_DLEFT" redefined
+   12 | #define BTN_DLEFT       L_JPAD
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:71: note: this is the location of the previous definition
+   71 | #define BTN_DLEFT 0x00200
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:13: warning: "BTN_DRIGHT" redefined
+   13 | #define BTN_DRIGHT      R_JPAD
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:70: note: this is the location of the previous definition
+   70 | #define BTN_DRIGHT 0x00100
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:15: warning: "BTN_L" redefined
+   15 | #define BTN_L           L_TRIG
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:69: note: this is the location of the previous definition
+   69 | #define BTN_L 0x00020
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:16: warning: "BTN_R" redefined
+   16 | #define BTN_R           R_TRIG
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:68: note: this is the location of the previous definition
+   68 | #define BTN_R 0x00010
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:17: warning: "BTN_CUP" redefined
+   17 | #define BTN_CUP         U_CBUTTONS
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:67: note: this is the location of the previous definition
+   67 | #define BTN_CUP 0x00008
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:18: warning: "BTN_CDOWN" redefined
+   18 | #define BTN_CDOWN       D_CBUTTONS
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:66: note: this is the location of the previous definition
+   66 | #define BTN_CDOWN 0x00004
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:19: warning: "BTN_CLEFT" redefined
+   19 | #define BTN_CLEFT       L_CBUTTONS
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:65: note: this is the location of the previous definition
+   65 | #define BTN_CLEFT 0x00002
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:20: warning: "BTN_CRIGHT" redefined
+   20 | #define BTN_CRIGHT      R_CBUTTONS
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:64: note: this is the location of the previous definition
+   64 | #define BTN_CRIGHT 0x00001
+      | 
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:42:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   42 |     gPauseMasks00Tex,
+      |     ^~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:43:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   43 |     gPauseMasks01Tex,
+      |     ^~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:44:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   44 |     gPauseMasks02Tex,
+      |     ^~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:45:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   45 |     gPauseMasks03Tex,
+      |     ^~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:46:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   46 |     gPauseMasks04Tex,
+      |     ^~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:48:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   48 |     gPauseMasks10ENGTex,
+      |     ^~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:49:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   49 |     gPauseMasks11Tex,
+      |     ^~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:50:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   50 |     gPauseMasks12Tex,
+      |     ^~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:51:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   51 |     gPauseMasks13Tex,
+      |     ^~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:52:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   52 |     gPauseMasks14Tex,
+      |     ^~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:54:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   54 |     gPauseMasks20Tex,
+      |     ^~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:55:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   55 |     gPauseMasks21Tex,
+      |     ^~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:56:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   56 |     gPauseMasks22Tex,
+      |     ^~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:57:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   57 |     gPauseMasks23Tex,
+      |     ^~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:58:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   58 |     gPauseMasks24Tex,
+      |     ^~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:62:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   62 |     gPauseSelectItem00ENGTex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:63:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   63 |     gPauseSelectItem01Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:64:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   64 |     gPauseSelectItem02Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:65:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   65 |     gPauseSelectItem03Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:66:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   66 |     gPauseSelectItem04Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:68:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   68 |     gPauseSelectItem10ENGTex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:69:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   69 |     gPauseSelectItem11Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:70:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   70 |     gPauseSelectItem12Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:71:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   71 |     gPauseSelectItem13Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:72:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   72 |     gPauseSelectItem14Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:74:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   74 |     gPauseSelectItem20ENGTex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:75:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   75 |     gPauseSelectItem21Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:76:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   76 |     gPauseSelectItem22Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:77:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   77 |     gPauseSelectItem23Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:78:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   78 |     gPauseSelectItem24Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:82:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   82 |     gPauseMap00Tex,
+      |     ^~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:83:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   83 |     gPauseMap01Tex,
+      |     ^~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:84:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   84 |     gPauseMap02Tex,
+      |     ^~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:85:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   85 |     gPauseMap03Tex,
+      |     ^~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:86:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   86 |     gPauseMap04Tex,
+      |     ^~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:88:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   88 |     gPauseMap10ENGTex,
+      |     ^~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:89:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   89 |     gPauseMap11Tex,
+      |     ^~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:90:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   90 |     gPauseMap12Tex,
+      |     ^~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:91:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   91 |     gPauseMap13Tex,
+      |     ^~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:92:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   92 |     gPauseMap14Tex,
+      |     ^~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:94:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   94 |     gPauseMap20Tex,
+      |     ^~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:95:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   95 |     gPauseMap21Tex,
+      |     ^~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:96:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   96 |     gPauseMap22Tex,
+      |     ^~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:97:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   97 |     gPauseMap23Tex,
+      |     ^~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:98:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   98 |     gPauseMap24Tex,
+      |     ^~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:102:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  102 |     gPauseQuestStatus00ENGTex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:103:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  103 |     gPauseQuestStatus01Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:104:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  104 |     gPauseQuestStatus02Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:105:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  105 |     gPauseQuestStatus03Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:106:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  106 |     gPauseQuestStatus04Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:108:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  108 |     gPauseQuestStatus10ENGTex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:109:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  109 |     gPauseQuestStatus11Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:110:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  110 |     gPauseQuestStatus12Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:111:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  111 |     gPauseQuestStatus13Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:112:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  112 |     gPauseQuestStatus14Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:114:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  114 |     gPauseQuestStatus20ENGTex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:115:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  115 |     gPauseQuestStatus21Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:116:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  116 |     gPauseQuestStatus22Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:117:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  117 |     gPauseQuestStatus23Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:118:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  118 |     gPauseQuestStatus24Tex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c: In function ‘Kaleido_LoadMapNameStatic’:
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:280:18: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  280 |         *segment = gMapNameStatics[texIndex];
+      |                  ^
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:282:18: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  282 |         *segment = gEmptyTexture;
+      |                  ^
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c: In function ‘Kaleido_LoadItemNameStatic’:
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:422:18: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  422 |         *segment = gItemNameStatics[texIndex];
+      |                  ^
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:424:18: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  424 |         *segment = gEmptyTexture;
+      |                  ^
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c: In function ‘KaleidoScope_DrawPageSections’:
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:605:22: warning: passing argument 2 of ‘gSPVertex’ makes integer from pointer without a cast [-Wint-conversion]
+  605 |     gSPVertex(gfx++, vertices, 8 * 4, 0);
+      |                      ^~~~~~~~
+      |                      |
+      |                      Vtx *
+In file included from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/z64.h:17:
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:119:36: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘Vtx *’
+  119 | void gSPVertex(Gfx* pkt, uintptr_t v, int n, int v0);
+      |                          ~~~~~~~~~~^
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:620:31: warning: passing argument 2 of ‘gSPVertex’ makes integer from pointer without a cast [-Wint-conversion]
+  620 |     gSPVertex(gfx++, vertices + (8 * 4), 7 * 4, 0);
+      |                      ~~~~~~~~~^~~~~~~~~
+      |                               |
+      |                               Vtx *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:119:36: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘Vtx *’
+  119 | void gSPVertex(Gfx* pkt, uintptr_t v, int n, int v0);
+      |                          ~~~~~~~~~~^
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c: At top level:
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:646:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  646 |     gPauseSave00Tex,    gPauseSave01Tex, gPauseSave02Tex, gPauseSave03Tex, gPauseSave04Tex,
+      |     ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:646:25: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  646 |     gPauseSave00Tex,    gPauseSave01Tex, gPauseSave02Tex, gPauseSave03Tex, gPauseSave04Tex,
+      |                         ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:646:42: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  646 |     gPauseSave00Tex,    gPauseSave01Tex, gPauseSave02Tex, gPauseSave03Tex, gPauseSave04Tex,
+      |                                          ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:646:59: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  646 |     gPauseSave00Tex,    gPauseSave01Tex, gPauseSave02Tex, gPauseSave03Tex, gPauseSave04Tex,
+      |                                                           ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:646:76: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  646 |     gPauseSave00Tex,    gPauseSave01Tex, gPauseSave02Tex, gPauseSave03Tex, gPauseSave04Tex,
+      |                                                                            ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:647:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  647 |     gPauseSave10JPNTex, gPauseSave11Tex, gPauseSave12Tex, gPauseSave13Tex, gPauseSave14Tex,
+      |     ^~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:647:25: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  647 |     gPauseSave10JPNTex, gPauseSave11Tex, gPauseSave12Tex, gPauseSave13Tex, gPauseSave14Tex,
+      |                         ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:647:42: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  647 |     gPauseSave10JPNTex, gPauseSave11Tex, gPauseSave12Tex, gPauseSave13Tex, gPauseSave14Tex,
+      |                                          ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:647:59: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  647 |     gPauseSave10JPNTex, gPauseSave11Tex, gPauseSave12Tex, gPauseSave13Tex, gPauseSave14Tex,
+      |                                                           ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:647:76: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  647 |     gPauseSave10JPNTex, gPauseSave11Tex, gPauseSave12Tex, gPauseSave13Tex, gPauseSave14Tex,
+      |                                                                            ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:648:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  648 |     gPauseSave20Tex,    gPauseSave21Tex, gPauseSave22Tex, gPauseSave23Tex, gPauseSave24Tex,
+      |     ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:648:25: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  648 |     gPauseSave20Tex,    gPauseSave21Tex, gPauseSave22Tex, gPauseSave23Tex, gPauseSave24Tex,
+      |                         ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:648:42: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  648 |     gPauseSave20Tex,    gPauseSave21Tex, gPauseSave22Tex, gPauseSave23Tex, gPauseSave24Tex,
+      |                                          ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:648:59: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  648 |     gPauseSave20Tex,    gPauseSave21Tex, gPauseSave22Tex, gPauseSave23Tex, gPauseSave24Tex,
+      |                                                           ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:648:76: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  648 |     gPauseSave20Tex,    gPauseSave21Tex, gPauseSave22Tex, gPauseSave23Tex, gPauseSave24Tex,
+      |                                                                            ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:652:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  652 |     gPauseSave00Tex,     gPauseSave01Tex, gPauseSave02Tex, gPauseSave03Tex, gPauseSave04Tex,
+      |     ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:652:26: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  652 |     gPauseSave00Tex,     gPauseSave01Tex, gPauseSave02Tex, gPauseSave03Tex, gPauseSave04Tex,
+      |                          ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:652:43: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  652 |     gPauseSave00Tex,     gPauseSave01Tex, gPauseSave02Tex, gPauseSave03Tex, gPauseSave04Tex,
+      |                                           ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:652:60: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  652 |     gPauseSave00Tex,     gPauseSave01Tex, gPauseSave02Tex, gPauseSave03Tex, gPauseSave04Tex,
+      |                                                            ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:652:77: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  652 |     gPauseSave00Tex,     gPauseSave01Tex, gPauseSave02Tex, gPauseSave03Tex, gPauseSave04Tex,
+      |                                                                             ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:653:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  653 |     gPauseGameOver10Tex, gPauseSave11Tex, gPauseSave12Tex, gPauseSave13Tex, gPauseSave14Tex,
+      |     ^~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:653:26: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  653 |     gPauseGameOver10Tex, gPauseSave11Tex, gPauseSave12Tex, gPauseSave13Tex, gPauseSave14Tex,
+      |                          ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:653:43: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  653 |     gPauseGameOver10Tex, gPauseSave11Tex, gPauseSave12Tex, gPauseSave13Tex, gPauseSave14Tex,
+      |                                           ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:653:60: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  653 |     gPauseGameOver10Tex, gPauseSave11Tex, gPauseSave12Tex, gPauseSave13Tex, gPauseSave14Tex,
+      |                                                            ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:653:77: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  653 |     gPauseGameOver10Tex, gPauseSave11Tex, gPauseSave12Tex, gPauseSave13Tex, gPauseSave14Tex,
+      |                                                                             ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:654:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  654 |     gPauseSave20Tex,     gPauseSave21Tex, gPauseSave22Tex, gPauseSave23Tex, gPauseSave24Tex,
+      |     ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:654:26: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  654 |     gPauseSave20Tex,     gPauseSave21Tex, gPauseSave22Tex, gPauseSave23Tex, gPauseSave24Tex,
+      |                          ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:654:43: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  654 |     gPauseSave20Tex,     gPauseSave21Tex, gPauseSave22Tex, gPauseSave23Tex, gPauseSave24Tex,
+      |                                           ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:654:60: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  654 |     gPauseSave20Tex,     gPauseSave21Tex, gPauseSave22Tex, gPauseSave23Tex, gPauseSave24Tex,
+      |                                                            ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:654:77: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  654 |     gPauseSave20Tex,     gPauseSave21Tex, gPauseSave22Tex, gPauseSave23Tex, gPauseSave24Tex,
+      |                                                                             ^~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c: In function ‘KaleidoScope_DrawPages’:
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1013:40: warning: passing argument 2 of ‘gSPVertex’ makes integer from pointer without a cast [-Wint-conversion]
+ 1013 |             gSPVertex(POLY_OPA_DISP++, &pauseCtx->promptPageVtx[60], 32, 0);
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                        |
+      |                                        Vtx *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:119:36: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘Vtx *’
+  119 | void gSPVertex(Gfx* pkt, uintptr_t v, int n, int v0);
+      |                          ~~~~~~~~~~^
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1022:67: warning: passing argument 2 of ‘Gfx_DrawTexQuadIA8’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1022 |                 POLY_OPA_DISP = Gfx_DrawTexQuadIA8(POLY_OPA_DISP, gPauseSavePromptENGTex, 152, 16, 0);
+      |                                                                   ^~~~~~~~~~~~~~~~~~~~~~
+In file included from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/z64play.h:17,
+                 from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:9:
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/z64interface.h:313:46: note: expected ‘TexturePtr’ {aka ‘void *’} but argument is of type ‘const char *’
+  313 | Gfx* Gfx_DrawTexQuadIA8(Gfx* gfx, TexturePtr texture, s16 textureWidth, s16 textureHeight, u16 point);
+      |                                   ~~~~~~~~~~~^~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1028:53: warning: passing argument 2 of ‘gSPDisplayList’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 1028 |                     gSPDisplayList(POLY_OPA_DISP++, gPromptCursorLeftDL);
+      |                                                     ^~~~~~~~~~~~~~~~~~~
+      |                                                     |
+      |                                                     const char *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:114:36: note: expected ‘Gfx *’ but argument is of type ‘const char *’
+  114 | void gSPDisplayList(Gfx* pkt, Gfx* dl);
+      |                               ~~~~~^~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1030:53: warning: passing argument 2 of ‘gSPDisplayList’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 1030 |                     gSPDisplayList(POLY_OPA_DISP++, gPromptCursorRightDL);
+      |                                                     ^~~~~~~~~~~~~~~~~~~~
+      |                                                     |
+      |                                                     const char *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:114:36: note: expected ‘Gfx *’ but argument is of type ‘const char *’
+  114 | void gSPDisplayList(Gfx* pkt, Gfx* dl);
+      |                               ~~~~~^~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1035:67: warning: passing argument 2 of ‘Gfx_DrawTexQuadIA8’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1035 |                 POLY_OPA_DISP = Gfx_DrawTexQuadIA8(POLY_OPA_DISP, gPauseYesENGTex, 48, 16, 12);
+      |                                                                   ^~~~~~~~~~~~~~~
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/z64interface.h:313:46: note: expected ‘TexturePtr’ {aka ‘void *’} but argument is of type ‘const char *’
+  313 | Gfx* Gfx_DrawTexQuadIA8(Gfx* gfx, TexturePtr texture, s16 textureWidth, s16 textureHeight, u16 point);
+      |                                   ~~~~~~~~~~~^~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1037:67: warning: passing argument 2 of ‘Gfx_DrawTexQuadIA8’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1037 |                 POLY_OPA_DISP = Gfx_DrawTexQuadIA8(POLY_OPA_DISP, gPauseNoENGTex, 48, 16, 16);
+      |                                                                   ^~~~~~~~~~~~~~
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/z64interface.h:313:46: note: expected ‘TexturePtr’ {aka ‘void *’} but argument is of type ‘const char *’
+  313 | Gfx* Gfx_DrawTexQuadIA8(Gfx* gfx, TexturePtr texture, s16 textureWidth, s16 textureHeight, u16 point);
+      |                                   ~~~~~~~~~~~^~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1042:67: warning: passing argument 2 of ‘Gfx_DrawTexQuadIA8’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1042 |                 POLY_OPA_DISP = Gfx_DrawTexQuadIA8(POLY_OPA_DISP, gPauseSaveConfirmationENGTex, 152, 16, 0);
+      |                                                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/z64interface.h:313:46: note: expected ‘TexturePtr’ {aka ‘void *’} but argument is of type ‘const char *’
+  313 | Gfx* Gfx_DrawTexQuadIA8(Gfx* gfx, TexturePtr texture, s16 textureWidth, s16 textureHeight, u16 point);
+      |                                   ~~~~~~~~~~~^~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1045:67: warning: passing argument 2 of ‘Gfx_DrawTexQuadIA8’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1045 |                 POLY_OPA_DISP = Gfx_DrawTexQuadIA8(POLY_OPA_DISP, gContinuePlayingENGTex, 152, 16, 0);
+      |                                                                   ^~~~~~~~~~~~~~~~~~~~~~
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/z64interface.h:313:46: note: expected ‘TexturePtr’ {aka ‘void *’} but argument is of type ‘const char *’
+  313 | Gfx* Gfx_DrawTexQuadIA8(Gfx* gfx, TexturePtr texture, s16 textureWidth, s16 textureHeight, u16 point);
+      |                                   ~~~~~~~~~~~^~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1051:53: warning: passing argument 2 of ‘gSPDisplayList’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 1051 |                     gSPDisplayList(POLY_OPA_DISP++, gPromptCursorLeftDL);
+      |                                                     ^~~~~~~~~~~~~~~~~~~
+      |                                                     |
+      |                                                     const char *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:114:36: note: expected ‘Gfx *’ but argument is of type ‘const char *’
+  114 | void gSPDisplayList(Gfx* pkt, Gfx* dl);
+      |                               ~~~~~^~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1053:53: warning: passing argument 2 of ‘gSPDisplayList’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 1053 |                     gSPDisplayList(POLY_OPA_DISP++, gPromptCursorRightDL);
+      |                                                     ^~~~~~~~~~~~~~~~~~~~
+      |                                                     |
+      |                                                     const char *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:114:36: note: expected ‘Gfx *’ but argument is of type ‘const char *’
+  114 | void gSPDisplayList(Gfx* pkt, Gfx* dl);
+      |                               ~~~~~^~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1058:67: warning: passing argument 2 of ‘Gfx_DrawTexQuadIA8’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1058 |                 POLY_OPA_DISP = Gfx_DrawTexQuadIA8(POLY_OPA_DISP, gPauseYesENGTex, 48, 16, 12);
+      |                                                                   ^~~~~~~~~~~~~~~
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/z64interface.h:313:46: note: expected ‘TexturePtr’ {aka ‘void *’} but argument is of type ‘const char *’
+  313 | Gfx* Gfx_DrawTexQuadIA8(Gfx* gfx, TexturePtr texture, s16 textureWidth, s16 textureHeight, u16 point);
+      |                                   ~~~~~~~~~~~^~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1060:67: warning: passing argument 2 of ‘Gfx_DrawTexQuadIA8’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1060 |                 POLY_OPA_DISP = Gfx_DrawTexQuadIA8(POLY_OPA_DISP, gPauseNoENGTex, 48, 16, 16);
+      |                                                                   ^~~~~~~~~~~~~~
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/z64interface.h:313:46: note: expected ‘TexturePtr’ {aka ‘void *’} but argument is of type ‘const char *’
+  313 | Gfx* Gfx_DrawTexQuadIA8(Gfx* gfx, TexturePtr texture, s16 textureWidth, s16 textureHeight, u16 point);
+      |                                   ~~~~~~~~~~~^~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c: At top level:
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1080:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1080 |     gPauseToMasksENGTex,
+      |     ^~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1081:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1081 |     gPauseToSelectItemENGTex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1082:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1082 |     gPauseToMapENGTex,
+      |     ^~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1083:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1083 |     gPauseToQuestStatusENGTex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1086:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1086 |     gPauseToMapENGTex,
+      |     ^~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1087:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1087 |     gPauseToQuestStatusENGTex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1088:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1088 |     gPauseToMasksENGTex,
+      |     ^~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1089:5: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1089 |     gPauseToSelectItemENGTex,
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c: In function ‘KaleidoScope_DrawInfoPanel’:
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1250:32: warning: passing argument 2 of ‘gSPVertex’ makes integer from pointer without a cast [-Wint-conversion]
+ 1250 |     gSPVertex(POLY_OPA_DISP++, &pauseCtx->infoPanelVtx[0], 16, 0);
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                Vtx *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:119:36: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘Vtx *’
+  119 | void gSPVertex(Gfx* pkt, uintptr_t v, int n, int v0);
+      |                          ~~~~~~~~~~^
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1252:37: warning: passing argument 2 of ‘gSPDisplayList’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 1252 |     gSPDisplayList(POLY_OPA_DISP++, gItemNamePanelDL);
+      |                                     ^~~~~~~~~~~~~~~~
+      |                                     |
+      |                                     const char *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:114:36: note: expected ‘Gfx *’ but argument is of type ‘const char *’
+  114 | void gSPDisplayList(Gfx* pkt, Gfx* dl);
+      |                               ~~~~~^~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1259:37: warning: passing argument 2 of ‘gSPDisplayList’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 1259 |     gSPDisplayList(POLY_OPA_DISP++, gZButtonIconDL);
+      |                                     ^~~~~~~~~~~~~~
+      |                                     |
+      |                                     const char *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:114:36: note: expected ‘Gfx *’ but argument is of type ‘const char *’
+  114 | void gSPDisplayList(Gfx* pkt, Gfx* dl);
+      |                               ~~~~~^~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1266:37: warning: passing argument 2 of ‘gSPDisplayList’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 1266 |     gSPDisplayList(POLY_OPA_DISP++, gRButtonIconDL);
+      |                                     ^~~~~~~~~~~~~~
+      |                                     |
+      |                                     const char *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:114:36: note: expected ‘Gfx *’ but argument is of type ‘const char *’
+  114 | void gSPDisplayList(Gfx* pkt, Gfx* dl);
+      |                               ~~~~~^~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1308:40: warning: passing argument 2 of ‘gSPVertex’ makes integer from pointer without a cast [-Wint-conversion]
+ 1308 |             gSPVertex(POLY_OPA_DISP++, &pauseCtx->infoPanelVtx[16], 4, 0);
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                        |
+      |                                        Vtx *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:119:36: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘Vtx *’
+  119 | void gSPVertex(Gfx* pkt, uintptr_t v, int n, int v0);
+      |                          ~~~~~~~~~~^
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1329:36: warning: passing argument 2 of ‘gSPVertex’ makes integer from pointer without a cast [-Wint-conversion]
+ 1329 |         gSPVertex(POLY_OPA_DISP++, &pauseCtx->infoPanelVtx[16], 8, 0);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                    |
+      |                                    Vtx *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:119:36: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘Vtx *’
+  119 | void gSPVertex(Gfx* pkt, uintptr_t v, int n, int v0);
+      |                          ~~~~~~~~~~^
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1348:45: warning: passing argument 2 of ‘gSPDisplayList’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 1348 |             gSPDisplayList(POLY_OPA_DISP++, gAButtonIconDL);
+      |                                             ^~~~~~~~~~~~~~
+      |                                             |
+      |                                             const char *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:114:36: note: expected ‘Gfx *’ but argument is of type ‘const char *’
+  114 | void gSPDisplayList(Gfx* pkt, Gfx* dl);
+      |                               ~~~~~^~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1354:62: warning: passing argument 2 of ‘Gfx_DrawTexQuad4b’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1354 |             POLY_OPA_DISP = Gfx_DrawTexQuad4b(POLY_OPA_DISP, gPauseToDecideENGTex, G_IM_FMT_IA, 64, 16, 4);
+      |                                                              ^~~~~~~~~~~~~~~~~~~~
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/z64interface.h:314:45: note: expected ‘TexturePtr’ {aka ‘void *’} but argument is of type ‘const char *’
+  314 | Gfx* Gfx_DrawTexQuad4b(Gfx* gfx, TexturePtr texture, s32 fmt, s16 textureWidth, s16 textureHeight, u16 point);
+      |                                  ~~~~~~~~~~~^~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1394:45: warning: passing argument 2 of ‘gSPDisplayList’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 1394 |             gSPDisplayList(POLY_OPA_DISP++, gCButtonIconsDL);
+      |                                             ^~~~~~~~~~~~~~~
+      |                                             |
+      |                                             const char *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:114:36: note: expected ‘Gfx *’ but argument is of type ‘const char *’
+  114 | void gSPDisplayList(Gfx* pkt, Gfx* dl);
+      |                               ~~~~~^~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1399:62: warning: passing argument 2 of ‘Gfx_DrawTexQuad4b’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1399 |             POLY_OPA_DISP = Gfx_DrawTexQuad4b(POLY_OPA_DISP, gPauseToEquipENGTex, G_IM_FMT_IA, 64, 16, 4);
+      |                                                              ^~~~~~~~~~~~~~~~~~~
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/z64interface.h:314:45: note: expected ‘TexturePtr’ {aka ‘void *’} but argument is of type ‘const char *’
+  314 | Gfx* Gfx_DrawTexQuad4b(Gfx* gfx, TexturePtr texture, s32 fmt, s16 textureWidth, s16 textureHeight, u16 point);
+      |                                  ~~~~~~~~~~~^~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1421:49: warning: passing argument 2 of ‘gSPDisplayList’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 1421 |                 gSPDisplayList(POLY_OPA_DISP++, gAButtonIconDL);
+      |                                                 ^~~~~~~~~~~~~~
+      |                                                 |
+      |                                                 const char *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:114:36: note: expected ‘Gfx *’ but argument is of type ‘const char *’
+  114 | void gSPDisplayList(Gfx* pkt, Gfx* dl);
+      |                               ~~~~~^~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1426:66: warning: passing argument 2 of ‘Gfx_DrawTexQuad4b’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1426 |                 POLY_OPA_DISP = Gfx_DrawTexQuad4b(POLY_OPA_DISP, gPauseToViewNotebookENGTex, G_IM_FMT_IA, 96, 16, 4);
+      |                                                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/z64interface.h:314:45: note: expected ‘TexturePtr’ {aka ‘void *’} but argument is of type ‘const char *’
+  314 | Gfx* Gfx_DrawTexQuad4b(Gfx* gfx, TexturePtr texture, s32 fmt, s16 textureWidth, s16 textureHeight, u16 point);
+      |                                  ~~~~~~~~~~~^~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1446:45: warning: passing argument 2 of ‘gSPDisplayList’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 1446 |             gSPDisplayList(POLY_OPA_DISP++, gAButtonIconDL);
+      |                                             ^~~~~~~~~~~~~~
+      |                                             |
+      |                                             const char *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:114:36: note: expected ‘Gfx *’ but argument is of type ‘const char *’
+  114 | void gSPDisplayList(Gfx* pkt, Gfx* dl);
+      |                               ~~~~~^~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1451:62: warning: passing argument 2 of ‘Gfx_DrawTexQuad4b’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+ 1451 |             POLY_OPA_DISP = Gfx_DrawTexQuad4b(POLY_OPA_DISP, gPauseToPlayMelodyENGTex, G_IM_FMT_IA, 96, 16, 4);
+      |                                                              ^~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/z64interface.h:314:45: note: expected ‘TexturePtr’ {aka ‘void *’} but argument is of type ‘const char *’
+  314 | Gfx* Gfx_DrawTexQuad4b(Gfx* gfx, TexturePtr texture, s32 fmt, s16 textureWidth, s16 textureHeight, u16 point);
+      |                                  ~~~~~~~~~~~^~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c: In function ‘KaleidoScope_UpdateNamePanel’:
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1479:43: warning: passing argument 1 of ‘Kaleido_LoadMapNameStatic’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 1479 |                 Kaleido_LoadMapNameStatic(&pauseCtx->nameSegment, namedItem);
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~
+      |                                           |
+      |                                           u8 ** {aka unsigned char **}
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:268:39: note: expected ‘void **’ but argument is of type ‘u8 **’ {aka ‘unsigned char **’}
+  268 | void Kaleido_LoadMapNameStatic(void** segment, u32 texIndex) {
+      |                                ~~~~~~~^~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1481:44: warning: passing argument 1 of ‘Kaleido_LoadItemNameStatic’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 1481 |                 Kaleido_LoadItemNameStatic(&pauseCtx->nameSegment, namedItem);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            u8 ** {aka unsigned char **}
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:296:40: note: expected ‘void **’ but argument is of type ‘u8 **’ {aka ‘unsigned char **’}
+  296 | void Kaleido_LoadItemNameStatic(void** segment, u32 texIndex) {
+      |                                 ~~~~~~~^~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c: In function ‘KaleidoScope_DrawOwlWarpInfoPanel’:
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1706:32: warning: passing argument 2 of ‘gSPVertex’ makes integer from pointer without a cast [-Wint-conversion]
+ 1706 |     gSPVertex(POLY_OPA_DISP++, &pauseCtx->infoPanelVtx[0], 16, 0);
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                Vtx *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:119:36: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘Vtx *’
+  119 | void gSPVertex(Gfx* pkt, uintptr_t v, int n, int v0);
+      |                          ~~~~~~~~~~^
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1708:37: warning: passing argument 2 of ‘gSPDisplayList’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 1708 |     gSPDisplayList(POLY_OPA_DISP++, gItemNamePanelDL);
+      |                                     ^~~~~~~~~~~~~~~~
+      |                                     |
+      |                                     const char *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:114:36: note: expected ‘Gfx *’ but argument is of type ‘const char *’
+  114 | void gSPDisplayList(Gfx* pkt, Gfx* dl);
+      |                               ~~~~~^~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1737:36: warning: passing argument 2 of ‘gSPVertex’ makes integer from pointer without a cast [-Wint-conversion]
+ 1737 |         gSPVertex(POLY_OPA_DISP++, &pauseCtx->infoPanelVtx[16], 4, 0);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                    |
+      |                                    Vtx *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:119:36: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘Vtx *’
+  119 | void gSPVertex(Gfx* pkt, uintptr_t v, int n, int v0);
+      |                          ~~~~~~~~~~^
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c: In function ‘KaleidoScope_UpdateOwlWarpNamePanel’:
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1765:43: warning: passing argument 1 of ‘Kaleido_LoadMapNameStatic’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 1765 |                 Kaleido_LoadMapNameStatic(&pauseCtx->nameSegment, texIndex);
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~
+      |                                           |
+      |                                           u8 ** {aka unsigned char **}
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:268:39: note: expected ‘void **’ but argument is of type ‘u8 **’ {aka ‘unsigned char **’}
+  268 | void Kaleido_LoadMapNameStatic(void** segment, u32 texIndex) {
+      |                                ~~~~~~~^~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:1767:44: warning: passing argument 1 of ‘Kaleido_LoadItemNameStatic’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 1767 |                 Kaleido_LoadItemNameStatic(&pauseCtx->nameSegment, texIndex);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            u8 ** {aka unsigned char **}
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:296:40: note: expected ‘void **’ but argument is of type ‘u8 **’ {aka ‘unsigned char **’}
+  296 | void Kaleido_LoadItemNameStatic(void** segment, u32 texIndex) {
+      |                                 ~~~~~~~^~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c: In function ‘KaleidoScope_DrawCursor’:
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3093:40: warning: passing argument 2 of ‘gSPVertex’ makes integer from pointer without a cast [-Wint-conversion]
+ 3093 |             gSPVertex(POLY_OPA_DISP++, &pauseCtx->cursorVtx[0], 4, 0);
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~
+      |                                        |
+      |                                        Vtx *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:119:36: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘Vtx *’
+  119 | void gSPVertex(Gfx* pkt, uintptr_t v, int n, int v0);
+      |                          ~~~~~~~~~~^
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c: In function ‘KaleidoScope_Draw’:
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3159:51: warning: passing argument 3 of ‘gSPSegment’ makes integer from pointer without a cast [-Wint-conversion]
+ 3159 |     gSPSegment(POLY_OPA_DISP++, 0x02, interfaceCtx->parameterSegment);
+      |                                       ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+      |                                                   |
+      |                                                   u8 * {aka unsigned char *}
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:110:52: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘u8 *’ {aka ‘unsigned char *’}
+  110 | void gSPSegment(void* value, int segNum, uintptr_t target);
+      |                                          ~~~~~~~~~~^~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3160:47: warning: passing argument 3 of ‘gSPSegment’ makes integer from pointer without a cast [-Wint-conversion]
+ 3160 |     gSPSegment(POLY_OPA_DISP++, 0x08, pauseCtx->iconItemSegment);
+      |                                       ~~~~~~~~^~~~~~~~~~~~~~~~~
+      |                                               |
+      |                                               u8 * {aka unsigned char *}
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:110:52: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘u8 *’ {aka ‘unsigned char *’}
+  110 | void gSPSegment(void* value, int segNum, uintptr_t target);
+      |                                          ~~~~~~~~~~^~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3161:47: warning: passing argument 3 of ‘gSPSegment’ makes integer from pointer without a cast [-Wint-conversion]
+ 3161 |     gSPSegment(POLY_OPA_DISP++, 0x09, pauseCtx->iconItem24Segment);
+      |                                       ~~~~~~~~^~~~~~~~~~~~~~~~~~~
+      |                                               |
+      |                                               u8 * {aka unsigned char *}
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:110:52: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘u8 *’ {aka ‘unsigned char *’}
+  110 | void gSPSegment(void* value, int segNum, uintptr_t target);
+      |                                          ~~~~~~~~~~^~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3162:47: warning: passing argument 3 of ‘gSPSegment’ makes integer from pointer without a cast [-Wint-conversion]
+ 3162 |     gSPSegment(POLY_OPA_DISP++, 0x0A, pauseCtx->nameSegment);
+      |                                       ~~~~~~~~^~~~~~~~~~~~~
+      |                                               |
+      |                                               u8 * {aka unsigned char *}
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:110:52: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘u8 *’ {aka ‘unsigned char *’}
+  110 | void gSPSegment(void* value, int segNum, uintptr_t target);
+      |                                          ~~~~~~~~~~^~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3163:47: warning: passing argument 3 of ‘gSPSegment’ makes integer from pointer without a cast [-Wint-conversion]
+ 3163 |     gSPSegment(POLY_OPA_DISP++, 0x0C, pauseCtx->iconItemAltSegment);
+      |                                       ~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+      |                                               |
+      |                                               u8 * {aka unsigned char *}
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:110:52: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘u8 *’ {aka ‘unsigned char *’}
+  110 | void gSPSegment(void* value, int segNum, uintptr_t target);
+      |                                          ~~~~~~~~~~^~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3164:47: warning: passing argument 3 of ‘gSPSegment’ makes integer from pointer without a cast [-Wint-conversion]
+ 3164 |     gSPSegment(POLY_OPA_DISP++, 0x0D, pauseCtx->iconItemLangSegment);
+      |                                       ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+      |                                               |
+      |                                               u8 * {aka unsigned char *}
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:110:52: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘u8 *’ {aka ‘unsigned char *’}
+  110 | void gSPSegment(void* value, int segNum, uintptr_t target);
+      |                                          ~~~~~~~~~~^~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3165:47: warning: passing argument 3 of ‘gSPSegment’ makes integer from pointer without a cast [-Wint-conversion]
+ 3165 |     gSPSegment(POLY_OPA_DISP++, 0x0B, pauseCtx->iconItemVtxSegment);
+      |                                       ~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+      |                                               |
+      |                                               u8 * {aka unsigned char *}
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/gfx.h:110:52: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘u8 *’ {aka ‘unsigned char *’}
+  110 | void gSPSegment(void* value, int segNum, uintptr_t target);
+      |                                          ~~~~~~~~~~^~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c: In function ‘KaleidoScope_Update’:
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3369:33: warning: passing argument 1 of ‘CmpDma_LoadAllFiles’ makes integer from pointer without a cast [-Wint-conversion]
+ 3369 |             CmpDma_LoadAllFiles(SEGMENT_ROM_START(icon_item_static_yar), pauseCtx->iconItemSegment, size0);
+      |                                 ^~~~~~~~~~~~~~~~~
+      |                                 |
+      |                                 void *
+In file included from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/global.h:5:
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/functions.h:223:36: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘void *’
+  223 | void CmpDma_LoadAllFiles(uintptr_t segmentVrom, void* dst, size_t size);
+      |                          ~~~~~~~~~~^~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3371:29: warning: assignment to ‘uintptr_t’ {aka ‘long unsigned int’} from ‘u8 *’ {aka ‘unsigned char *’} makes integer from pointer without a cast [-Wint-conversion]
+ 3371 |             gSegments[0x08] = OS_K0_TO_PHYSICAL(pauseCtx->iconItemSegment);
+      |                             ^
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3383:33: warning: passing argument 1 of ‘CmpDma_LoadAllFiles’ makes integer from pointer without a cast [-Wint-conversion]
+ 3383 |             CmpDma_LoadAllFiles(SEGMENT_ROM_START(icon_item_24_static_yar), pauseCtx->iconItem24Segment, size1);
+      |                                 ^~~~~~~~~~~~~~~~~
+      |                                 |
+      |                                 void *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/functions.h:223:36: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘void *’
+  223 | void CmpDma_LoadAllFiles(uintptr_t segmentVrom, void* dst, size_t size);
+      |                          ~~~~~~~~~~^~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3389:67: warning: passing argument 2 of ‘DmaMgr_SendRequest0’ makes integer from pointer without a cast [-Wint-conversion]
+ 3389 |                 DmaMgr_SendRequest0(pauseCtx->iconItemAltSegment, SEGMENT_ROM_START(icon_item_dungeon_static), size);
+      |                                                                   ^~~~~~~~~~~~~~~~~
+      |                                                                   |
+      |                                                                   void *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/functions.h:23:52: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘void *’
+   23 | s32 DmaMgr_SendRequest0(void* vramStart, uintptr_t vromStart, size_t size);
+      |                                          ~~~~~~~~~~^~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3398:67: warning: passing argument 2 of ‘DmaMgr_SendRequest0’ makes integer from pointer without a cast [-Wint-conversion]
+ 3398 |                 DmaMgr_SendRequest0(pauseCtx->iconItemAltSegment, SEGMENT_ROM_START(icon_item_field_static), size);
+      |                                                                   ^~~~~~~~~~~~~~~~~
+      |                                                                   |
+      |                                                                   void *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/functions.h:23:52: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘void *’
+   23 | s32 DmaMgr_SendRequest0(void* vramStart, uintptr_t vromStart, size_t size);
+      |                                          ~~~~~~~~~~^~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3404:64: warning: passing argument 2 of ‘DmaMgr_SendRequest0’ makes integer from pointer without a cast [-Wint-conversion]
+ 3404 |             DmaMgr_SendRequest0(pauseCtx->iconItemLangSegment, SEGMENT_ROM_START(icon_item_jpn_static), size2);
+      |                                                                ^~~~~~~~~~~~~~~~~
+      |                                                                |
+      |                                                                void *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/functions.h:23:52: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘void *’
+   23 | s32 DmaMgr_SendRequest0(void* vramStart, uintptr_t vromStart, size_t size);
+      |                                          ~~~~~~~~~~^~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3411:48: warning: passing argument 1 of ‘Kaleido_LoadMapNameStaticLarge’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 3411 |                 Kaleido_LoadMapNameStaticLarge(&pauseCtx->nameSegment /* + 0x400 */,
+      |                                                ^~~~~~~~~~~~~~~~~~~~~~
+      |                                                |
+      |                                                u8 ** {aka unsigned char **}
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:289:44: note: expected ‘void **’ but argument is of type ‘u8 **’ {aka ‘unsigned char **’}
+  289 | void Kaleido_LoadMapNameStaticLarge(void** segment, u32 texIndex) {
+      |                                     ~~~~~~~^~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3416:63: warning: passing argument 2 of ‘DmaMgr_SendRequest0’ makes integer from pointer without a cast [-Wint-conversion]
+ 3416 |             DmaMgr_SendRequest0(pauseCtx->iconItemVtxSegment, SEGMENT_ROM_START(icon_item_vtx_static),
+      |                                                               ^~~~~~~~~~~~~~~~~
+      |                                                               |
+      |                                                               void *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/functions.h:23:52: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘void *’
+   23 | s32 DmaMgr_SendRequest0(void* vramStart, uintptr_t vromStart, size_t size);
+      |                                          ~~~~~~~~~~^~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3744:33: warning: passing argument 1 of ‘CmpDma_LoadAllFiles’ makes integer from pointer without a cast [-Wint-conversion]
+ 3744 |             CmpDma_LoadAllFiles(SEGMENT_ROM_START(icon_item_static_yar), pauseCtx->iconItemSegment, size0);
+      |                                 ^~~~~~~~~~~~~~~~~
+      |                                 |
+      |                                 void *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/functions.h:223:36: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘void *’
+  223 | void CmpDma_LoadAllFiles(uintptr_t segmentVrom, void* dst, size_t size);
+      |                          ~~~~~~~~~~^~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3748:33: warning: passing argument 1 of ‘CmpDma_LoadAllFiles’ makes integer from pointer without a cast [-Wint-conversion]
+ 3748 |             CmpDma_LoadAllFiles(SEGMENT_ROM_START(icon_item_24_static_yar), pauseCtx->iconItem24Segment, size1);
+      |                                 ^~~~~~~~~~~~~~~~~
+      |                                 |
+      |                                 void *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/functions.h:223:36: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘void *’
+  223 | void CmpDma_LoadAllFiles(uintptr_t segmentVrom, void* dst, size_t size);
+      |                          ~~~~~~~~~~^~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3752:63: warning: passing argument 2 of ‘DmaMgr_SendRequest0’ makes integer from pointer without a cast [-Wint-conversion]
+ 3752 |             DmaMgr_SendRequest0(pauseCtx->iconItemAltSegment, SEGMENT_ROM_START(icon_item_gameover_static), size2);
+      |                                                               ^~~~~~~~~~~~~~~~~
+      |                                                               |
+      |                                                               void *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/functions.h:23:52: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘void *’
+   23 | s32 DmaMgr_SendRequest0(void* vramStart, uintptr_t vromStart, size_t size);
+      |                                          ~~~~~~~~~~^~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3755:64: warning: passing argument 2 of ‘DmaMgr_SendRequest0’ makes integer from pointer without a cast [-Wint-conversion]
+ 3755 |             DmaMgr_SendRequest0(pauseCtx->iconItemLangSegment, SEGMENT_ROM_START(icon_item_jpn_static),
+      |                                                                ^~~~~~~~~~~~~~~~~
+      |                                                                |
+      |                                                                void *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/functions.h:23:52: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘void *’
+   23 | s32 DmaMgr_SendRequest0(void* vramStart, uintptr_t vromStart, size_t size);
+      |                                          ~~~~~~~~~~^~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:3999:33: warning: passing argument 1 of ‘CmpDma_LoadAllFiles’ makes integer from pointer without a cast [-Wint-conversion]
+ 3999 |             CmpDma_LoadAllFiles(SEGMENT_ROM_START(icon_item_static_yar), pauseCtx->iconItemSegment, size0);
+      |                                 ^~~~~~~~~~~~~~~~~
+      |                                 |
+      |                                 void *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/functions.h:223:36: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘void *’
+  223 | void CmpDma_LoadAllFiles(uintptr_t segmentVrom, void* dst, size_t size);
+      |                          ~~~~~~~~~~^~~~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:4004:63: warning: passing argument 2 of ‘DmaMgr_SendRequest0’ makes integer from pointer without a cast [-Wint-conversion]
+ 4004 |             DmaMgr_SendRequest0(pauseCtx->iconItemAltSegment, SEGMENT_ROM_START(icon_item_field_static), size1);
+      |                                                               ^~~~~~~~~~~~~~~~~
+      |                                                               |
+      |                                                               void *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/functions.h:23:52: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘void *’
+   23 | s32 DmaMgr_SendRequest0(void* vramStart, uintptr_t vromStart, size_t size);
+      |                                          ~~~~~~~~~~^~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:4008:64: warning: passing argument 2 of ‘DmaMgr_SendRequest0’ makes integer from pointer without a cast [-Wint-conversion]
+ 4008 |             DmaMgr_SendRequest0(pauseCtx->iconItemLangSegment, SEGMENT_ROM_START(icon_item_jpn_static), size2);
+      |                                                                ^~~~~~~~~~~~~~~~~
+      |                                                                |
+      |                                                                void *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/functions.h:23:52: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘void *’
+   23 | s32 DmaMgr_SendRequest0(void* vramStart, uintptr_t vromStart, size_t size);
+      |                                          ~~~~~~~~~~^~~~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:4013:39: warning: passing argument 1 of ‘Kaleido_LoadMapNameStatic’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 4013 |             Kaleido_LoadMapNameStatic(&pauseCtx->nameSegment, worldMapCursorPoint);
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~
+      |                                       |
+      |                                       u8 ** {aka unsigned char **}
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:268:39: note: expected ‘void **’ but argument is of type ‘u8 **’ {aka ‘unsigned char **’}
+  268 | void Kaleido_LoadMapNameStatic(void** segment, u32 texIndex) {
+      |                                ~~~~~~~^~~~~~~
+mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c:4016:63: warning: passing argument 2 of ‘DmaMgr_SendRequest0’ makes integer from pointer without a cast [-Wint-conversion]
+ 4016 |             DmaMgr_SendRequest0(pauseCtx->iconItemVtxSegment, SEGMENT_ROM_START(icon_item_vtx_static),
+      |                                                               ^~~~~~~~~~~~~~~~~
+      |                                                               |
+      |                                                               void *
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/functions.h:23:52: note: expected ‘uintptr_t’ {aka ‘long unsigned int’} but argument is of type ‘void *’
+   23 | s32 DmaMgr_SendRequest0(void* vramStart, uintptr_t vromStart, size_t size);
+      |                                          ~~~~~~~~~~^~~~~~~~~

@@ -1,3 +1,5 @@
+#include "2s2h/Enhancements/RpgFramework/RpgFramework.h"
+#include "2s2h/Enhancements/PlayerBots/PlayerBots.h"
 /*
  * File: z_en_dekubaba.c
  * Overlay: ovl_En_Dekubaba
@@ -334,7 +336,7 @@ void EnDekubaba_SetupWait(EnDekubaba* this) {
 
 void EnDekubaba_Wait(EnDekubaba* this, PlayState* play) {
     if (this->timer != 0) {
-        this->timer--;
+        this->timer = MAX(0, this->timer - Rpg_TimerStep(&this->actor));
     }
 
     this->actor.world.pos.x = this->actor.home.pos.x;
@@ -367,7 +369,7 @@ void EnDekubaba_SetupGrow(EnDekubaba* this) {
 }
 
 void EnDekubaba_Grow(EnDekubaba* this, PlayState* play) {
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
     f32 headDistHorizontal;
     f32 headDistVertical;
     f32 headShiftX;
@@ -514,7 +516,7 @@ void EnDekubaba_SetupDecideLunge(EnDekubaba* this) {
 }
 
 void EnDekubaba_DecideLunge(EnDekubaba* this, PlayState* play) {
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
 
     SkelAnime_Update(&this->skelAnime);
     if (Animation_OnFrame(&this->skelAnime, 0.0f) || Animation_OnFrame(&this->skelAnime, 12.0f)) {
@@ -526,7 +528,7 @@ void EnDekubaba_DecideLunge(EnDekubaba* this, PlayState* play) {
     }
 
     if (this->timer != 0) {
-        this->timer--;
+        this->timer = MAX(0, this->timer - Rpg_TimerStep(&this->actor));
     }
 
     Math_ApproachS(&this->actor.shape.rot.y, Math_Vec3f_Yaw(&this->actor.home.pos, &player->actor.world.pos), 2,
@@ -566,10 +568,10 @@ void EnDekubaba_SetupPrepareLunge(EnDekubaba* this) {
 }
 
 void EnDekubaba_PrepareLunge(EnDekubaba* this, PlayState* play) {
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
 
     if (this->timer != 0) {
-        this->timer--;
+        this->timer = MAX(0, this->timer - Rpg_TimerStep(&this->actor));
     }
 
     Math_SmoothStepToS(&this->actor.shape.rot.x, 0x1800, 2, 0xE38, 0x71C);
@@ -1085,7 +1087,14 @@ void EnDekubaba_UpdateDamage(EnDekubaba* this, PlayState* play) {
                 ((this->drawDmgEffType != ACTOR_DRAW_DMGEFF_FROZEN_NO_SFX) ||
                  !(jntSphElem->base.acHitElem->atDmgInfo.dmgFlags & 0xDB0B3))) {
                 EnDekubaba_SpawnIceEffects(this, play);
-                newHealth = this->actor.colChkInfo.health - this->actor.colChkInfo.damage;
+                // Keep native elemental/stun/cut rules, but use the wide RPG HP
+                // ledger before those rules choose a death or nonlethal reaction.
+                newHealth = Rpg_ApplyActorDamage(&this->actor, this->actor.colChkInfo.damage,
+                    this->actionFunc == EnDekubaba_PullBack &&
+                    this->actor.colChkInfo.damageEffect != DEKUBABA_DMGEFF_ICE &&
+                    this->actor.colChkInfo.damageEffect != DEKUBABA_DMGEFF_ELECTRIC &&
+                    this->actor.colChkInfo.damageEffect != DEKUBABA_DMGEFF_NUT);
+                if (newHealth < 0) newHealth = this->actor.colChkInfo.health - this->actor.colChkInfo.damage;
 
                 if (this->actionFunc != EnDekubaba_StunnedVertical) {
                     if (this->actor.colChkInfo.damageEffect == DEKUBABA_DMGEFF_ICE) {
@@ -1141,7 +1150,10 @@ void EnDekubaba_UpdateDamage(EnDekubaba* this, PlayState* play) {
                (this->collider.base.colMaterial != COL_MATERIAL_HARD) &&
                (this->actionFunc != EnDekubaba_StunnedVertical) && (this->actionFunc != EnDekubaba_Hit) &&
                (this->actor.colChkInfo.health != 0)) {
-        this->actor.colChkInfo.health--;
+        Rpg_RecordPlayerAttack(&this->actor, 1, DMG_GORON_POUND);
+        newHealth = Rpg_ApplyActorDamage(&this->actor, 1, false);
+        if (newHealth >= 0) this->actor.colChkInfo.health = newHealth;
+        else this->actor.colChkInfo.health--;
         this->actor.dropFlag = 0;
         EnDekubaba_SetupHit(this, DEKUBABA_HIT_STUN_OTHER);
     } else {

@@ -1,0 +1,107 @@
+In file included from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/z64.h:16,
+                 from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/2s2h/GameInteractor/GameInteractor.h:11,
+                 from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/2s2h/Rando/StaticData/StaticData.h:7,
+                 from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/2s2h/Rando/Rando.h:4,
+                 from mm/2s2h/Rando/Menu.cpp:1:
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:6: warning: "BTN_A" redefined
+    6 | #define BTN_A           A_BUTTON
+      | 
+In file included from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/os.h:7,
+                 from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/PR/os_ai.h:4,
+                 from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/PR/os.h:4,
+                 from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/ultra64.h:10,
+                 from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/z64.h:13:
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:77: note: this is the location of the previous definition
+   77 | #define BTN_A 0x08000
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:7: warning: "BTN_B" redefined
+    7 | #define BTN_B           B_BUTTON
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:76: note: this is the location of the previous definition
+   76 | #define BTN_B 0x04000
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:8: warning: "BTN_Z" redefined
+    8 | #define BTN_Z           Z_TRIG
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:75: note: this is the location of the previous definition
+   75 | #define BTN_Z 0x02000
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:9: warning: "BTN_START" redefined
+    9 | #define BTN_START       START_BUTTON
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:74: note: this is the location of the previous definition
+   74 | #define BTN_START 0x01000
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:10: warning: "BTN_DUP" redefined
+   10 | #define BTN_DUP         U_JPAD
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:73: note: this is the location of the previous definition
+   73 | #define BTN_DUP 0x00800
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:11: warning: "BTN_DDOWN" redefined
+   11 | #define BTN_DDOWN       D_JPAD
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:72: note: this is the location of the previous definition
+   72 | #define BTN_DDOWN 0x00400
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:12: warning: "BTN_DLEFT" redefined
+   12 | #define BTN_DLEFT       L_JPAD
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:71: note: this is the location of the previous definition
+   71 | #define BTN_DLEFT 0x00200
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:13: warning: "BTN_DRIGHT" redefined
+   13 | #define BTN_DRIGHT      R_JPAD
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:70: note: this is the location of the previous definition
+   70 | #define BTN_DRIGHT 0x00100
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:15: warning: "BTN_L" redefined
+   15 | #define BTN_L           L_TRIG
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:69: note: this is the location of the previous definition
+   69 | #define BTN_L 0x00020
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:16: warning: "BTN_R" redefined
+   16 | #define BTN_R           R_TRIG
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:68: note: this is the location of the previous definition
+   68 | #define BTN_R 0x00010
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:17: warning: "BTN_CUP" redefined
+   17 | #define BTN_CUP         U_CBUTTONS
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:67: note: this is the location of the previous definition
+   67 | #define BTN_CUP 0x00008
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:18: warning: "BTN_CDOWN" redefined
+   18 | #define BTN_CDOWN       D_CBUTTONS
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:66: note: this is the location of the previous definition
+   66 | #define BTN_CDOWN 0x00004
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:19: warning: "BTN_CLEFT" redefined
+   19 | #define BTN_CLEFT       L_CBUTTONS
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:65: note: this is the location of the previous definition
+   65 | #define BTN_CLEFT 0x00002
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/controller.h:20: warning: "BTN_CRIGHT" redefined
+   20 | #define BTN_CRIGHT      R_CBUTTONS
+      | 
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship/libultra/controller.h:64: note: this is the location of the previous definition
+   64 | #define BTN_CRIGHT 0x00001
+      | 
+In file included from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/2s2h/BenGui/UIWidgets.hpp:14,
+                 from mm/2s2h/Rando/Menu.cpp:3:
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/2s2h/DeveloperTools/SaveEditor.h:631:103: warning: trigraph ??' ignored, use -trigraphs to enable [-Wtrigraphs]
+  631 |           { PERSISTENT, WEEKEVENTREG_BOMBERS_NOTEBOOK_EVENT_RECEIVED_TOILET_HAND_HP, "Notebook Item: ???'s Piece of Heart" },
+      |                                                                                                        
+In file included from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/ship/audio/AudioPlayer.h:165,
+                 from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/ship/audio/Audio.h:6,
+                 from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/ship/Context.h:9,
+                 from /workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/2s2h/BenGui/UIWidgets.hpp:16:
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/ship/audio/SDLAudioPlayer.h:3:10: fatal error: SDL2/SDL.h: No such file or directory
+    3 | #include <SDL2/SDL.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.

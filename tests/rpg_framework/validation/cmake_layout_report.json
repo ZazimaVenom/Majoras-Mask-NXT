@@ -1,0 +1,31 @@
+[
+  {
+    "command": [
+      "cmake",
+      "-S",
+      "/mnt/data/rpg_validation/isolated_layout/source",
+      "-B",
+      "/mnt/data/rpg_validation/isolated_layout/build",
+      "-G",
+      "Ninja Multi-Config",
+      "-DRPG_ISOLATED_OUTPUT=ON"
+    ],
+    "returncode": 0,
+    "output": "-- The CXX compiler identification is GNU 14.2.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (0.4s)\n-- Generating done (0.0s)\n-- Build files have been written to: /mnt/data/rpg_validation/isolated_layout/build\n"
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "/mnt/data/rpg_validation/isolated_layout/build",
+      "--config",
+      "Release",
+      "--target",
+      "2ship",
+      "--parallel",
+      "2"
+    ],
+    "returncode": 0,
+    "output": "[1/2] Building CXX object CMakeFiles/2ship.dir/Release/main.cpp.o\n[2/2] Linking CXX executable rpg-bin/RELEASE/2ship\n"
+  }
+]

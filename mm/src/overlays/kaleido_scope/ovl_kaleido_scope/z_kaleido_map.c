@@ -1,3 +1,4 @@
+#include "2s2h/Enhancements/BenDrowned/BenDrowned.h"
 /*
  * File: z_kaleido_map.c
  * Overlay: ovl_kaleido_scope
@@ -487,11 +488,11 @@ void KaleidoScope_UpdateDungeonCursor(PlayState* play) {
                 if (CHECK_BTN_ALL(CONTROLLER1(&play->state)->press.button, BTN_A) && (msgCtx->msgLength == 0) &&
                     (pauseCtx->cursorPoint[PAUSE_MAP] == DUNGEON_STRAY_FAIRIES)) {
                     pauseCtx->itemDescriptionOn = true;
-                    Message_PauseMenu_ShowDescription(play, 0x17AF, 1);
+                    func_801514B0(play, 0x17AF, 1);
                 } else if (CHECK_BTN_ALL(CONTROLLER1(&play->state)->press.button, BTN_A) && (msgCtx->msgLength == 0) &&
                            CHECK_DUNGEON_ITEM(pauseCtx->cursorPoint[PAUSE_MAP], gSaveContext.dungeonSceneSharedIndex)) {
                     pauseCtx->itemDescriptionOn = true;
-                    Message_PauseMenu_ShowDescription(play, 0x17AC + pauseCtx->cursorPoint[PAUSE_MAP], 1);
+                    func_801514B0(play, 0x17AC + pauseCtx->cursorPoint[PAUSE_MAP], 1);
                 }
             }
 
@@ -577,7 +578,7 @@ void KaleidoScope_DrawWorldMap(PlayState* play) {
     OPEN_DISPS(play->state.gfxCtx);
 
     // Use matrix scaling to flip the entire overworld map for mirror world
-    if (CVarGetInteger("gModes.MirroredWorld.State", 0)) {
+    if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0))) {
         // Invert culling to counter act the matrix flip
         gSPSetExtraGeometryMode(POLY_OPA_DISP++, G_EX_INVERT_CULLING);
         Matrix_Push();
@@ -890,7 +891,7 @@ void KaleidoScope_DrawWorldMap(PlayState* play) {
 
             gDPSetPrimColor(POLY_OPA_DISP++, 0, 0, 255, 255, 255, pauseCtx->alpha);
 
-            if (CVarGetInteger("gModes.MirroredWorld.State", 0)) {
+            if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0))) {
                 POLY_OPA_DISP = Gfx_DrawTexRectRGBA16(POLY_OPA_DISP, gQuestIconLinkHumanFaceTex, 16, 16,
                                                       (SCREEN_WIDTH - sWorldMapCursorsRectLeft[n] - 16 - 1),
                                                       sWorldMapCursorsRectTop[n], 16, 16, 1 << 10, 1 << 10);
@@ -904,7 +905,7 @@ void KaleidoScope_DrawWorldMap(PlayState* play) {
 
     gDPPipeSync(POLY_OPA_DISP++);
 
-    if (CVarGetInteger("gModes.MirroredWorld.State", 0)) {
+    if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0))) {
         gSPClearExtraGeometryMode(POLY_OPA_DISP++, G_EX_INVERT_CULLING);
     }
 
@@ -1038,7 +1039,7 @@ void KaleidoScope_UpdateWorldMapCursor(PlayState* play) {
     PauseContext* pauseCtx = &play->pauseCtx;
     s16 oldCursorPoint;
 
-    if (CVarGetInteger("gModes.MirroredWorld.State", 0)) {
+    if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0))) {
         Ship_UpdateWorldMapCursorMirrorWorld(play);
         return;
     }

@@ -1,3 +1,6 @@
+#include "2s2h/Enhancements/RpgFramework/RpgFramework.h"
+#include "2s2h/Enhancements/BenDrowned/BenDrowned.h"
+#include "2s2h/Enhancements/PlayerBots/PlayerBots.h"
 #include "z64.h"
 #include "regs.h"
 #include "functions.h"
@@ -412,6 +415,9 @@ void Play_Destroy(GameState* thisx) {
     PlayState* this = (PlayState*)thisx;
     GraphicsContext* gfxCtx = this->state.gfxCtx;
 
+    // Release temporary BEN effects while this scene and its actors still exist.
+    Ben_ResetRuntime(this);
+
     if (sBombersNotebookOpen) {
         MsgEvent_SendNullTask();
         SysCfb_SetLoResMode();
@@ -475,6 +481,8 @@ void Play_Destroy(GameState* thisx) {
     KaleidoManager_Destroy();
     ZeldaArena_Cleanup();
 
+    Rpg_ResetRuntime();
+    PlayerBots_Reset();
     GameInteractor_ExecuteOnPlayDestroy();
 
     // #region 2S2H [General] Making gPlayState available
@@ -547,7 +555,7 @@ f32 Play_GetWaterSurface(PlayState* this, Vec3f* pos, s32* lightIndex) {
     WaterBox* waterBox;
     s32 bgId;
 
-    if (!BgCheck_GetWaterSurface(this, &this->colCtx, pos->x, pos->z, &waterSurfaceY, &waterBox, &bgId)) {
+    if (!WaterBox_GetSurfaceImpl(this, &this->colCtx, pos->x, pos->z, &waterSurfaceY, &waterBox, &bgId)) {
         return BGCHECK_Y_MIN;
     }
 
@@ -1048,6 +1056,8 @@ void Play_UpdateMain(PlayState* this) {
                     CollisionCheck_AT(this, &this->colChkCtx);
                     CollisionCheck_OC(this, &this->colChkCtx);
                     CollisionCheck_Damage(this, &this->colChkCtx);
+                    PlayerBots_RecordColliderUsage(this, this->colChkCtx.colATCount,
+                                                   this->colChkCtx.colACCount, this->colChkCtx.colOCCount);
                     CollisionCheck_ClearContext(this, &this->colChkCtx);
                     if (!this->haltAllActors) {
                         Actor_UpdateAll(this, &this->actorCtx);
@@ -1258,7 +1268,7 @@ void Play_DrawMain(PlayState* this) {
         View_Apply(&this->view, 0xF);
 
         // Setup mirror mode matrix handling when we are not drawing kaleido
-        if (R_PAUSE_BG_PRERENDER_STATE <= PAUSE_BG_PRERENDER_SETUP && CVarGetInteger("gModes.MirroredWorld.State", 0)) {
+        if (R_PAUSE_BG_PRERENDER_STATE <= PAUSE_BG_PRERENDER_SETUP && Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0))) {
             gSPSetExtraGeometryMode(POLY_OPA_DISP++, G_EX_INVERT_CULLING);
             gSPSetExtraGeometryMode(POLY_XLU_DISP++, G_EX_INVERT_CULLING);
             gSPMatrix(POLY_OPA_DISP++, this->view.shipMirrorProjectionPtr,
@@ -1367,6 +1377,11 @@ void Play_DrawMain(PlayState* this) {
             }
 
             GameInteractor_ExecuteOnPlayDrawWorldStart();
+            Ben_BeginWorldDraw(this);
+            // Initial fog commands precede the BEN draw transaction. Emit the
+            // effective fog now so room geometry receives the temporary tint.
+            POLY_OPA_DISP = Play_SetFog(this, POLY_OPA_DISP);
+            POLY_XLU_DISP = Play_SetFog(this, POLY_XLU_DISP);
 
             if (!this->soaringCsOrSoTCsPlaying) {
                 if (1) {
@@ -1435,6 +1450,10 @@ void Play_DrawMain(PlayState* this) {
 
             if (1) {
                 Actor_DrawAll(this, &this->actorCtx);
+                Ben_Draw(this);
+                Ben_EndWorldDraw(this);
+                POLY_OPA_DISP = Play_SetFog(this, POLY_OPA_DISP);
+                POLY_XLU_DISP = Play_SetFog(this, POLY_XLU_DISP);
             }
 
             if (1) {
@@ -1549,7 +1568,7 @@ void Play_DrawMain(PlayState* this) {
             }
         }
 
-        if (CVarGetInteger("gModes.MirroredWorld.State", 0)) {
+        if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0))) {
             gSPClearExtraGeometryMode(POLY_OPA_DISP++, G_EX_INVERT_CULLING);
             gSPClearExtraGeometryMode(POLY_XLU_DISP++, G_EX_INVERT_CULLING);
         }
@@ -1575,6 +1594,9 @@ SkipPostWorldDraw:
 
 void Play_Draw(PlayState* this) {
     GraphicsContext* gfxCtx = this->state.gfxCtx;
+
+    Rpg_RefreshHud(this);
+    Ben_RefreshHud(this);
 
     {
         GraphicsContext* gfxCtx2 = this->state.gfxCtx;
@@ -2147,8 +2169,8 @@ s32 Play_IsUnderwater(PlayState* this, Vec3f* pos) {
 
     waterSurfacePos = *pos;
 
-    if ((BgCheck_GetWaterSurfaceNoBgIdAlt(this, &this->colCtx, waterSurfacePos.x, waterSurfacePos.z, &waterSurfacePos.y,
-                                          &waterBox) == true) &&
+    if ((WaterBox_GetSurface1(this, &this->colCtx, waterSurfacePos.x, waterSurfacePos.z, &waterSurfacePos.y,
+                              &waterBox) == true) &&
         (pos->y < waterSurfacePos.y) &&
         (BgCheck_EntityRaycastFloor3(&this->colCtx, &poly, &bgId, &waterSurfacePos) != BGCHECK_Y_MIN)) {
         return true;

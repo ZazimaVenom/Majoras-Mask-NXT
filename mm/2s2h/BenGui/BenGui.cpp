@@ -25,6 +25,8 @@
 #include "Enhancements/Trackers/ItemTracker/ItemTracker.h"
 #include "Enhancements/Trackers/ItemTracker/ItemTrackerSettings.h"
 #include "Enhancements/Trackers/DisplayOverlay.h"
+#include "Enhancements/RpgFramework/RpgHud.h"
+#include "Enhancements/BenDrowned/BenHud.h"
 #include "Enhancements/Trackers//TimeSplits/Timesplits.h"
 #include "Enhancements/Trackers/TimeSplits/TimesplitsSettings.h"
 #include "BenMenu.h"
@@ -157,6 +159,10 @@ void SetupGuiElements() {
 
     mDisplayOverlayWindow = std::make_shared<DisplayOverlayWindow>("gWindows.DisplayOverlay", "Display Overlay");
     gui->AddGuiWindow(mDisplayOverlayWindow);
+    gui->AddGuiWindow(std::make_shared<RpgHud>("gWindows.RpgHud", true, "RPG HUD"));
+    gui->AddGuiWindow(std::make_shared<BenDrownedHud>("gWindows.BenDrownedHud", true, "BEN DROWNED HUD"));
+    gui->AddGuiWindow(std::make_shared<BenDrownedJournal>(
+        "gWindows.BenJournal", "BEN DROWNED Casebook", ImVec2(540, 680)));
 
     mTimesplitsWindow = std::make_shared<TimesplitsWindow>("gWindows.Timesplits", "Time Splits Window");
     gui->AddGuiWindow(mTimesplitsWindow);

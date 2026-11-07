@@ -1,0 +1,16 @@
+PLAYER BOTS + EXTRA COMBAT ENEMIES — SOURCE UPDATE
+
+1. Extract the original MajoraWithBots.rar into a separate working folder.
+2. Merge the contents of this ZIP's MajoraWithBots directory into that
+   existing MajoraWithBots source directory, replacing matching files.
+3. Read README_PLAYER_BOTS.md in the merged directory.
+4. Build a new executable in a fresh build directory. This is not a mods/
+   asset pack and no runnable game executable is included.
+
+This ZIP includes only changed/new source, helpers, tests and docs.
+Keep your original assets and bundled dependencies from the original RAR.
+The Git patch is an alternative; do not apply both methods twice.
+
+Status: headless tests and gameplay object compilation pass.
+Complete game linking, Windows compilation, rendering and in-game play
+have NOT been verified. See docs/PLAYER_BOTS_VALIDATION.md.

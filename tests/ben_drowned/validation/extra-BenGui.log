@@ -1,0 +1,10 @@
+In file included from libultraship/include/ship/audio/AudioPlayer.h:165,
+                 from libultraship/include/ship/audio/Audio.h:6,
+                 from libultraship/include/ship/Context.h:9,
+                 from mm/2s2h/BenGui/UIWidgets.hpp:16,
+                 from mm/2s2h/BenGui/BenGui.hpp:4,
+                 from mm/2s2h/BenGui/BenGui.cpp:1:
+libultraship/include/ship/audio/SDLAudioPlayer.h:3:10: fatal error: SDL2/SDL.h: No such file or directory
+    3 | #include <SDL2/SDL.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.

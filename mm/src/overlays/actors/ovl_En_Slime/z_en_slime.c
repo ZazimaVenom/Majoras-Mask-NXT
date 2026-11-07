@@ -1,3 +1,5 @@
+#include "2s2h/Enhancements/RpgFramework/RpgFramework.h"
+#include "2s2h/Enhancements/PlayerBots/PlayerBots.h"
 /*
  * File: z_en_slime.c
  * Overlay: ovl_En_Slime
@@ -310,7 +312,7 @@ void EnSlime_Idle(EnSlime* this, PlayState* play) {
     f32 timerFactor;
     f32 scale;
 
-    this->timer--;
+    this->timer = MAX(0, this->timer - Rpg_TimerStep(&this->actor));
     timerFactor = sqrtf(this->timer) * 0.2f;
     EnSlime_Blink(this);
 
@@ -326,7 +328,7 @@ void EnSlime_Idle(EnSlime* this, PlayState* play) {
 
     // If player is not wearing the stone mask, is within 280 units of the chuchu,
     // and the chuchu is facing the player, initialize chase/attack cycle.
-    if ((Player_GetMask(play) != PLAYER_MASK_STONE) && (this->actor.xzDistToPlayer < 280.0f) &&
+    if ((PlayerBots_GetTargetMask(play, &this->actor) != PLAYER_MASK_STONE) && (this->actor.xzDistToPlayer < 280.0f) &&
         Actor_IsFacingPlayer(&this->actor, 0x5000)) {
         EnSlime_SetupTurnToPlayer(this);
     } else if (this->timer == 0) {
@@ -364,7 +366,7 @@ void EnSlime_MoveInDirection(EnSlime* this, PlayState* play) {
     f32 sinFactor;
 
     EnSlime_Blink(this);
-    this->timer--;
+    this->timer = MAX(0, this->timer - Rpg_TimerStep(&this->actor));
     Math_ApproachS(&this->actor.shape.rot.y, this->idleRotY, 4, 0x100);
 
     // If actor is touching a wall, set target rotation to match wall where it is touching.
@@ -388,7 +390,7 @@ void EnSlime_MoveInDirection(EnSlime* this, PlayState* play) {
     if (Actor_WorldDistXZToPoint(&this->actor, &this->actor.home.pos) > this->distLimit) {
         // If actor is too far from home, start return home cycle
         EnSlime_SetupMoveToHome(this);
-    } else if ((Player_GetMask(play) != PLAYER_MASK_STONE) && (this->actor.xzDistToPlayer < 280.0f) &&
+    } else if ((PlayerBots_GetTargetMask(play, &this->actor) != PLAYER_MASK_STONE) && (this->actor.xzDistToPlayer < 280.0f) &&
                Actor_IsFacingPlayer(&this->actor, 0x5000)) {
         // If player is close enough to chuchu while not wearing the stone mask, and the chuchu is facing player,
         //  initialize attack cycle
@@ -564,7 +566,7 @@ void EnSlime_Land(EnSlime* this, PlayState* play) {
 
     if (Actor_WorldDistXZToPoint(&this->actor, &this->actor.home.pos) > this->distLimit) {
         EnSlime_SetupMoveToHome(this);
-    } else if ((Player_GetMask(play) != PLAYER_MASK_STONE) && (this->actor.xzDistToPlayer < 280.0f) &&
+    } else if ((PlayerBots_GetTargetMask(play, &this->actor) != PLAYER_MASK_STONE) && (this->actor.xzDistToPlayer < 280.0f) &&
                (this->timer < 12)) {
         EnSlime_SetupTurnToPlayer(this);
     } else if (this->timer == 0) {
@@ -624,7 +626,7 @@ void EnSlime_ReactToBluntHit(EnSlime* this, PlayState* play) {
     if (this->timer == 0) {
         if (Actor_WorldDistXZToPoint(&this->actor, &this->actor.home.pos) > this->distLimit) {
             EnSlime_SetupMoveToHome(this);
-        } else if ((this->actor.xzDistToPlayer < 280.0f) && (Player_GetMask(play) != PLAYER_MASK_STONE)) {
+        } else if ((this->actor.xzDistToPlayer < 280.0f) && (PlayerBots_GetTargetMask(play, &this->actor) != PLAYER_MASK_STONE)) {
             EnSlime_SetupTurnToPlayer(this);
         } else {
             EnSlime_SetupIdle(this);
@@ -702,7 +704,7 @@ void EnSlime_Damaged(EnSlime* this, PlayState* play) {
     if (this->timer == 0) {
         if (this->actor.colChkInfo.health != 0) {
             this->collider.base.acFlags |= AC_ON;
-            if ((this->actor.xzDistToPlayer < 280.0f) && (Player_GetMask(play) != PLAYER_MASK_STONE)) {
+            if ((this->actor.xzDistToPlayer < 280.0f) && (PlayerBots_GetTargetMask(play, &this->actor) != PLAYER_MASK_STONE)) {
                 EnSlime_SetupTurnToPlayer(this);
             } else {
                 EnSlime_SetupIdle(this);
@@ -1089,7 +1091,7 @@ void EnSlime_UpdateDamage(EnSlime* this, PlayState* play) {
 void EnSlime_Update(Actor* thisx, PlayState* play) {
     EnSlime* this = (EnSlime*)thisx;
     s32 pad;
-    Player* player = GET_PLAYER(play);
+    Player* player = PlayerBots_GetCombatTarget(play, &this->actor);
 
     EnSlime_UpdateDamage(this, play);
     this->actionFunc(this, play);
@@ -1179,7 +1181,7 @@ void EnSlime_Draw(Actor* thisx, PlayState* play) {
     Gfx_SetupDL25_Xlu(play->state.gfxCtx);
     func_800B8118(&this->actor, play, 0);
     if (this->iceBlockTimer != ICE_BLOCK_UNUSED) {
-        gSPSegment(POLY_XLU_DISP++, 0x0A, gActorSetupOpaDL);
+        gSPSegment(POLY_XLU_DISP++, 10, D_801AEFA0);
         gDPSetPrimColor(POLY_XLU_DISP++, 0, 170, 255, 255, 255, 255);
         gDPSetEnvColor(POLY_XLU_DISP++, 150, 255, 255, this->iceBlockTimer);
     } else {

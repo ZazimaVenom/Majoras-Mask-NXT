@@ -1,0 +1,147 @@
+{
+  "cwd": "/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT",
+  "scope": "Headless fixture executes production WorldDraw and DrawCircle with explicit native-service doubles and real graphics/vertex buffers. Separate stub is compiled as C. This is not an MSVC build, GPU renderer validation, ROM asset validation, or in-game playtest.",
+  "negative_source_package": "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/backup/Majoras-Mask-NXT-BEN-DROWNED-Source.zip",
+  "negative_setup": "Extracted original mm/include/gfx.h and mm/2s2h/Enhancements/BenDrowned/BenWorld.cpp into draw/before. Copied current world_tests.cpp and replaced its production BenWorld.cpp include with the absolute before/BenWorld.cpp path. force_gfx.h contains extern \"C\" { followed by #include \"gfx.h\" and closing brace, preserving engine header C linkage while forcing original gfx.h.",
+  "checks": [
+    {
+      "test": "C interpolation fixture compile",
+      "returncode": 0,
+      "log": "0.log",
+      "command": [
+        "gcc",
+        "-std=gnu11",
+        "-w",
+        "-fsanitize=undefined",
+        "-DF3DEX_GBI_2",
+        "-DCONTROLLERBUTTONS_T=uint32_t",
+        "-Imm",
+        "-Imm/2s2h",
+        "-Imm/include",
+        "-Imm/src",
+        "-Imm/assets",
+        "-Ilibultraship/include",
+        "-Ilibultraship/include/libultraship",
+        "-Imm/include/PR",
+        "-Ilibultraship/src",
+        "-Ilibultraship/extern/fast3d/include",
+        "-c",
+        "tests/ben_drowned/interpolation_link_stubs.c",
+        "-o",
+        "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/draw/interpolation.o"
+      ]
+    },
+    {
+      "test": "Fixed draw fixture build",
+      "returncode": 0,
+      "log": "1.log",
+      "command": [
+        "g++",
+        "-std=c++20",
+        "-O1",
+        "-g",
+        "-w",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-fsanitize=undefined",
+        "-DF3DEX_GBI_2",
+        "-DCONTROLLERBUTTONS_T=uint32_t",
+        "-Imm",
+        "-Imm/2s2h",
+        "-Imm/include",
+        "-Imm/src",
+        "-Imm/assets",
+        "-Ilibultraship/include",
+        "-Ilibultraship/include/libultraship",
+        "-Imm/include/PR",
+        "-Ilibultraship/src",
+        "-Ilibultraship/extern/fast3d/include",
+        "tests/ben_drowned/world_tests.cpp",
+        "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/draw/interpolation.o",
+        "-Wl,--gc-sections",
+        "-o",
+        "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/draw/world_tests"
+      ]
+    },
+    {
+      "test": "Fixed draw fixture run: 408 assertions",
+      "returncode": 0,
+      "log": "2.log",
+      "command": [
+        "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/draw/world_tests"
+      ]
+    },
+    {
+      "test": "Fixed no-section-elimination O0 build",
+      "returncode": 0,
+      "log": "no_gc_build.log",
+      "command": [
+        "g++",
+        "-std=c++20",
+        "-O0",
+        "-g",
+        "-w",
+        "-fsanitize=undefined",
+        "-DF3DEX_GBI_2",
+        "-DCONTROLLERBUTTONS_T=uint32_t",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/2s2h",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/src",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/assets",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/PR",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/src",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/extern/fast3d/include",
+        "tests/ben_drowned/world_tests.cpp",
+        "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/draw/interpolation.o",
+        "-o",
+        "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/draw/world_tests_o0"
+      ]
+    },
+    {
+      "test": "Fixed no-section-elimination O0 run: 408 assertions",
+      "returncode": 0,
+      "log": "no_gc_run.log",
+      "command": [
+        "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/draw/world_tests_o0"
+      ]
+    },
+    {
+      "test": "Original source negative regression: expected unresolved Ben::FrameInterpolation calls",
+      "returncode": 1,
+      "log": "before_link.log",
+      "command": [
+        "g++",
+        "-std=c++20",
+        "-O1",
+        "-g",
+        "-w",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-include",
+        "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/draw/before/force_gfx.h",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/2s2h/Enhancements/BenDrowned",
+        "-DF3DEX_GBI_2",
+        "-DCONTROLLERBUTTONS_T=uint32_t",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/2s2h",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/src",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/assets",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include/PR",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/src",
+        "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/extern/fast3d/include",
+        "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/draw/before/world_tests.cpp",
+        "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/draw/interpolation.o",
+        "-fsanitize=undefined",
+        "-Wl,--gc-sections",
+        "-o",
+        "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/draw/before/world_tests"
+      ]
+    }
+  ]
+}

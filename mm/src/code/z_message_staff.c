@@ -45,15 +45,15 @@ void Message_DrawTextCredits(PlayState* play, Gfx** gfxP) {
     Font* font = &msgCtx->font;
     Gfx* gfx = *gfxP;
 
-    msgCtx->textPosX = msgCtx->textPosXTarget;
+    msgCtx->textPosX = msgCtx->unk11FF8;
 
     if (!msgCtx->textIsCredits) {
-        msgCtx->textPosY = msgCtx->textPosYTarget;
+        msgCtx->textPosY = msgCtx->unk11FFA;
     } else {
         msgCtx->textPosY = 48;
     }
 
-    if (msgCtx->textBoxType == TEXTBOX_TYPE_CLEAR) {
+    if (msgCtx->textBoxType == TEXTBOX_TYPE_5) {
         msgCtx->textColorR = msgCtx->textColorG = msgCtx->textColorB = 0;
     } else {
         msgCtx->textColorR = msgCtx->textColorG = msgCtx->textColorB = 255;
@@ -66,14 +66,14 @@ void Message_DrawTextCredits(PlayState* play, Gfx** gfxP) {
 
         switch (character) {
             case MESSAGE_NEWLINE:
-                msgCtx->textPosX = msgCtx->textPosXTarget;
+                msgCtx->textPosX = msgCtx->unk11FF8;
                 if ((msgCtx->choiceNum == 1) || (msgCtx->choiceNum == 3)) {
                     msgCtx->textPosX += 32;
                 }
-                if ((msgCtx->choiceNum == 2) && (msgCtx->textPosY != msgCtx->textPosYTarget)) {
+                if ((msgCtx->choiceNum == 2) && (msgCtx->textPosY != msgCtx->unk11FFA)) {
                     msgCtx->textPosX += 32;
                 }
-                msgCtx->textPosY += msgCtx->lineHeight;
+                msgCtx->textPosY += msgCtx->unk11FFC;
                 break;
 
             case MESSAGE_COLOR:
@@ -353,15 +353,15 @@ void Message_DecodeCredits(PlayState* play) {
             // Textbox decoding ends with any of the above text control characters
             msgCtx->msgMode = MSGMODE_TEXT_DISPLAYING;
             msgCtx->textDrawPos = 1;
-            msgCtx->textPosYTarget = msgCtx->textboxY + 8;
+            msgCtx->unk11FFA = msgCtx->textboxY + 8;
 
             if (msgCtx->textBoxType != TEXTBOX_TYPE_4) {
                 if (numLines == 0) {
-                    msgCtx->textPosYTarget = msgCtx->textboxY + 26;
+                    msgCtx->unk11FFA = msgCtx->textboxY + 26;
                 } else if (numLines == 1) {
-                    msgCtx->textPosYTarget = msgCtx->textboxY + 20;
+                    msgCtx->unk11FFA = msgCtx->textboxY + 20;
                 } else if (numLines == 2) {
-                    msgCtx->textPosYTarget = msgCtx->textboxY + 16;
+                    msgCtx->unk11FFA = msgCtx->textboxY + 16;
                 }
             }
 

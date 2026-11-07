@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 #include "mixer.h"
-#ifndef __clang__
+#if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC optimize("unroll-loops")
 #endif
 
@@ -516,12 +516,12 @@ void aFilterImpl(uint8_t flags, uint16_t count_or_buf, int16_t* state_or_filter)
         int16_t* buf = BUF_S16(count_or_buf);
 
         if (flags == A_INIT) {
-#ifndef __clang__
+#if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmemset-elt-size"
 #endif
             memset(tmp, 0, 8 * sizeof(int16_t));
-#ifndef __clang__
+#if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic pop
 #endif
             memset(tmp2, 0, 8 * sizeof(int16_t));

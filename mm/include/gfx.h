@@ -136,16 +136,30 @@ void Gfx_DrawDListOpa(PlayState* play, Gfx* dList);
 void Gfx_DrawDListXlu(PlayState* play, Gfx* dList);
 
 // #region 2S2H [Port] Logic to perform in DISPS methods for debug information and frame interpolation support
-#define OPEN_DISPS_PORT_HELPERS(gfxCtx)                            \
-    void FrameInterpolation_RecordOpenChild(const void* a, int b); \
-    FrameInterpolation_RecordOpenChild(__FILE__, __LINE__);        \
-    Gfx* __dispRefs[3];                                            \
-    Gfx __dispVals[3];                                             \
+// Declare the engine's C API at header scope. Block-scope declarations inside
+// OPEN/CLOSE_DISPS can acquire C++ linkage when expanded in a namespace.
+#ifdef __cplusplus
+extern "C" {
+#endif
+void FrameInterpolation_RecordOpenChild(const void* a, int b);
+void FrameInterpolation_RecordCloseChild(void);
+#ifdef __cplusplus
+}
+#define GFX_INTERPOLATION_OPEN_CHILD(a, b) ::FrameInterpolation_RecordOpenChild(a, b)
+#define GFX_INTERPOLATION_CLOSE_CHILD() ::FrameInterpolation_RecordCloseChild()
+#else
+#define GFX_INTERPOLATION_OPEN_CHILD(a, b) FrameInterpolation_RecordOpenChild(a, b)
+#define GFX_INTERPOLATION_CLOSE_CHILD() FrameInterpolation_RecordCloseChild()
+#endif
+
+#define OPEN_DISPS_PORT_HELPERS(gfxCtx)                     \
+    GFX_INTERPOLATION_OPEN_CHILD(__FILE__, __LINE__);        \
+    Gfx* __dispRefs[3];                                     \
+    Gfx __dispVals[3];                                      \
     Graph_OpenDisps(__dispRefs, __dispVals, gfxCtx, __FILE__, __LINE__)
 
-#define CLOSE_DISPS_PORT_HELPERS(gfxCtx)            \
-    void FrameInterpolation_RecordCloseChild(void); \
-    FrameInterpolation_RecordCloseChild();          \
+#define CLOSE_DISPS_PORT_HELPERS(gfxCtx)                     \
+    GFX_INTERPOLATION_CLOSE_CHILD();                        \
     Graph_CloseDisps(__dispRefs, __dispVals, gfxCtx, __FILE__, __LINE__)
 
 // #endregion

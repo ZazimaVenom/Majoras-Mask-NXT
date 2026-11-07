@@ -69,7 +69,7 @@ u16 QuestHint_GetTatlTextId(PlayState* play) {
         return 0x223;
     }
 
-    if (CHECK_WEEKEVENTREG(WEEKEVENTREG_ENTERED_BOMBERS_CODE)) {
+    if (CHECK_WEEKEVENTREG(WEEKEVENTREG_73_80)) {
         return 0x222;
     }
 
@@ -85,8 +85,7 @@ u16 QuestHint_GetTatlTextId(PlayState* play) {
         return 0x241;
     }
 
-    if (CHECK_WEEKEVENTREG(WEEKEVENTREG_TALKED_TO_BOMBERS_GUARD) ||
-        CHECK_WEEKEVENTREG(WEEKEVENTREG_DEKU_LEARNED_WHERE_BOMBER_JIM_IS)) {
+    if (CHECK_WEEKEVENTREG(WEEKEVENTREG_86_02) || CHECK_WEEKEVENTREG(WEEKEVENTREG_73_40)) {
         return 0x23F;
     }
 

@@ -1,0 +1,42 @@
+[
+  {
+    "test": "runtime_build",
+    "returncode": 0,
+    "command": [
+      "g++",
+      "-std=c++20",
+      "-O1",
+      "-g",
+      "-w",
+      "-fsanitize=undefined",
+      "-fno-omit-frame-pointer",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-DF3DEX_GBI_2",
+      "-DCONTROLLERBUTTONS_T=uint32_t",
+      "-Imm",
+      "-Imm/2s2h",
+      "-Imm/include",
+      "-Imm/src",
+      "-Imm/assets",
+      "-Ilibultraship/include",
+      "-Ilibultraship/include/libultraship",
+      "-Imm/include/PR",
+      "-Ilibultraship/src",
+      "-Ilibultraship/extern/fast3d/include",
+      "tests/ben_drowned/runtime_tests.cpp",
+      "-Wl,--gc-sections",
+      "-o",
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-compile-fix/runtime/runtime_tests"
+    ],
+    "log": "runtime_build.log"
+  },
+  {
+    "test": "runtime_run",
+    "returncode": 0,
+    "command": [
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-compile-fix/runtime/runtime_tests"
+    ],
+    "log": "runtime_run.log"
+  }
+]

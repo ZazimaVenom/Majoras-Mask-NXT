@@ -1,0 +1,182 @@
+[
+  {
+    "test": "environment",
+    "status": "INFO",
+    "compiler": "/usr/bin/g++",
+    "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+    "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+    "scope": "Headless Linux policy/integration; explicit engine doubles; not a full game or Windows build"
+  },
+  {
+    "test": "core_build",
+    "status": "PASS",
+    "returncode": 0,
+    "command": [
+      "/usr/bin/g++",
+      "-std=c++20",
+      "-O1",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/tests/ben_drowned/core_tests.cpp",
+      "-Wl,--gc-sections",
+      "-o",
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/ben-regression/core_tests"
+    ],
+    "log": "core_build.log"
+  },
+  {
+    "test": "core_run",
+    "status": "PASS",
+    "returncode": 0,
+    "command": [
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/ben-regression/core_tests"
+    ],
+    "log": "core_run.log"
+  },
+  {
+    "test": "runtime_build",
+    "status": "PASS",
+    "returncode": 0,
+    "command": [
+      "/usr/bin/g++",
+      "-std=c++20",
+      "-O1",
+      "-g",
+      "-fsanitize=undefined",
+      "-fno-omit-frame-pointer",
+      "-w",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-DF3DEX_GBI_2",
+      "-DCONTROLLERBUTTONS_T=uint32_t",
+      "-Imm",
+      "-Imm/2s2h",
+      "-Imm/include",
+      "-Imm/src",
+      "-Imm/assets",
+      "-Ilibultraship/include",
+      "-Ilibultraship/include/libultraship",
+      "-Imm/include/PR",
+      "-Ilibultraship/src",
+      "-Ilibultraship/extern/fast3d/include",
+      "/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/tests/ben_drowned/runtime_tests.cpp",
+      "-Wl,--gc-sections",
+      "-o",
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/ben-regression/runtime_tests"
+    ],
+    "log": "runtime_build.log"
+  },
+  {
+    "test": "runtime_run",
+    "status": "PASS",
+    "returncode": 0,
+    "command": [
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/ben-regression/runtime_tests"
+    ],
+    "log": "runtime_run.log"
+  },
+  {
+    "test": "world_c_linkage_build",
+    "status": "PASS",
+    "returncode": 0,
+    "command": [
+      "/usr/bin/gcc",
+      "-std=gnu11",
+      "-O1",
+      "-g",
+      "-w",
+      "-fsanitize=undefined",
+      "-fno-omit-frame-pointer",
+      "-DF3DEX_GBI_2",
+      "-DCONTROLLERBUTTONS_T=uint32_t",
+      "-Imm",
+      "-Imm/2s2h",
+      "-Imm/include",
+      "-Imm/src",
+      "-Imm/assets",
+      "-Ilibultraship/include",
+      "-Ilibultraship/include/libultraship",
+      "-Imm/include/PR",
+      "-Ilibultraship/src",
+      "-Ilibultraship/extern/fast3d/include",
+      "-c",
+      "/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/tests/ben_drowned/interpolation_link_stubs.c",
+      "-o",
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/ben-regression/interpolation_link_stubs.o"
+    ],
+    "log": "world_c_linkage_build.log"
+  },
+  {
+    "test": "world_build",
+    "status": "PASS",
+    "returncode": 0,
+    "command": [
+      "/usr/bin/g++",
+      "-std=c++20",
+      "-O1",
+      "-g",
+      "-fsanitize=undefined",
+      "-fno-omit-frame-pointer",
+      "-w",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-DF3DEX_GBI_2",
+      "-DCONTROLLERBUTTONS_T=uint32_t",
+      "-Imm",
+      "-Imm/2s2h",
+      "-Imm/include",
+      "-Imm/src",
+      "-Imm/assets",
+      "-Ilibultraship/include",
+      "-Ilibultraship/include/libultraship",
+      "-Imm/include/PR",
+      "-Ilibultraship/src",
+      "-Ilibultraship/extern/fast3d/include",
+      "/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/tests/ben_drowned/world_tests.cpp",
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/ben-regression/interpolation_link_stubs.o",
+      "-Wl,--gc-sections",
+      "-o",
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/ben-regression/world_tests"
+    ],
+    "log": "world_build.log"
+  },
+  {
+    "test": "world_run",
+    "status": "PASS",
+    "returncode": 0,
+    "command": [
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/ben-regression/world_tests"
+    ],
+    "log": "world_run.log"
+  },
+  {
+    "test": "save_build",
+    "status": "PASS",
+    "returncode": 0,
+    "command": [
+      "/usr/bin/g++",
+      "-std=c++20",
+      "-O1",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "-Imm",
+      "-I/workspace/scratch/cda0e8a05ecb/validation/dependencies/nlohmann_json/include",
+      "tests/ben_drowned/save_tests.cpp",
+      "mm/2s2h/SaveManager/Migrations/10.cpp",
+      "-o",
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/ben-regression/save_tests"
+    ],
+    "log": "save_build.log"
+  },
+  {
+    "test": "save_run",
+    "status": "PASS",
+    "returncode": 0,
+    "command": [
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/ben-regression/save_tests"
+    ],
+    "log": "save_run.log"
+  }
+]

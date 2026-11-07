@@ -1,0 +1,205 @@
+
+/mnt/data/rpg_validation/final_complete/RpgFramework.o:
+                 U Actor_DrawDamageEffects
+                 U CVarGetInteger
+                 U Matrix_Pop
+                 U Matrix_Push
+                 U PlayerBots_ApplyRaidDamage
+                 U PlayerBots_IsReinforcement
+                 U Player_InBlockingCsMode
+                 U RpgWorldBoss_BaseLevel
+                 U RpgWorldBoss_FillHud
+                 U RpgWorldBoss_IsBoss
+                 U RpgWorldBoss_Level
+                 U RpgWorldBoss_OnActorDestroyed
+                 U RpgWorldBoss_Reset
+                 U _Unwind_Resume
+                 U std::__detail::_Prime_rehash_policy::_M_need_rehash(unsigned long, unsigned long, unsigned long) const
+                 U std::__throw_bad_alloc()
+                 U std::__throw_system_error(int)
+                 U std::__throw_bad_array_new_length()
+                 U operator delete(void*)
+                 U operator delete(void*, unsigned long)
+                 U operator new(unsigned long)
+                 U __cxa_atexit
+                 U __cxa_begin_catch
+                 U __cxa_end_catch
+                 U __cxa_rethrow
+                 U __dso_handle
+                 U __gxx_personality_v0
+                 U fmodf
+                 U gSaveContext
+                 U hypotf
+                 U memset
+                 U pthread_mutex_lock
+                 U pthread_mutex_unlock
+                 U snprintf
+                 U sqrtf
+
+/mnt/data/rpg_validation/final_complete/RpgWorldBoss.o:
+                 U ActorShadow_DrawCircle
+                 U ActorShape_Init
+                 U Actor_Kill
+                 U Actor_PlaySfx
+                 U Actor_SetColorFilter
+                 U Actor_SetFocus
+                 U Actor_SetScale
+                 U Actor_Spawn
+                 U Actor_WorldYawTowardActor
+                 U Animation_Change
+                 U CVarGetInteger
+                 U Collider_DestroyCylinder
+                 U Collider_InitAndSetCylinder
+                 U Collider_UpdateCylinder
+                 U CollisionCheck_SetAC
+                 U FrameInterpolation_RecordCloseChild
+                 U FrameInterpolation_RecordOpenChild
+                 U Gfx_SetupDL25_Opa
+                 U Gfx_SetupDL25_Xlu
+                 U Graph_CloseDisps
+                 U Graph_OpenDisps
+                 U Math_CosS
+                 U Math_SinS
+                 U Math_SmoothStepToS
+                 U Math_Vec3f_Yaw
+                 U Matrix_Finalize
+                 U Matrix_Pop
+                 U Matrix_Push
+                 U Matrix_Translate
+                 U PlayerBots_FindRaidSite
+                 U PlayerBots_GetRaidBot
+                 U PlayerBots_IsBot
+                 U PlayerBots_IsLiveBot
+                 U PlayerBots_IsRaidBot
+                 U PlayerBots_RaidCount
+                 U PlayerBots_RaidGroundStep
+                 U PlayerBots_RaidLineOfSight
+                 U PlayerBots_RetireRaid
+                 U PlayerBots_SpawnRaidBot
+                 U ResourceMgr_LoadAnimByName
+                 U ResourceMgr_LoadSkeletonByName
+                 U ResourceMgr_UnregisterSkeleton
+                 U Rpg_AwardWorldBoss
+                 U Rpg_DamageBotByBoss
+                 U Rpg_DamageToBoss
+                 U Rpg_Enabled
+                 U Rpg_SetBossIncomingPlayerDamage
+                 U Rpg_Suspended
+                 U SkelAnime_DrawOpa
+                 U SkelAnime_Init
+                 U SkelAnime_Update
+                 U _GLOBAL_OFFSET_TABLE_
+                 U _Unwind_Resume
+                 U std::__detail::_Prime_rehash_policy::_M_need_rehash(unsigned long, unsigned long, unsigned long) const
+                 U std::__throw_bad_alloc()
+                 U std::__throw_bad_array_new_length()
+                 U operator delete(void*)
+                 U operator delete(void*, unsigned long)
+                 U operator new(unsigned long)
+                 U __cxa_atexit
+                 U __cxa_begin_catch
+                 U __cxa_end_catch
+                 U __cxa_rethrow
+                 U __dso_handle
+                 U __gxx_personality_v0
+                 U cosf
+                 U func_800B8D50
+                 U gSPVertex
+                 U gSaveContext
+                 U hypotf
+                 U memset
+                 U sinf
+                 U snprintf
+
+/mnt/data/rpg_validation/final_complete/PlayerBots.o:
+                 U ActorShadow_DrawCircle
+                 U ActorShape_Init
+                 U Actor_HeightDiff
+                 U Actor_Kill
+                 U Actor_PlaySfx
+                 U Actor_SetColorFilter
+                 U Actor_SetFocus
+                 U Actor_SetScale
+                 U Actor_Spawn
+                 U Actor_UpdateBgCheckInfo
+                 U Actor_WorldDistXZToActor
+                 U Actor_WorldYawTowardActor
+                 U BgCheck_EntityLineTest1
+                 U BgCheck_EntityRaycastFloor3
+                 U CVarGetInteger
+                 U Collider_DestroyCylinder
+                 U Collider_InitAndSetCylinder
+                 U Collider_UpdateCylinder
+                 U CollisionCheck_SetAC
+                 U CollisionCheck_SetAT
+                 U D_801C0B20
+                 U D_801F59E0
+                 U FrameInterpolation_RecordCloseChild
+                 U FrameInterpolation_RecordOpenChild
+                 U Gfx_SetupDL25_Opa
+                 U Graph_CloseDisps
+                 U Graph_OpenDisps
+                 U Lib_SegmentedToVirtual
+                 U Math_CosS
+                 U Math_SinS
+                 U Math_SmoothStepToS
+                 U Math_Vec3f_Yaw
+                 U Matrix_Finalize
+                 U NameTag_RegisterForActorWithOptions
+                 U NameTag_RemoveAllForActor
+                 U Object_GetSlot
+                 U Object_IsLoaded
+                 U Player_DrawImpl
+                 U Player_GetMask
+                 U Player_InBlockingCsMode
+                 U ResourceMgr_LoadAnimByName
+                 U ResourceMgr_LoadSkeletonByName
+                 U ResourceMgr_UnregisterSkeleton
+                 U RpgWorldBoss_BotShouldEvade
+                 U RpgWorldBoss_CanTakeDamage
+                 U RpgWorldBoss_GetActor
+                 U RpgWorldBoss_IsActive
+                 U RpgWorldBoss_IsBoss
+                 U Rpg_ActorLevel
+                 U Rpg_BotIncomingDamage
+                 U Rpg_BotMaxHp
+                 U Rpg_Enabled
+                 U Rpg_RefreshBot
+                 U Rpg_RegisterBot
+                 U SurfaceType_GetFloorProperty
+                 U SurfaceType_GetFloorType
+                 U SurfaceType_GetMaterial
+                 U SurfaceType_GetSceneExitIndex
+                 U SurfaceType_IsIgnoredByEntities
+                 U WaterBox_GetSurface1
+                 U _GLOBAL_OFFSET_TABLE_
+                 U _Unwind_Resume
+                 U std::__detail::_Prime_rehash_policy::_M_need_rehash(unsigned long, unsigned long, unsigned long) const
+                 U std::__throw_bad_alloc()
+                 U std::__throw_length_error(char const*)
+                 U std::__throw_out_of_range(char const*)
+                 U std::__throw_bad_array_new_length()
+                 U operator delete(void*)
+                 U operator delete(void*, unsigned long)
+                 U operator new(unsigned long)
+                 U __cxa_atexit
+                 U __cxa_begin_catch
+                 U __cxa_end_catch
+                 U __cxa_rethrow
+                 U __dso_handle
+                 U __gxx_personality_v0
+                 U cosf
+                 U fmodf
+                 U gActorOverlayTable
+                 U gSPDisplayList
+                 U gSPSegment
+                 U hypotf
+                 U lroundf
+                 U memcpy
+                 U memmove
+                 U memset
+                 U sPlayerAgeProperties
+                 U sPlayerLod
+                 U sinf
+                 U snprintf
+                 U sqrtf

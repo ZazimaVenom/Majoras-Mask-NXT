@@ -703,3 +703,8 @@
 /* 0x2AF */ DEFINE_ACTOR(         En_Invisible_Ruppe,  ACTOR_EN_INVISIBLE_RUPPE,  ALLOCTYPE_NORMAL,    "En_Invisible_Ruppe",  "Invisible Ruppe")
 /* 0x2B0 */ DEFINE_ACTOR(         Obj_Ending,          ACTOR_OBJ_ENDING,          ALLOCTYPE_NORMAL,    "Obj_Ending",          "Stump/Lighting (credits end)")
 /* 0x2B1 */ DEFINE_ACTOR(         En_Rsn,              ACTOR_EN_RSN,              ALLOCTYPE_NORMAL,    "En_Rsn",              "Bomb Shop Man (credits)")
+
+// 2Ship companion population actor (appended: original actor IDs are unchanged).
+/* 0x2B2 */ DEFINE_ACTOR_INTERNAL(En_Player_Bot, ACTOR_EN_PLAYER_BOT, ALLOCTYPE_NORMAL, "En_Player_Bot", "Autonomous Link Adventurer")
+
+/* 0x2B3 */ DEFINE_ACTOR_INTERNAL(En_Rpg_World_Boss, ACTOR_EN_RPG_WORLD_BOSS, ALLOCTYPE_NORMAL, "En_Rpg_World_Boss", "Ossuary Colossus World Event")

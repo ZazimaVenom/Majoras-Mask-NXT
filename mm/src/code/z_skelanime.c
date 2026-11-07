@@ -1,3 +1,4 @@
+#include "2s2h/Enhancements/RpgFramework/RpgFramework.h"
 #include "global.h"
 #include "BenPort.h"
 #include <string.h>
@@ -1067,8 +1068,7 @@ void AnimTaskQueue_AddLoadPlayerFrame(PlayState* play, PlayerAnimationHeader* an
         if (animData == NULL) {
             return;
         }
-        memcpy(ram, (const uint8_t*)animData + (((sizeof(Vec3s) * limbCount + 2) * frame)),
-               sizeof(Vec3s) * limbCount + 2);
+        memcpy(ram, (uintptr_t)animData + (((sizeof(Vec3s) * limbCount + 2) * frame)), sizeof(Vec3s) * limbCount + 2);
     }
 }
 
@@ -1731,7 +1731,7 @@ s32 SkelAnime_Update(SkelAnime* skelAnime) {
  */
 s32 SkelAnime_Morph(SkelAnime* skelAnime) {
     f32 prevMorphWeight = skelAnime->morphWeight;
-    f32 updateRate = gFramerateDivisorThird;
+    f32 updateRate = gFramerateDivisorThird * Rpg_AnimationMultiplier();
 
     skelAnime->morphWeight -= skelAnime->morphRate * updateRate;
     if (skelAnime->morphWeight <= 0.0f) {
@@ -1752,7 +1752,7 @@ s32 SkelAnime_MorphTaper(SkelAnime* skelAnime) {
     s16 curPhase;
     f32 prevWeight;
     f32 curWeight;
-    f32 updateRate = gFramerateDivisorThird;
+    f32 updateRate = gFramerateDivisorThird * Rpg_AnimationMultiplier();
 
     skelAnime->morphWeight -= skelAnime->morphRate * updateRate;
     if (skelAnime->morphWeight <= 0.0f) {
@@ -1797,7 +1797,7 @@ void SkelAnime_AnimateFrame(SkelAnime* skelAnime) {
                                    partialFrame);
     }
     if (skelAnime->morphWeight != 0) {
-        f32 updateRate = gFramerateDivisorThird;
+        f32 updateRate = gFramerateDivisorThird * Rpg_AnimationMultiplier();
 
         skelAnime->morphWeight -= skelAnime->morphRate * updateRate;
         if (skelAnime->morphWeight <= 0.0f) {
@@ -1812,7 +1812,7 @@ void SkelAnime_AnimateFrame(SkelAnime* skelAnime) {
  * Advances an animation that loops over its full length and updates the frame tables
  */
 s32 SkelAnime_LoopFull(SkelAnime* skelAnime) {
-    f32 updateRate = gFramerateDivisorThird;
+    f32 updateRate = gFramerateDivisorThird * Rpg_AnimationMultiplier();
 
     skelAnime->curFrame += skelAnime->playSpeed * updateRate;
     if (skelAnime->curFrame < 0.0f) {
@@ -1829,7 +1829,7 @@ s32 SkelAnime_LoopFull(SkelAnime* skelAnime) {
  * Advances an animation that loops over part of its length and updates the frame tables
  */
 s32 SkelAnime_LoopPartial(SkelAnime* skelAnime) {
-    f32 updateRate = gFramerateDivisorThird;
+    f32 updateRate = gFramerateDivisorThird * Rpg_AnimationMultiplier();
 
     skelAnime->curFrame += skelAnime->playSpeed * updateRate;
     if (skelAnime->curFrame < skelAnime->startFrame) {
@@ -1846,7 +1846,7 @@ s32 SkelAnime_LoopPartial(SkelAnime* skelAnime) {
  * Advances an animation that stops at endFrame and returns true when it is reached.
  */
 s32 SkelAnime_Once(SkelAnime* skelAnime) {
-    f32 updateRate = gFramerateDivisorThird;
+    f32 updateRate = gFramerateDivisorThird * Rpg_AnimationMultiplier();
 
     if (skelAnime->curFrame == skelAnime->endFrame) {
         SkelAnime_GetFrameData(skelAnime->animation, skelAnime->curFrame, skelAnime->limbCount, skelAnime->jointTable);
@@ -2082,7 +2082,7 @@ void SkelAnime_UpdateTranslation(SkelAnime* skelAnime, Vec3f* diff, s16 angle) {
  * Checks if the current animation is at the specified frame
  */
 s32 Animation_OnFrame(SkelAnime* skelAnime, f32 frame) {
-    return Animation_OnFrameImpl(skelAnime, frame, 1.0f);
+    return Animation_OnFrameImpl(skelAnime, frame, Rpg_AnimationMultiplier());
 }
 
 /**

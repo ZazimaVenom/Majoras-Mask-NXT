@@ -1,0 +1,65 @@
+[
+  {
+    "test": "core_build",
+    "returncode": 0,
+    "command": [
+      "/usr/bin/g++",
+      "-std=c++20",
+      "-O1",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "tests/player_bots/core_tests.cpp",
+      "-o",
+      "/workspace/scratch/cda0e8a05ecb/validation/baseline-bots/core_tests"
+    ],
+    "log": "core_build.log"
+  },
+  {
+    "test": "core_run",
+    "returncode": 0,
+    "command": [
+      "/workspace/scratch/cda0e8a05ecb/validation/baseline-bots/core_tests"
+    ],
+    "log": "core_run.log"
+  },
+  {
+    "test": "combat_build",
+    "returncode": 0,
+    "command": [
+      "/usr/bin/g++",
+      "-std=c++20",
+      "-O1",
+      "-g",
+      "-w",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-fsanitize=undefined",
+      "-DF3DEX_GBI_2",
+      "-DCONTROLLERBUTTONS_T=uint32_t",
+      "-Imm",
+      "-Imm/2s2h",
+      "-Imm/include",
+      "-Imm/src",
+      "-Imm/assets",
+      "-Ilibultraship/include",
+      "-Ilibultraship/include/libultraship",
+      "-Imm/include/PR",
+      "-Ilibultraship/src",
+      "-Ilibultraship/extern/fast3d/include",
+      "tests/player_bots/combat_api_tests.cpp",
+      "-Wl,--gc-sections",
+      "-o",
+      "/workspace/scratch/cda0e8a05ecb/validation/baseline-bots/combat_api_tests"
+    ],
+    "log": "combat_build.log"
+  },
+  {
+    "test": "combat_run",
+    "returncode": 0,
+    "command": [
+      "/workspace/scratch/cda0e8a05ecb/validation/baseline-bots/combat_api_tests"
+    ],
+    "log": "combat_run.log"
+  }
+]

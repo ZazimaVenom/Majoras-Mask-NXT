@@ -1,3 +1,5 @@
+#include "2s2h/Enhancements/RpgFramework/RpgHud.h"
+#include "2s2h/Enhancements/BenDrowned/BenHud.h"
 #include "BenMenu.h"
 #include "BenGui.hpp"
 #include "UIWidgets.hpp"
@@ -1074,6 +1076,195 @@ void BenMenu::AddEnhancements() {
         .Options(BtnSelectorOptions().DefaultValue(BTN_CUSTOM_MODIFIER1))
         .PreFunc([](WidgetInfo& info) { info.isHidden = CVarGetInteger("gCheats.SpeedModifier.Mode", 0) < 2; });
 
+    //// Autonomous adventurers
+    path = { "Enhancements", "Player Bots", SECTION_COLUMN_1 };
+    AddSidebarEntry("Enhancements", "Player Bots", 3);
+    AddWidget(path, "Living World", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Enable Player Bots", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.PlayerBots.Enabled")
+        .Options(CheckboxOptions().DefaultValue(true).Tooltip(
+            "Adds autonomous Link adventurers to navigable areas. Disabling removes only the added population; "
+            "your save, inventory and original actors are not replaced."));
+    AddWidget(path, "Bots Per Loaded Area", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.PlayerBots.Population")
+        .Options(IntSliderOptions().Min(10).Max(20).DefaultValue(15).Tooltip(
+            "Target population. Small rooms and unsafe geometry may fit fewer. Bots populate each area as it loads."));
+    AddWidget(path, "Bot Nameplates and Health", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.PlayerBots.Nameplates")
+        .Options(CheckboxOptions().DefaultValue(true));
+    AddWidget(path, "Include Fierce Deity Adventurers", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.PlayerBots.FierceDeity")
+        .Options(CheckboxOptions().DefaultValue(true).Tooltip("Takes effect for newly spawned bots."));
+    AddWidget(path, "Bot Respawn Delay (seconds)", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.PlayerBots.RespawnSeconds")
+        .Options(IntSliderOptions().Min(10).Max(120).DefaultValue(25));
+    path = { "Enhancements", "Player Bots", SECTION_COLUMN_2 };
+    AddWidget(path, "Combat Population", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Bots Fight Creatures", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.PlayerBots.Combat")
+        .Options(CheckboxOptions().DefaultValue(true).Tooltip(
+            "Bots and supported ordinary creatures can hurt one another. No friendly fire. "
+            "Link retains close-combat priority. Native story bosses and scripted combat are untouched."));
+    AddWidget(path, "Extra Enemies in Combat Maps", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.PlayerBots.Reinforcements")
+        .Options(CheckboxOptions().DefaultValue(true).Tooltip(
+            "Adds biome-appropriate ordinary enemies. Never adds enemies to Clock Town, houses, shops or other "
+            "non-combat areas. Added enemies do not count toward puzzle-room clearance."));
+    AddWidget(path, "Enemies Per Active Bot", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.PlayerBots.EnemiesPerBot")
+        .Options(IntSliderOptions().Min(1).Max(3).DefaultValue(2));
+    AddWidget(path, "Maximum Added Enemies", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.PlayerBots.EnemyCap")
+        .Options(IntSliderOptions().Min(0).Max(32).DefaultValue(28).Tooltip(
+            "Original enemies are counted before spawning extras. Dungeons have a separate safety ceiling of 12 extras."));
+    AddWidget(path, "Reinforcement Refill Pace (seconds)", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.PlayerBots.EnemySpawnSeconds")
+        .Options(IntSliderOptions().Min(1).Max(30).DefaultValue(3).Tooltip(
+            "Base refill delay. Large population deficits refill faster in staggered bursts; "
+            "small deficits use this delay. One new enemy at most per simulation tick."));
+    path = { "Enhancements", "Player Bots", SECTION_COLUMN_3 };
+    AddWidget(path, "Navigation and Safety", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Navigation Work Per Tick", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.PlayerBots.NavigationBudget")
+        .Options(IntSliderOptions().Min(2).Max(24).DefaultValue(8).Tooltip(
+            "Higher values explore walkable map collision faster, at a higher CPU cost. "
+            "Walls, dangerous floors, deep water and exits are checked before moving."));
+    AddWidget(path, "Towns and interiors remain peaceful.", WIDGET_TEXT);
+    AddWidget(path, "Story cutscenes and timed challenges stay vanilla.", WIDGET_TEXT);
+    AddWidget(path, "Population is temporary, not written into save files.", WIDGET_TEXT);
+
+    //// Single-player RPG framework
+    path = { "Enhancements", "RPG Framework", SECTION_COLUMN_1 };
+    AddSidebarEntry("Enhancements", "RPG Framework", 3);
+    AddWidget(path, "Progression and Character", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Enable RPG Framework", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.Rpg.Enabled")
+        .Options(CheckboxOptions().DefaultValue(true).Tooltip(
+            "Adds persistent level 1-99 progression, scaled combat and a cooperative world event. "
+            "Disabling pauses progression and removes the world event; saved XP is retained."));
+    AddWidget(path, "XP Rate (percent)", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.Rpg.XpRate").Options(IntSliderOptions().Min(25).Max(500).DefaultValue(100));
+    AddWidget(path, "RPG Character Sheet", WIDGET_CUSTOM)
+        .CustomFunction([](WidgetInfo&) { Rpg_DrawCharacterSheet(); });
+    AddWidget(path, "HUD", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "XP and World Event HUD", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.Rpg.Hud").Options(CheckboxOptions().DefaultValue(true));
+    AddWidget(path, "Enemy Target Health", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.Rpg.TargetHud").Options(CheckboxOptions().DefaultValue(true));
+    AddWidget(path, "RPG HUD Scale (percent)", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.Rpg.HudScale").Options(IntSliderOptions().Min(75).Max(150).DefaultValue(100));
+    AddWidget(path, "Encounter HUD Vertical Position (percent)", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.Rpg.BossHudY").Options(IntSliderOptions().Min(8).Max(40).DefaultValue(18));
+    AddWidget(path, "XP is stored with your normal owl / Song of Time saves.", WIDGET_TEXT);
+
+    path = { "Enhancements", "RPG Framework", SECTION_COLUMN_2 };
+    AddWidget(path, "Enemy Scaling and Berserk", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Enemy Level Variation", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.Rpg.LevelSpread")
+        .Options(IntSliderOptions().Min(0).Max(4).DefaultValue(2).Tooltip(
+            "New ordinary enemies vary around Link's level. Their stats are fixed for that life, "
+            "so leveling up never secretly heals an enemy already in combat."));
+    AddWidget(path, "Berserker Spawn Chance (percent)", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.Rpg.BerserkChance")
+        .Options(IntSliderOptions().Min(0).Max(100).DefaultValue(10).Tooltip(
+            "One roll per new eligible enemy life: more HP, damage and agility, 1.75x movement, "
+            "1.65x animation speed, shorter audited attack waits, and double kill XP."));
+    AddWidget(path, "Berserk Spark Effects", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.Rpg.BerserkEffects").Options(CheckboxOptions().DefaultValue(true));
+    AddWidget(path, "Player Recovery", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Regenerate Player Health", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.Rpg.Regeneration").Options(CheckboxOptions().DefaultValue(true));
+    AddWidget(path, "Recovery Delay After Damage (seconds)", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.Rpg.RegenDelay").Options(IntSliderOptions().Min(2).Max(20).DefaultValue(6));
+    AddWidget(path, "Maximum Health Recovered Per Second (percent)", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.Rpg.RegenPercent").Options(IntSliderOptions().Min(1).Max(8).DefaultValue(3));
+    AddWidget(path, "Recovery pauses during dialogue, transitions and cutscenes.", WIDGET_TEXT);
+    AddWidget(path, "No XP for idle spectators, despawns, or unassisted bot kills.", WIDGET_TEXT);
+
+    path = { "Enhancements", "RPG Framework", SECTION_COLUMN_3 };
+    AddWidget(path, "Termina Field World Event", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Ossuary Colossus World Boss", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.Rpg.WorldBoss")
+        .Options(CheckboxOptions().DefaultValue(true).Tooltip(
+            "A giant skeleton with telegraphed cleaves, ground slams and a ring-shaped roar. "
+            "Appears only on a broad, collision-checked dry site in Termina Field. "
+            "Keep Player Bots and Bots Fight Creatures enabled for the raid."));
+    AddWidget(path, "Additional Raid Adventurers", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.Rpg.RaidHelpers")
+        .Options(IntSliderOptions().Min(0).Max(16).DefaultValue(12).Tooltip(
+            "Separate from the ordinary 10-20 roaming bots. They gather, fight, evade attacks, "
+            "recover from defeat, and leave when the event ends. Capacity and geometry may limit arrivals."));
+    AddWidget(path, "Boss Durability Budget (minutes)", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.Rpg.BossMinutes")
+        .Options(IntSliderOptions().Min(3).Max(20).DefaultValue(10).Tooltip(
+            "An estimated raid-DPS budget, not a guaranteed kill time. HP and boss level lock when "
+            "the event starts. Actual duration depends on helper survival, equipment and player participation."));
+    AddWidget(path, "World Boss Respawn Cooldown (minutes)", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.Rpg.BossCooldownMinutes")
+        .Options(IntSliderOptions().Min(1).Max(60).DefaultValue(15).Tooltip(
+            "Active gameplay time after a kill. Remaining cooldown persists in normal saves and across Song of Time."));
+    AddWidget(path, "Fight phases: cleave, slam, death-knell ring, then enrage.", WIDGET_TEXT);
+    AddWidget(path, "Land hits to earn the world-boss XP reward; stay involved.", WIDGET_TEXT);
+    AddWidget(path, "Regular bots keep roaming. No extra enemies in safe maps.", WIDGET_TEXT);
+
+    //// BEN DROWNED: pre-game opt-in, live comfort controls and casebook
+    path = { "Enhancements", "BEN DROWNED", SECTION_COLUMN_1 };
+    AddSidebarEntry("Enhancements", "BEN DROWNED", 3);
+    AddWidget(path, "Invite the Presence", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Enable BEN DROWNED (next save load)", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.BenDrowned.Enabled")
+        .Options(CheckboxOptions().DefaultValue(false).Tooltip(
+            "An opt-in, endlessly returning supernatural story layered over normal play. "
+            "Choose before loading a save. A mid-session change applies when you return to the title screen "
+            "and reload; Suspend stops the current haunting immediately."));
+    AddWidget(path, "Presence Intensity", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.BenDrowned.Intensity")
+        .Options(IntSliderOptions().Min(0).Max(2).DefaultValue(1).Tooltip(
+            "0: Story - longer quiet intervals. 1: Standard - measured escalation. "
+            "2: Relentless - shorter intervals and greater pressure. No rapid flashing at any setting."));
+    AddWidget(path, "0 Story / 1 Standard / 2 Relentless", WIDGET_TEXT);
+    AddWidget(path, "Current Session", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "BEN Session and Emergency Suspend", WIDGET_CUSTOM)
+        .CustomFunction([](WidgetInfo&) { Ben_DrawSessionPanel(); });
+    AddWidget(path, "Open BEN Casebook", WIDGET_WINDOW_BUTTON)
+        .CVar("gWindows.BenJournal")
+        .WindowName("BEN DROWNED Casebook")
+        .Options(ButtonOptions().Tooltip("Opens the haunting journal, responses, current thread and emergency suspend control."));
+
+    path = { "Enhancements", "BEN DROWNED", SECTION_COLUMN_2 };
+    AddWidget(path, "Atmosphere and Encounters", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Reduced Visual Effects", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.BenDrowned.ReducedEffects")
+        .Options(CheckboxOptions().DefaultValue(true).Tooltip(
+            "Default on. Softens environmental effects and edge shading without hiding messages or clues. "
+            "The signal never uses rapid full-screen flashes."));
+    AddWidget(path, "BEN Subtitles", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.BenDrowned.Subtitles")
+        .Options(CheckboxOptions().DefaultValue(true).Tooltip(
+            "Shows readable, gently fading narrative messages. All messages are also recorded in the casebook."));
+    AddWidget(path, "BEN Ambient Audio", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.BenDrowned.AmbientAudio")
+        .Options(CheckboxOptions().DefaultValue(true).Tooltip(
+            "Enables the haunting's atmospheric sound cues. Turning this off preserves subtitles, objectives and gameplay."));
+    AddWidget(path, "Mirrored World Manifestations", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.BenDrowned.Mirror")
+        .Options(CheckboxOptions().DefaultValue(true).Tooltip(
+            "Temporary horizontal reflection of the loaded world, including Clock Town; "
+            "retains normal collision and progress. Independent of Reduced Visual Effects."));
+    AddWidget(path, "BEN Combat Encounters", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.BenDrowned.Encounters")
+        .Options(CheckboxOptions().DefaultValue(true).Tooltip(
+            "Allows the presence to stage optional combat encounters in supported combat areas. "
+            "Turn off for narrative, exploration, trials and the statue without extra BEN enemies."));
+    AddWidget(path, "Your Answer", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "BEN Responses", WIDGET_CUSTOM)
+        .CustomFunction([](WidgetInfo&) { Ben_DrawResponsePanel(); });
+
+    path = { "Enhancements", "BEN DROWNED", SECTION_COLUMN_3 };
+    AddWidget(path, "Casebook", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "BEN Witness Records", WIDGET_CUSTOM)
+        .CustomFunction([](WidgetInfo&) { Ben_DrawJournalPanel(); });
+
     //// Gameplay Enhancements
     path = { "Enhancements", "Gameplay", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", "Gameplay", 3);
@@ -1156,11 +1347,11 @@ void BenMenu::AddEnhancements() {
         .CVar("gEnhancements.Equipment.InvertShieldY")
         .Options(CheckboxOptions().Tooltip(
             "Invert the Y axis while holding the shield so that it moves up with the left stick."));
-    AddWidget(path, "Active Item on B", WIDGET_CVAR_CHECKBOX)
-        .CVar("gEnhancements.Equipment.ActiveItemOnB")
+    AddWidget(path, "Great Fairy Sword B-Button Attack", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.Equipment.GreatFairySwordBButton")
         .Options(CheckboxOptions().Tooltip(
-            "Press B to use the item currently held by Link (Bow, Hookshot, Great Fairy's Sword and Deku Stick). "
-            "Second press on item unequips it."));
+            "When the Great Fairy's Sword is held, pressing B attacks with it instead of drawing "
+            "your equipped sword. The sword can still be put away with A as normal."));
     AddWidget(path, "Invert Zora Swim Y Axis", WIDGET_CVAR_CHECKBOX)
         .CVar("gEnhancements.Player.InvertZoraSwimY")
         .Options(CheckboxOptions().DefaultValue(true).Tooltip(
@@ -1347,11 +1538,6 @@ void BenMenu::AddEnhancements() {
         .Options(CheckboxOptions().Tooltip(
             "Allows the player to keep the Express Mail in their inventory after delivering it "
             "the first time, so that both deliveries can be done within one cycle."));
-    AddWidget(path, "Mayor argues until moonfall", WIDGET_CVAR_CHECKBOX)
-        .CVar("gEnhancements.Cycle.MayorArguesUntilMoonfall")
-        .Options(CheckboxOptions().Tooltip(
-            "The mayoral meeting normally breaks up on the night of the Final Day. This keeps it going until the moon "
-            "falls, so the Couple's Mask can still be shown to Mayor Dotour for his Piece of Heart."));
     AddWidget(path, "Stop Oceanside Spider House squatter", WIDGET_CVAR_CHECKBOX)
         .CVar("gEnhancements.Cycle.StopOceansideSpiderHouseSquatter")
         .Options(
@@ -1588,9 +1774,6 @@ void BenMenu::AddEnhancements() {
     AddWidget(path, "Color Pictograph", WIDGET_CVAR_CHECKBOX)
         .CVar("gEnhancements.Items.ColorPictograph")
         .Options(CheckboxOptions().Tooltip("Will take and display pictographs in color."));
-    AddWidget(path, "Hot Water Never Cools", WIDGET_CVAR_CHECKBOX)
-        .CVar("gEnhancements.Items.HotWaterNeverCools")
-        .Options(CheckboxOptions().Tooltip("Prevents Hot Spring Water from cooling down into regular Spring Water."));
 
     // Time Savers
     path = { "Enhancements", "Time Savers", SECTION_COLUMN_1 };
@@ -1767,13 +1950,6 @@ void BenMenu::AddEnhancements() {
         .Options(CheckboxOptions().Tooltip(
             "Fixes a bug where the Deku Butler loops the incorrect animation in the cutscene that plays after "
             "freeing the Deku Princess."));
-    AddWidget(path, "Fix Owl Save Scene Layers", WIDGET_CVAR_CHECKBOX)
-        .CVar("gEnhancements.Fixes.OwlSaveSceneLayers")
-        .Options(CheckboxOptions()
-                     .Tooltip("Fixes owl saves loading areas in their uncleared state (e.g. Great Bay Coast after "
-                              "defeating Gyorg) in certain scenarios. This is a vanilla bug but more common with "
-                              "the Pause Save/Remember Save Location enhancements.")
-                     .DefaultValue(true));
 
     // Restorations
     path = { "Enhancements", "Restorations", SECTION_COLUMN_1 };
@@ -2075,9 +2251,6 @@ void BenMenu::AddEnhancements() {
     AddWidget(path, "No Random Drops", WIDGET_CVAR_CHECKBOX)
         .CVar("gEnhancements.DifficultyOptions.NoRandomDrops")
         .Options(CheckboxOptions().Tooltip("Prevents spawning of any collectibles."));
-    AddWidget(path, "Drops Don't Despawn", WIDGET_CVAR_CHECKBOX)
-        .CVar("gEnhancements.DifficultyOptions.NoDropDespawning")
-        .Options(CheckboxOptions().Tooltip("Prevents drops from despawning after a set amount of time."));
     AddWidget(path, "Always Find Rock Sirloin", WIDGET_CVAR_CHECKBOX)
         .CVar("gEnhancements.DifficultyOptions.AlwaysFindRockSirloin")
         .Options(CheckboxOptions().Tooltip(
@@ -2191,7 +2364,7 @@ void BenMenu::AddDevTools() {
                      .Tooltip("Change the behavior of creating saves while debug mode is enabled:\n\n"
                               "- Empty Save: The default 3 heart save file in first cycle.\n"
                               "- Vanilla Debug Save: Uses the title screen save info (8 hearts, all items and masks).\n"
-                              "- 100\% Save: All items, equipment, mask, quest status and Bombers' Notebook complete.")
+                              "- 100% Save: All items, equipment, mask, quest status and Bombers' Notebook complete.")
                      .ComboVec(&debugSaveOptions))
         .PreFunc([](WidgetInfo& info) { info.isHidden = mBenMenu->disabledMap.at(DISABLE_FOR_DEBUG_MODE_OFF).active; });
     AddWidget(path, "Prevent Actor Update", WIDGET_CVAR_CHECKBOX)

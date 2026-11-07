@@ -14,12 +14,12 @@ void BgAstrBombwall_Destroy(Actor* thisx, PlayState* play);
 void BgAstrBombwall_Update(Actor* thisx, PlayState* play);
 void BgAstrBombwall_Draw(Actor* thisx, PlayState* play);
 
-void BgAstrBombwall_SetupStanding(BgAstrBombwall* this);
-void BgAstrBombwall_Standing(BgAstrBombwall* this, PlayState* play);
-void BgAstrBombwall_SetupExploding(BgAstrBombwall* this, PlayState* play);
-void BgAstrBombwall_Exploding(BgAstrBombwall* this, PlayState* play);
-void BgAstrBombwall_SetupCollapsing(BgAstrBombwall* this, PlayState* play);
-void BgAstrBombwall_Collapsing(BgAstrBombwall* this, PlayState* play);
+void func_80C0A378(BgAstrBombwall* this);
+void func_80C0A38C(BgAstrBombwall* this, PlayState* play);
+void func_80C0A400(BgAstrBombwall* this, PlayState* play);
+void func_80C0A418(BgAstrBombwall* this, PlayState* play);
+void func_80C0A458(BgAstrBombwall* this, PlayState* play);
+void func_80C0A4BC(BgAstrBombwall* this, PlayState* play);
 
 ActorProfile Bg_Astr_Bombwall_Profile = {
     /**/ ACTOR_BG_ASTR_BOMBWALL,
@@ -99,7 +99,7 @@ void BgAstrBombwall_Init(Actor* thisx, PlayState* play) {
 
     Actor_ProcessInitChain(&this->dyna.actor, sInitChain);
     DynaPolyActor_Init(&this->dyna, DYNA_TRANSFORM_POS);
-    DynaPolyActor_LoadMesh(play, &this->dyna, &gAstralObservatoryBombWallCol);
+    DynaPolyActor_LoadMesh(play, &this->dyna, &object_astr_obj_Colheader_002498);
     Collider_InitTris(play, &this->collider);
     if (Flags_GetSwitch(play, BGASTRBOMBWALL_GET_SWITCH_FLAG(thisx))) {
         Actor_Kill(&this->dyna.actor);
@@ -112,7 +112,7 @@ void BgAstrBombwall_Init(Actor* thisx, PlayState* play) {
     }
     BgAstrBombwall_InitCollider(&sTrisInit, &this->dyna.actor.world.pos, &this->dyna.actor.shape.rot, &this->collider);
     SubS_FillCutscenesList(&this->dyna.actor, this->csIdList, ARRAY_COUNT(this->csIdList));
-    BgAstrBombwall_SetupStanding(this);
+    func_80C0A378(this);
 }
 
 void BgAstrBombwall_Destroy(Actor* thisx, PlayState* play) {
@@ -121,11 +121,11 @@ void BgAstrBombwall_Destroy(Actor* thisx, PlayState* play) {
     DynaPoly_DeleteBgActor(play, &play->colCtx.dyna, this->dyna.bgId);
 }
 
-void BgAstrBombwall_SpawnFragments(BgAstrBombwall* this, PlayState* play) {
+void func_80C0A120(BgAstrBombwall* this, PlayState* play) {
     s32 i;
     Vec3f vec;
     Vec3f pos;
-    s16 spinRate;
+    s16 var_v0;
     Vec3f velocity;
     f32 rand;
 
@@ -143,50 +143,50 @@ void BgAstrBombwall_SpawnFragments(BgAstrBombwall* this, PlayState* play) {
         rand = Rand_ZeroOne();
 
         if (rand < 0.2f) {
-            spinRate = 0x60;
+            var_v0 = 0x60;
         } else if (rand < 0.6f) {
-            spinRate = 0x40;
+            var_v0 = 0x40;
         } else {
-            spinRate = 0x20;
+            var_v0 = 0x20;
         }
-        EffectSsKakera_Spawn(play, &pos, &velocity, &pos, -260, spinRate, 20, 0, 0, 10, 0, 0, 50, -1, OBJECT_ASTR_OBJ,
-                             gAstralObservatoryBombWallFragmentDL);
+        EffectSsKakera_Spawn(play, &pos, &velocity, &pos, -260, var_v0, 20, 0, 0, 10, 0, 0, 50, -1, OBJECT_ASTR_OBJ,
+                             object_astr_obj_DL_002178);
     }
 }
 
-void BgAstrBombwall_SetupStanding(BgAstrBombwall* this) {
-    this->actionFunc = BgAstrBombwall_Standing;
+void func_80C0A378(BgAstrBombwall* this) {
+    this->actionFunc = func_80C0A38C;
 }
 
-void BgAstrBombwall_Standing(BgAstrBombwall* this, PlayState* play) {
+void func_80C0A38C(BgAstrBombwall* this, PlayState* play) {
     if (this->collider.base.acFlags & AC_HIT) {
         this->collider.base.acFlags &= ~AC_HIT;
         Flags_SetSwitch(play, BGASTRBOMBWALL_GET_SWITCH_FLAG(&this->dyna.actor));
-        BgAstrBombwall_SetupExploding(this, play);
+        func_80C0A400(this, play);
     } else {
         CollisionCheck_SetAC(play, &play->colChkCtx, &this->collider.base);
     }
 }
 
-void BgAstrBombwall_SetupExploding(BgAstrBombwall* this, PlayState* play) {
-    this->actionFunc = BgAstrBombwall_Exploding;
+void func_80C0A400(BgAstrBombwall* this, PlayState* play) {
+    this->actionFunc = func_80C0A418;
 }
 
-void BgAstrBombwall_Exploding(BgAstrBombwall* this, PlayState* play) {
+void func_80C0A418(BgAstrBombwall* this, PlayState* play) {
     if (SubS_StartCutscene(&this->dyna.actor, this->csIdList[0], CS_ID_NONE, SUBS_CUTSCENE_WITH_PLAYER)) {
-        BgAstrBombwall_SetupCollapsing(this, play);
+        func_80C0A458(this, play);
     }
 }
 
-void BgAstrBombwall_SetupCollapsing(BgAstrBombwall* this, PlayState* play) {
+void func_80C0A458(BgAstrBombwall* this, PlayState* play) {
     DynaPoly_DisableCollision(play, &play->colCtx.dyna, this->dyna.bgId);
     this->dyna.actor.draw = NULL;
-    BgAstrBombwall_SpawnFragments(this, play);
+    func_80C0A120(this, play);
     Actor_PlaySfx(&this->dyna.actor, NA_SE_EV_WALL_BROKEN);
-    this->actionFunc = BgAstrBombwall_Collapsing;
+    this->actionFunc = func_80C0A4BC;
 }
 
-void BgAstrBombwall_Collapsing(BgAstrBombwall* this, PlayState* play) {
+void func_80C0A4BC(BgAstrBombwall* this, PlayState* play) {
 }
 
 void BgAstrBombwall_Update(Actor* thisx, PlayState* play) {
@@ -205,7 +205,7 @@ void BgAstrBombwall_Draw(Actor* thixs, PlayState* play) {
         gSPDisplayList(&opa[0], gSetupDLs[SETUPDL_25]);
         MATRIX_FINALIZE_AND_LOAD(&opa[1], play->state.gfxCtx);
         gSPSetGeometryMode(&opa[2], G_LIGHTING_POSITIONAL);
-        gSPDisplayList(&opa[3], gAstralObservatoryBombWallDL);
+        gSPDisplayList(&opa[3], object_astr_obj_DL_002380);
         POLY_OPA_DISP = &opa[4];
 
         CLOSE_DISPS(play->state.gfxCtx);
@@ -219,7 +219,7 @@ void BgAstrBombwall_Draw(Actor* thixs, PlayState* play) {
         gSPDisplayList(&xlu[0], gSetupDLs[SETUPDL_25]);
         MATRIX_FINALIZE_AND_LOAD(&xlu[1], play->state.gfxCtx);
         gSPSetGeometryMode(&xlu[2], G_LIGHTING_POSITIONAL);
-        gSPDisplayList(&xlu[3], gAstralObservatoryBombWallCrackDL);
+        gSPDisplayList(&xlu[3], object_astr_obj_DL_0022E0);
         POLY_XLU_DISP = &xlu[4];
 
         CLOSE_DISPS(play->state.gfxCtx);

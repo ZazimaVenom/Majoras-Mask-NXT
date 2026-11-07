@@ -1,0 +1,58 @@
+[
+  {
+    "name": "pool_metrics_build",
+    "command": [
+      "g++",
+      "-std=c++20",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Wconversion",
+      "-Wformat=2",
+      "-fsanitize=undefined",
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/rando-warnings/pool_metrics.cpp",
+      "-o",
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/rando-warnings/pool_metrics"
+    ],
+    "returncode": 0,
+    "log": "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/rando-warnings/pool_metrics_build.log"
+  },
+  {
+    "name": "pool_metrics_run",
+    "command": [
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/rando-warnings/pool_metrics"
+    ],
+    "returncode": 0,
+    "log": "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/rando-warnings/pool_metrics_run.log"
+  },
+  {
+    "name": "mixer_msvc_guard",
+    "command": [
+      "gcc",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-undef",
+      "-D_MSC_VER=1944",
+      "-"
+    ],
+    "returncode": 0,
+    "log": "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/rando-warnings/mixer_msvc_guard.log"
+  },
+  {
+    "name": "z_kaleido_scope_NES_msvc_guard",
+    "command": [
+      "gcc",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-undef",
+      "-D_MSC_VER=1944",
+      "-"
+    ],
+    "returncode": 0,
+    "log": "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/rando-warnings/z_kaleido_scope_NES_msvc_guard.log"
+  }
+]

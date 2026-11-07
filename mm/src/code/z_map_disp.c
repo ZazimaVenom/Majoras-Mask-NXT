@@ -1,3 +1,4 @@
+#include "2s2h/Enhancements/BenDrowned/BenDrowned.h"
 #include "global.h"
 #include "gfx.h"
 #include "assets/interface/icon_item_dungeon_static/icon_item_dungeon_static.h"
@@ -153,7 +154,7 @@ s32 Ship_MapModifyPosMirrorMode(s32 pos, s32 offset) {
 }
 
 void Ship_MapDispUpdateMirrorMode() {
-    sMirrorWorldActive = CVarGetInteger("gModes.MirroredWorld.State", 0);
+    sMirrorWorldActive = Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0));
 
     for (s32 i = 0; i < sSceneNumRooms; i++) {
         sMapDataRooms[i].flags = sOriginalMapDataRoomFlags[i];

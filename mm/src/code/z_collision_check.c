@@ -1,3 +1,6 @@
+#include "2s2h/Enhancements/RpgFramework/RpgFramework.h"
+#include "2s2h/Enhancements/RpgFramework/RpgWorldBoss.h"
+#include "2s2h/Enhancements/PlayerBots/PlayerBots.h"
 #include "z64collision_check.h"
 #include "2s2h/GameInteractor/GameInteractor.h"
 
@@ -1718,6 +1721,13 @@ s32 CollisionCheck_SetATvsAC(struct PlayState* play, Collider* atCol, ColliderEl
         acElem->acDmgInfo.hitPos.y = hitPos->y;
         acElem->acDmgInfo.hitPos.z = hitPos->z;
     }
+    if (RpgWorldBoss_IsBoss(acCol->actor) && !(acCol->acFlags & AC_HARD) &&
+        !(acElem->acElemFlags & ACELEM_NO_DAMAGE)) {
+        u32 rpgEffect;
+        f32 rpgDamage = CollisionCheck_GetDamageAndEffectOnElementAC(atCol, atElem, acCol, acElem, &rpgEffect);
+        rpgDamage = CollisionCheck_ApplyElementATDefense(rpgDamage, acElem);
+        if (rpgDamage > 0.0f) RpgWorldBoss_RecordContact(play, atCol, rpgDamage, atElem->atDmgInfo.dmgFlags);
+    }
     if (!(atElem->atElemFlags & ATELEM_AT_HITMARK) && (acCol->colMaterial != COL_MATERIAL_METAL) &&
         (acCol->colMaterial != COL_MATERIAL_WOOD) && (acCol->colMaterial != COL_MATERIAL_HARD)) {
         acElem->acElemFlags |= ACELEM_DRAW_HITMARK;
@@ -2981,6 +2991,9 @@ void CollisionCheck_AC(struct PlayState* play, CollisionCheckContext* colChkCtx,
                 if (!(atCol->atFlags & AT_SELF) && (atCol->actor != NULL) && (acCol->actor == atCol->actor)) {
                     continue;
                 }
+                if (!PlayerBots_CanHit(play, atCol, acCol)) {
+                    continue;
+                }
                 sACVsFuncs[atCol->shape][acCol->shape](play, colChkCtx, atCol, acCol);
             }
         }
@@ -3531,6 +3544,7 @@ void CollisionCheck_ApplyDamage(struct PlayState* play, CollisionCheckContext* c
         }
         if (!(col->acFlags & AC_HARD) || ((col->acFlags & AC_HARD) && (atElem->atDmgInfo.dmgFlags == 0x20000000))) {
             if (col->actor->colChkInfo.damage < finalDamage) {
+                Rpg_OnDamageContact(play, atCol, col, finalDamage, atElem->atDmgInfo.dmgFlags);
                 col->actor->colChkInfo.damage = finalDamage;
             }
         }

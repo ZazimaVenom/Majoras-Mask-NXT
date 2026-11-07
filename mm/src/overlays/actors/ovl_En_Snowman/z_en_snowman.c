@@ -1,3 +1,4 @@
+#include "2s2h/Enhancements/RpgFramework/RpgFramework.h"
 /*
  * File: z_en_snowman.c
  * Overlay: ovl_En_Snowman
@@ -973,6 +974,7 @@ void EnSnowman_UpdateDamage(EnSnowman* this, PlayState* play) {
             (EN_SNOWMAN_GET_TYPE(&this->actor) != EN_SNOWMAN_TYPE_LARGE)) {
             if (this->actor.colChkInfo.damageEffect == EN_SNOWMAN_DMGEFF_MELT) {
                 Enemy_StartFinishingBlow(play, &this->actor);
+                Rpg_OnNativeDefeat(&this->actor);
                 Actor_ApplyDamage(&this->actor);
                 EnSnowman_SetupMelt(this);
             } else {

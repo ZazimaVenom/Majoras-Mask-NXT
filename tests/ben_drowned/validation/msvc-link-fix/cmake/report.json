@@ -1,0 +1,43 @@
+[
+  {
+    "step": "configure",
+    "command": [
+      "/workspace/scratch/cda0e8a05ecb/validation/dependencies/cmake/data/bin/cmake",
+      "-S",
+      "/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/tests/ben_drowned",
+      "-B",
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/cmake/build",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-Dnlohmann_json_DIR=/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/cmake/json-config"
+    ],
+    "returncode": 0,
+    "log": "configure.log"
+  },
+  {
+    "step": "build",
+    "command": [
+      "/workspace/scratch/cda0e8a05ecb/validation/dependencies/cmake/data/bin/cmake",
+      "--build",
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/cmake/build",
+      "--target",
+      "BenWorldTests",
+      "--parallel",
+      "2"
+    ],
+    "returncode": 0,
+    "log": "build.log"
+  },
+  {
+    "step": "ctest",
+    "command": [
+      "/workspace/scratch/cda0e8a05ecb/validation/dependencies/cmake/data/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/cmake/build",
+      "--output-on-failure",
+      "-R",
+      "^Ben.WorldDrawLinkage$"
+    ],
+    "returncode": 0,
+    "log": "ctest.log"
+  }
+]

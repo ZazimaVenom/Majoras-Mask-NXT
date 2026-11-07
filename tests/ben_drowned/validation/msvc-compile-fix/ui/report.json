@@ -1,0 +1,68 @@
+[
+  {
+    "test": "ui_windows_small_macro",
+    "status": "PASS",
+    "returncode": 0,
+    "command": [
+      "/usr/bin/g++",
+      "-std=c++20",
+      "-O1",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm",
+      "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/2s2h",
+      "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include",
+      "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include",
+      "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship",
+      "-I/workspace/scratch/cda0e8a05ecb/validation/full-build-probe/_deps/imgui-src",
+      "-I/workspace/scratch/cda0e8a05ecb/validation/dependencies/nlohmann_json/include",
+      "-Dsmall=char",
+      "-fsyntax-only",
+      "/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/2s2h/Enhancements/BenDrowned/BenHud.cpp"
+    ],
+    "log": "ui_windows_small_macro.log"
+  },
+  {
+    "test": "ui_build",
+    "status": "PASS",
+    "returncode": 0,
+    "command": [
+      "/usr/bin/g++",
+      "-std=c++20",
+      "-O1",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm",
+      "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/2s2h",
+      "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include",
+      "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include",
+      "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship",
+      "-I/workspace/scratch/cda0e8a05ecb/validation/full-build-probe/_deps/imgui-src",
+      "-I/workspace/scratch/cda0e8a05ecb/validation/dependencies/nlohmann_json/include",
+      "/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/tests/ben_drowned/ui_tests.cpp",
+      "/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/2s2h/Enhancements/BenDrowned/BenHud.cpp",
+      "/workspace/scratch/cda0e8a05ecb/validation/full-build-probe/_deps/imgui-src/imgui.cpp",
+      "/workspace/scratch/cda0e8a05ecb/validation/full-build-probe/_deps/imgui-src/imgui_draw.cpp",
+      "/workspace/scratch/cda0e8a05ecb/validation/full-build-probe/_deps/imgui-src/imgui_tables.cpp",
+      "/workspace/scratch/cda0e8a05ecb/validation/full-build-probe/_deps/imgui-src/imgui_widgets.cpp",
+      "-o",
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-compile-fix/ui/ui_tests"
+    ],
+    "log": "ui_build.log"
+  },
+  {
+    "test": "ui_run",
+    "status": "PASS",
+    "returncode": 0,
+    "command": [
+      "/workspace/scratch/cda0e8a05ecb/validation/msvc-compile-fix/ui/ui_tests"
+    ],
+    "log": "ui_run.log"
+  }
+]

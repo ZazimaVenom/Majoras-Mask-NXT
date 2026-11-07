@@ -1,4 +1,5 @@
 #include "GameInteractor.h"
+#include "2s2h/Enhancements/BenDrowned/BenDrowned.h"
 #include <variant>
 #include <spdlog/spdlog.h>
 #include <libultraship/bridge/consolevariablebridge.h>
@@ -52,6 +53,7 @@ void GameInteractor_ExecuteOnSaveInit(s16 fileNum) {
 }
 
 void GameInteractor_ExecuteOnSaveLoad(s16 fileNum) {
+    Ben_OnSaveLoad();
     GameInteractor::Instance->ExecuteHooks<GameInteractor::OnSaveLoad>(fileNum);
 }
 
@@ -199,13 +201,6 @@ void GameInteractor_ExecuteOnBossDefeated(s16 actorId) {
     GameInteractor::Instance->ExecuteHooksForID<GameInteractor::OnBossDefeated>(actorId, actorId);
     GameInteractor::Instance->ExecuteHooksForPtr<GameInteractor::OnBossDefeated>((uintptr_t)actorId, actorId);
     GameInteractor::Instance->ExecuteHooksForFilter<GameInteractor::OnBossDefeated>(actorId);
-}
-
-void GameInteractor_ExecuteOnActorEntryHalfDaysBits(ActorEntry* actorEntry, s32* halfDaysBits) {
-    GameInteractor::Instance->ExecuteHooks<GameInteractor::OnActorEntryHalfDaysBits>(actorEntry, halfDaysBits);
-    GameInteractor::Instance->ExecuteHooksForID<GameInteractor::OnActorEntryHalfDaysBits>(actorEntry->id & 0x1FFF,
-                                                                                          actorEntry, halfDaysBits);
-    GameInteractor::Instance->ExecuteHooksForFilter<GameInteractor::OnActorEntryHalfDaysBits>(actorEntry, halfDaysBits);
 }
 
 void GameInteractor_ExecuteOnSceneFlagSet(s16 sceneId, FlagType flagType, u32 flag) {
@@ -379,7 +374,7 @@ int GameInteractor_InvertControl(GIInvertType type) {
     }
 
     // Invert all X axis inputs if the Mirrored World mode is enabled
-    if (CVarGetInteger("gModes.MirroredWorld.State", 0)) {
+    if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0))) {
         switch (type) {
             case GI_INVERT_CAMERA_RIGHT_STICK_X:
             case GI_INVERT_MOVEMENT_X:

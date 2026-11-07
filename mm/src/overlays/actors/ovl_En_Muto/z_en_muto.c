@@ -5,7 +5,6 @@
  */
 
 #include "z_en_muto.h"
-#include "2s2h/GameInteractor/GameInteractor.h"
 
 #define FLAGS (ACTOR_FLAG_ATTENTION_ENABLED | ACTOR_FLAG_FRIENDLY)
 
@@ -69,8 +68,7 @@ void EnMuto_Init(Actor* thisx, PlayState* play) {
             this->textIdIndex = 3;
         }
 
-        if (!GameInteractor_Should(VB_MAYOR_MEETING_END_ON_FINAL_NIGHT,
-                                   (gSaveContext.save.day == 3) && gSaveContext.save.isNight)) {
+        if ((gSaveContext.save.day != 3) || !gSaveContext.save.isNight) {
             Actor_Kill(&this->actor);
         }
     } else {
@@ -79,8 +77,7 @@ void EnMuto_Init(Actor* thisx, PlayState* play) {
         this->collider.dim.yShift = 0;
 
         if (CHECK_WEEKEVENTREG(WEEKEVENTREG_RESOLVED_MAYOR_MEETING) ||
-            GameInteractor_Should(VB_MAYOR_MEETING_END_ON_FINAL_NIGHT,
-                                  (gSaveContext.save.day == 3) && gSaveContext.save.isNight)) {
+            ((gSaveContext.save.day == 3) && gSaveContext.save.isNight)) {
             Actor_Kill(&this->actor);
         }
     }
@@ -265,8 +262,7 @@ void EnMuto_Update(Actor* thisx, PlayState* play2) {
         EnMuto_SetHeadRotation(this);
     }
 
-    if (this->isInMayorsRoom && GameInteractor_Should(VB_MAYOR_MEETING_END_ON_FINAL_NIGHT,
-                                                      (gSaveContext.save.day == 3) && gSaveContext.save.isNight)) {
+    if (this->isInMayorsRoom && (gSaveContext.save.day == 3) && gSaveContext.save.isNight) {
         Actor_Kill(&this->actor);
         return;
     }

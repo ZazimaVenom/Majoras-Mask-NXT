@@ -1,0 +1,5 @@
+/usr/bin/ld: /tmp/ccnQDsju.o: in function `Ben::WorldDraw(PlayState*)':
+/workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/draw/before/BenWorld.cpp:432:(.text._ZN3Ben9WorldDrawEP9PlayState+0xf0): undefined reference to `Ben::FrameInterpolation_RecordOpenChild(void const*, int)'
+/usr/bin/ld: /workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/draw/before/BenWorld.cpp:437:(.text._ZN3Ben9WorldDrawEP9PlayState+0x138): undefined reference to `Ben::FrameInterpolation_RecordOpenChild(void const*, int)'
+/usr/bin/ld: /workspace/scratch/cda0e8a05ecb/validation/msvc-link-fix/draw/before/BenWorld.cpp:448:(.text._ZN3Ben9WorldDrawEP9PlayState+0x2d9): undefined reference to `Ben::FrameInterpolation_RecordCloseChild()'
+collect2: error: ld returned 1 exit status

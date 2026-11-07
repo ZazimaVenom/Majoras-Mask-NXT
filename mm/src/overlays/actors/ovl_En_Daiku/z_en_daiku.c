@@ -5,7 +5,6 @@
  */
 
 #include "z_en_daiku.h"
-#include "2s2h/GameInteractor/GameInteractor.h"
 
 #define FLAGS (ACTOR_FLAG_ATTENTION_ENABLED | ACTOR_FLAG_FRIENDLY)
 
@@ -114,8 +113,7 @@ void EnDaiku_Init(Actor* thisx, PlayState* play) {
         this->collider.dim.yShift = 0;
         this->actor.flags |= ACTOR_FLAG_LOCK_ON_DISABLED;
         if (CHECK_WEEKEVENTREG(WEEKEVENTREG_RESOLVED_MAYOR_MEETING) ||
-            GameInteractor_Should(VB_MAYOR_MEETING_END_ON_FINAL_NIGHT,
-                                  (gSaveContext.save.day == 3) && gSaveContext.save.isNight)) {
+            ((gSaveContext.save.day == 3) && gSaveContext.save.isNight)) {
             Actor_Kill(&this->actor);
         }
     } else if ((gSaveContext.save.day == 3) && gSaveContext.save.isNight) {
@@ -293,9 +291,7 @@ void EnDaiku_Update(Actor* thisx, PlayState* play) {
         SkelAnime_Update(&this->skelAnime);
     }
 
-    if ((this->unk_278 == ENDAIKU_PARAM_FF_0) &&
-        GameInteractor_Should(VB_MAYOR_MEETING_END_ON_FINAL_NIGHT,
-                              (gSaveContext.save.day == 3) && gSaveContext.save.isNight)) {
+    if ((this->unk_278 == ENDAIKU_PARAM_FF_0) && (gSaveContext.save.day == 3) && (gSaveContext.save.isNight)) {
         Actor_Kill(&this->actor);
         return;
     }

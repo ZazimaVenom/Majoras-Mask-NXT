@@ -1,0 +1,7 @@
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/tests/ben_drowned/ui_tests.cpp: In function ‘int main()’:
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/tests/ben_drowned/ui_tests.cpp:104:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+  104 |     for(int i=0;i<3;++i)Frame(hud,journal,640,480);SaveFrame("ben_hud_640.ppm");
+      |     ^~~
+/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/tests/ben_drowned/ui_tests.cpp:104:52: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+  104 |     for(int i=0;i<3;++i)Frame(hud,journal,640,480);SaveFrame("ben_hud_640.ppm");
+      |                                                    ^~~~~~~~~

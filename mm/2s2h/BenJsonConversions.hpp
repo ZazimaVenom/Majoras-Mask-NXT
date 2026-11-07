@@ -4,6 +4,8 @@
 #include <nlohmann/json.hpp>
 #include <spdlog/spdlog.h>
 #include "build.h"
+#include "2s2h/Enhancements/RpgFramework/RpgJson.h"
+#include "2s2h/Enhancements/BenDrowned/BenJson.h"
 
 extern "C" {
 #include "z64save.h"
@@ -124,6 +126,8 @@ inline void to_json(json& j, const ShipSaveInfo& shipSaveInfo) {
         { "dpadEquips", shipSaveInfo.dpadEquips },
         { "pauseSaveEntrance", shipSaveInfo.pauseSaveEntrance },
         { "persistentBunnyHood", shipSaveInfo.persistentBunnyHood },
+        { "rpg", shipSaveInfo.rpg },
+        { "ben", shipSaveInfo.ben },
         { "saveType", shipSaveInfo.saveType },
         { "fileCreatedAt", shipSaveInfo.fileCreatedAt },
         { "fileCompletedAt", shipSaveInfo.fileCompletedAt },
@@ -141,6 +145,10 @@ inline void from_json(const json& j, ShipSaveInfo& shipSaveInfo) {
     j.at("dpadEquips").get_to(shipSaveInfo.dpadEquips);
     j.at("pauseSaveEntrance").get_to(shipSaveInfo.pauseSaveEntrance);
     j.at("persistentBunnyHood").get_to(shipSaveInfo.persistentBunnyHood);
+    // Optional for legacy direct conversions; the version-9 migration also
+    // populates it for normal loads. Never inherit another slot's in-memory XP.
+    shipSaveInfo.rpg = j.contains("rpg") ? Rpg::DecodeProgress(j.at("rpg")) : Rpg::NewProgress();
+    shipSaveInfo.ben = j.contains("ben") ? Ben::DecodeProgress(j.at("ben")) : Ben::NewProgress();
     j.at("saveType").get_to(shipSaveInfo.saveType);
     j.at("fileCreatedAt").get_to(shipSaveInfo.fileCreatedAt);
     j.at("fileCompletedAt").get_to(shipSaveInfo.fileCompletedAt);

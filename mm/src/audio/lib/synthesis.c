@@ -1,3 +1,4 @@
+#include "2s2h/Enhancements/BenDrowned/BenDrowned.h"
 #include "global.h"
 #include <libultraship/bridge/resourcebridge.h>
 #include "2s2h/mixer.h"
@@ -868,7 +869,7 @@ Acmd* AudioSynth_ProcessSamples(s16* aiBuf, s32 numSamplesPerUpdate, Acmd* cmd, 
     }
 
     size = numSamplesPerUpdate * SAMPLE_SIZE;
-    if (CVarGetInteger("gModes.MirroredWorld.State", 0)) {
+    if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0))) {
         aInterleave(cmd++, DMEM_TEMP, DMEM_RIGHT_CH, DMEM_LEFT_CH, size);
     } else {
         aInterleave(cmd++, DMEM_TEMP, DMEM_LEFT_CH, DMEM_RIGHT_CH, size);

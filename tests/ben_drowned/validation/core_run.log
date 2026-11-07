@@ -1,0 +1,8 @@
+PASS 32768 unique transmissions (max 175 bytes), 256 named outcomes, all per-family no-repeat decks
+PASS deterministic replay, save-state continuation and 85 endless loops
+PASS pause/transition/death grace, scene/cycle/session bookkeeping, low-health and combat exclusions
+PASS director adapts to lingering, movement, recent battle, frailty, returns, bots and kindness
+PASS one response per encounter, hidden friendship, four-meeting truce and last-two-family exclusion
+PASS future-schema preservation, zero initialization, corrupt bounds and saturating lifetime counters
+PASS directed final meetings, friendship audience, constrained finales and safe no-repeat fallback
+All BEN production-core regression tests passed.

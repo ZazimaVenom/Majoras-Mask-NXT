@@ -1,0 +1,1 @@
+PASS: actual Dear ImGui HUD rendered at 240x180, 640x480, 1280x800, 3840x2160; inactive/suspended/hidden emit no overlay; finite geometry; journal count clamped; no unsolicited requests; Suspend/Resume/Kindness mouse interactions enqueue exact requests without mutating snapshot; double submission suppressed.

@@ -1,0 +1,1 @@
+PASS: 80803 source-extracted pool-metric/format cases including counts above INT_MAX.

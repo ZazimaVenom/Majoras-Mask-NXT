@@ -1,0 +1,40 @@
+PASS core_build
+PASS core_run
+PASS 679312 RPG core assertions; berserk rolls 9966 / 100000; glancing hits 2835 / 20000
+
+PASS runtime_build
+PASS runtime_run
+PASS 78 production RPG runtime assertions (headless engine doubles)
+
+PASS boss_build
+PASS boss_run
+PASS 7349 production boss assertions; headless raid duration 364.5 seconds (fixed contact cadence)
+
+PASS raid_roster_build
+PASS raid_roster_run
+PASS 92 production raid-roster assertions (headless engine doubles)
+
+NOT_RUN save_json: install nlohmann JSON or pass --json-include.
+PASS compile_z_actor
+PASS compile_z_collision_check
+PASS compile_z_play
+PASS compile_z_scene
+PASS compile_z_actor_dlftbls
+PASS compile_z_en_dekubaba
+PASS compile_z_en_dodongo
+PASS compile_z_en_firefly
+PASS compile_z_en_neo_reeba
+PASS compile_z_en_slime
+PASS compile_z_en_tite
+PASS compile_z_en_wf
+PASS compile_PlayerBots
+PASS compile_z_parameter
+PASS compile_z_skelanime
+PASS compile_z_en_fz
+PASS compile_z_en_snowman
+PASS compile_RpgFramework
+PASS compile_RpgWorldBoss
+PASS source_wiring_run
+PASS 29 source-wiring and CMake copy-helper assertions (synthetic archive bytes)
+
+Finished. Inspect report.json for NOT_RUN checks. No complete game, renderer or Windows run was performed.

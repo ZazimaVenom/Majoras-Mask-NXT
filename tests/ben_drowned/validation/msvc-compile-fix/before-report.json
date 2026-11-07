@@ -1,0 +1,23 @@
+{
+  "test": "ui_windows_small_macro_before",
+  "expected_failure": true,
+  "returncode": 1,
+  "command": [
+    "g++",
+    "-std=c++20",
+    "-Wall",
+    "-Wextra",
+    "-Dsmall=char",
+    "-fsyntax-only",
+    "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm",
+    "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/2s2h",
+    "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/include",
+    "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include",
+    "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/libultraship/include/libultraship",
+    "-I/workspace/scratch/cda0e8a05ecb/source/Majoras-Mask-NXT/mm/2s2h/Enhancements/BenDrowned",
+    "-I/workspace/scratch/cda0e8a05ecb/validation/full-build-probe/_deps/imgui-src",
+    "-I/workspace/scratch/cda0e8a05ecb/validation/dependencies/nlohmann_json/include",
+    "/workspace/scratch/cda0e8a05ecb/validation/msvc-compile-fix/BenHud-before.cpp"
+  ],
+  "log": "ui_windows_small_macro_before.log"
+}

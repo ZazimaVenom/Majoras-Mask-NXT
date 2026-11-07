@@ -1,3 +1,4 @@
+#include "2s2h/Enhancements/PlayerBots/PlayerBots.h"
 #include "global.h"
 #include <libultraship/bridge/consolevariablebridge.h>
 #include "GameInteractor/GameInteractor.h"
@@ -113,6 +114,11 @@ s32 Object_GetSlot(ObjectContext* objectCtx, s16 objectId) {
         }
     }
 
+    // Scoped to a population-director spawn. All original actors retain the
+    // original object dependency policy. Slot zero is persistent gameplay_keep.
+    if (PlayerBots_UsesTransientObject(objectId)) {
+        return 0;
+    }
     return GameInteractor_Should(VB_ENABLE_OBJECT_DEPENDENCY, true, objectId) ? OBJECT_SLOT_NONE : 0;
 }
 

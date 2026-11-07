@@ -1,0 +1,55 @@
+--- a/mm/2s2h/Enhancements/RpgFramework/RpgHud.cpp
++++ b/mm/2s2h/Enhancements/RpgFramework/RpgHud.cpp
+@@ -41,7 +41,7 @@
+     if (width < 240 || height < 180) return;
+     const float userScale=std::clamp(CVarGetInteger("gEnhancements.Rpg.HudScale",100),75,150)*0.01f;
+     const float scale=std::clamp(height/900.0f,0.70f,1.8f)*userScale;
+-    const float font=16*scale, small=13*scale;
++    const float font=16*scale, smallFontSize=13*scale;
+     const float center=(origin.x+bounds.x)*0.5f;
+     ImGui::SetNextWindowViewport(game->ViewportId);
+     ImGui::SetNextWindowPos(origin,ImGuiCond_Always);
+@@ -62,12 +62,12 @@
+         const float xpY=bounds.y-38*scale;
+         Panel(draw,xpX-10*scale,xpY-23*scale,xpWidth+20*scale,45*scale,scale);
+         std::snprintf(line,sizeof(line),"LV %d   |   HP %.0f / %.0f",h.level,h.hp,h.maxHp);
+-        Text(draw,ImVec2(xpX,xpY-19*scale),small,Color(235,242,250),line);
++        Text(draw,ImVec2(xpX,xpY-19*scale),smallFontSize,Color(235,242,250),line);
+         if (h.nextXp) std::snprintf(line,sizeof(line),"%llu / %llu XP",
+             static_cast<unsigned long long>(h.xp),static_cast<unsigned long long>(h.nextXp));
+         else std::snprintf(line,sizeof(line),"MAX LEVEL");
+-        const float textWidth=ImGui::GetFont()->CalcTextSizeA(small,1.0e6f,0,line).x;
+-        Text(draw,ImVec2(xpX+xpWidth-textWidth,xpY-19*scale),small,Color(157,209,250),line);
++        const float textWidth=ImGui::GetFont()->CalcTextSizeA(smallFontSize,1.0e6f,0,line).x;
++        Text(draw,ImVec2(xpX+xpWidth-textWidth,xpY-19*scale),smallFontSize,Color(157,209,250),line);
+         Bar(draw,xpX,xpY,xpWidth,8*scale,h.nextXp ? static_cast<float>(h.xp)/h.nextXp : 1.0f,Color(70,164,230),scale);
+         for (int i=1;i<10;++i) draw->AddLine(ImVec2(xpX+xpWidth*i/10,xpY),
+             ImVec2(xpX+xpWidth*i/10,xpY+8*scale),Color(0,0,0,0.5f));
+@@ -82,15 +82,15 @@
+         const float bossY=origin.y+height*std::clamp(CVarGetInteger("gEnhancements.Rpg.BossHudY",18),8,40)/100.0f;
+         if (h.hasBoss) {
+             const float w=std::min(width*0.66f,740*scale), x=center-w/2;
+-            const float actionFont=std::min(small,(w-24*scale)/std::max(1.0f,
+-                ImGui::GetFont()->CalcTextSizeA(small,1.0e6f,0,h.bossAction).x)*small);
++            const float actionFont=std::min(smallFontSize,(w-24*scale)/std::max(1.0f,
++                ImGui::GetFont()->CalcTextSizeA(smallFontSize,1.0e6f,0,h.bossAction).x)*smallFontSize);
+             Panel(draw,x-10*scale,bossY-9*scale,w+20*scale,95*scale,scale);
+             std::snprintf(line,sizeof(line),"%s  |  LV %d%s",h.boss.name,h.boss.level,h.bossEnraged ? "  ENRAGED" : "");
+             CenterText(draw,center,bossY,font,Color(255,214,143),line);
+             Bar(draw,x,bossY+24*scale,w,14*scale,Fraction(h.boss.hp,h.boss.maxHp),
+                 h.bossEnraged ? Color(234,67,52) : Color(177,59,62),scale);
+             std::snprintf(line,sizeof(line),"%.0f / %.0f HP  |  Raid %d / %d",h.boss.hp,h.boss.maxHp,h.raidAlive,h.raidTarget);
+-            CenterText(draw,center,bossY+25*scale,small*0.86f,Color(255,247,239),line);
++            CenterText(draw,center,bossY+25*scale,smallFontSize*0.86f,Color(255,247,239),line);
+             CenterText(draw,center,bossY+46*scale,actionFont,Color(247,217,178),h.bossAction);
+             if (h.bossCastDuration > 0)
+                 Bar(draw,x,bossY+67*scale,w,6*scale,Fraction(h.bossCast,h.bossCastDuration),Color(242,173,64),scale);
+@@ -102,7 +102,7 @@
+             Bar(draw,x,bossY+25*scale,w,12*scale,Fraction(h.target.hp,h.target.maxHp),
+                 h.target.berserk ? Color(218,67,36) : Color(158,63,76),scale);
+             std::snprintf(line,sizeof(line),"%.0f / %.0f HP",h.target.hp,h.target.maxHp);
+-            CenterText(draw,center,bossY+24*scale,small,Color(255,245,232),line);
++            CenterText(draw,center,bossY+24*scale,smallFontSize,Color(255,245,232),line);
+         }
+         draw->PopClipRect();
+     }

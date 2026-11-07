@@ -1,0 +1,32 @@
+/workspace/scratch/cda0e8a05ecb/validation/msvc-compile-fix/BenHud-before.cpp: In member function ‘virtual void BenDrownedHud::Draw()’:
+/workspace/scratch/cda0e8a05ecb/validation/msvc-compile-fix/BenHud-before.cpp:191:23: error: expected unqualified-id before ‘=’ token
+  191 |     const float small = height >= 360.0f ? std::max(11.0f, 13.0f * scale) : 13.0f * scale;
+      |                       ^
+<command-line>: error: expected primary-expression before ‘char’
+/workspace/scratch/cda0e8a05ecb/validation/msvc-compile-fix/BenHud-before.cpp:208:43: note: in expansion of macro ‘small’
+  208 |         const float statusFont = std::min(small, width * 0.58f /
+      |                                           ^~~~~
+<command-line>: error: expected primary-expression before ‘char’
+/workspace/scratch/cda0e8a05ecb/validation/msvc-compile-fix/BenHud-before.cpp:209:60: note: in expansion of macro ‘small’
+  209 |             std::max(1.0f, ImGui::GetFont()->CalcTextSizeA(small, 100000.0f, 0.0f, status).x) * small);
+      |                                                            ^~~~~
+<command-line>: error: expected primary-expression before ‘char’
+/workspace/scratch/cda0e8a05ecb/validation/msvc-compile-fix/BenHud-before.cpp:209:97: note: in expansion of macro ‘small’
+  209 |             std::max(1.0f, ImGui::GetFont()->CalcTextSizeA(small, 100000.0f, 0.0f, status).x) * small);
+      |                                                                                                 ^~~~~
+<command-line>: error: expected primary-expression before ‘char’
+/workspace/scratch/cda0e8a05ecb/validation/msvc-compile-fix/BenHud-before.cpp:232:87: note: in expansion of macro ‘small’
+  232 |             const float objectiveHeight = objective ? ImGui::GetFont()->CalcTextSizeA(small + scale, textWidth, textWidth, h.objective).y : 0.0f;
+      |                                                                                       ^~~~~
+<command-line>: error: expected primary-expression before ‘char’
+/workspace/scratch/cda0e8a05ecb/validation/msvc-compile-fix/BenHud-before.cpp:245:74: note: in expansion of macro ‘small’
+  245 |             DrawText(draw, ImVec2(x + 19.0f * scale, y + 10.0f * scale), small,
+      |                                                                          ^~~~~
+<command-line>: error: expected primary-expression before ‘char’
+/workspace/scratch/cda0e8a05ecb/validation/msvc-compile-fix/BenHud-before.cpp:254:66: note: in expansion of macro ‘small’
+  254 |                 DrawText(draw, ImVec2(x + 19.0f * scale, textY), small + scale, Color(158, 198, 184, panelAlpha),
+      |                                                                  ^~~~~
+<command-line>: error: expected primary-expression before ‘char’
+/workspace/scratch/cda0e8a05ecb/validation/msvc-compile-fix/BenHud-before.cpp:270:81: note: in expansion of macro ‘small’
+  270 |                 DrawText(draw, ImVec2(x + 19.0f * scale, textY + 6.0f * scale), small,
+      |                                                                                 ^~~~~

@@ -5,7 +5,6 @@
  */
 
 #include "z_en_heishi.h"
-#include "2s2h/GameInteractor/GameInteractor.h"
 
 #define FLAGS (ACTOR_FLAG_ATTENTION_ENABLED | ACTOR_FLAG_FRIENDLY)
 
@@ -64,8 +63,7 @@ void EnHeishi_Init(Actor* thisx, PlayState* play) {
     if (this->paramsCopy == 0) {
         this->shouldSetHeadRotation = 1;
         if (!CHECK_WEEKEVENTREG(WEEKEVENTREG_RESOLVED_MAYOR_MEETING) &&
-            !GameInteractor_Should(VB_MAYOR_MEETING_END_ON_FINAL_NIGHT,
-                                   (gSaveContext.save.day == 3) && gSaveContext.save.isNight)) {
+            !((gSaveContext.save.day == 3) && gSaveContext.save.isNight)) {
             Actor_Kill(&this->actor);
         }
     } else {
@@ -73,8 +71,7 @@ void EnHeishi_Init(Actor* thisx, PlayState* play) {
         this->colliderCylinder.dim.height = 60;
         this->colliderCylinder.dim.yShift = 0;
         if (CHECK_WEEKEVENTREG(WEEKEVENTREG_RESOLVED_MAYOR_MEETING) ||
-            GameInteractor_Should(VB_MAYOR_MEETING_END_ON_FINAL_NIGHT,
-                                  (gSaveContext.save.day == 3) && gSaveContext.save.isNight)) {
+            ((gSaveContext.save.day == 3) && gSaveContext.save.isNight)) {
             Actor_Kill(&this->actor);
         }
     }
@@ -161,8 +158,7 @@ void EnHeishi_Update(Actor* thisx, PlayState* play) {
     }
 
     this->actor.shape.rot.y = this->actor.world.rot.y;
-    if ((this->paramsCopy != 0) && GameInteractor_Should(VB_MAYOR_MEETING_END_ON_FINAL_NIGHT,
-                                                         (gSaveContext.save.day == 3) && gSaveContext.save.isNight)) {
+    if ((this->paramsCopy != 0) && (gSaveContext.save.day == 3) && gSaveContext.save.isNight) {
         Actor_Kill(&this->actor);
         return;
     }

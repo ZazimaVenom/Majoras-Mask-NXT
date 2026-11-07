@@ -1,0 +1,1126 @@
+{
+  "baseline_archive": "Majoras-Mask-NXT-Bots-RPGFrameWork-Source.rar",
+  "baseline_sha256": "8a7bba927c9f347c4f5729552cd439a3e7f450a537beaeeec499b8c115c3f65e",
+  "save_version_before": 9,
+  "save_version_after": 10,
+  "source_files_baseline": 6814,
+  "source_files_result": 6961,
+  "notes": [
+    "Full merged source, not a prebuilt game.",
+    "Patch normalizes line endings for readability; manifest records exact byte hashes.",
+    "Original unmodified files retained.",
+    "See docs/BEN_DROWNED_VALIDATION.md for executed tests and limits."
+  ],
+  "files": [
+    {
+      "path": "Build-BenDrowned.cmd",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "98fcee1cab02de16ff7bfd052a59c7a327bdc66791b3e72af09db1e1a5d8e681"
+    },
+    {
+      "path": "Build-BenDrowned.ps1",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e23c82c5c99be3030c90ebc5929f7cbe219f63e8acb31a364bd084a593ce2141"
+    },
+    {
+      "path": "CMakeLists.txt",
+      "status": "modified",
+      "before_sha256": "ac5ef9f4d139fddbbf55253a78c7ecf6dacd13001e2e548c40d37b5b6402d52a",
+      "after_sha256": "503aab69640d5877af3f85c749030f956259a06fce002181e7f87c17cc285770"
+    },
+    {
+      "path": "README_BEN_DROWNED.md",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e1ed11e354610529fe5787b42edf8046d701b38db846f03231da0f92af8ce29f"
+    },
+    {
+      "path": "README_MSVC_BUILD_FIX_2.txt",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "62080d1c40768dc4d92c784ae96c6d73f41a293c69075a952973532d33fc543d"
+    },
+    {
+      "path": "README_MSVC_COMPILE_FIX.txt",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e9f34d95194a0f3d7e465dd2a10e9350ac06a10967ac57319a09f2375c21344f"
+    },
+    {
+      "path": "docs/BEN_DROWNED_CONTENT.md",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "ea46158fa0b742499792aed57b87895b29a904958f715b3bbbcdb0c38bb46063"
+    },
+    {
+      "path": "docs/BEN_DROWNED_TECHNICAL.md",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "37160a869a0590c1e654c79d23a28a4a0764920055d8e0717c48133479c4108c"
+    },
+    {
+      "path": "docs/BEN_DROWNED_VALIDATION.md",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "749ee5f234dd34bc919a611f381986d10f801a54ee597833d9ab5fdbefe35549"
+    },
+    {
+      "path": "libultraship/cmake/dependencies/git-patch.cmake",
+      "status": "modified",
+      "before_sha256": "a70b842c3e3d823ab46862e37f4388040a8fde47b0f4398fd01305aa68ca9298",
+      "after_sha256": "6d76f6d335b4e3ae25debf950ddbf282de4bddb4c288aa8b428a6be98935aab0"
+    },
+    {
+      "path": "libultraship/cmake/dependencies/patches/imgui-fixes-and-config.patch",
+      "status": "modified",
+      "before_sha256": "9f3f01b0f197aa761a84d9d49f26abcb052283049ac5e8f88a563581ada96e80",
+      "after_sha256": "dbfc9d146c849a594c444bc4244f23dd631806bcc2ab79762aa8631e7458bfa8"
+    },
+    {
+      "path": "libultraship/cmake/dependencies/patches/stormlib-optimizations.patch",
+      "status": "modified",
+      "before_sha256": "316cc355912798a5aff7743ba06c0b639c8b80db6c1f8bdac9123ce25701dc03",
+      "after_sha256": "b0ddaae15cae92a87f7606b4bdf160039e56f48f593ad94f2341e11ef155b31f"
+    },
+    {
+      "path": "mm/2s2h/BenGui/BenGui.cpp",
+      "status": "modified",
+      "before_sha256": "2514d844e908aff6389ed2aec2cbe95b8015157be7ca3d9899e43b2b992875ea",
+      "after_sha256": "3b645a57ceae0cd6b84ad3958c5e86e05f5ea8426f4008180d574e51a6e51fbc"
+    },
+    {
+      "path": "mm/2s2h/BenGui/BenMenu.cpp",
+      "status": "modified",
+      "before_sha256": "084f9aaba9683a6fb4841df8fbc7446cbcc12e673c5f77af81809cf29dd9deee",
+      "after_sha256": "573ac7c4e26f992da0f381b089e57b6049621bb4bdbef4daeb3c59c4bf3dcb46"
+    },
+    {
+      "path": "mm/2s2h/BenGui/Notification.cpp",
+      "status": "modified",
+      "before_sha256": "e6a7d2415d90e50ea168809c8843fedc5b286a127fd0f5f3b8749f74e2832e9f",
+      "after_sha256": "d9b64a492b453436a0351aeb408d8826936d06c9e731e1c883032a8ff1325dcb"
+    },
+    {
+      "path": "mm/2s2h/BenJsonConversions.hpp",
+      "status": "modified",
+      "before_sha256": "dff43c39667b760a9fea69c806a65d33ce0bd87a7570fd62e6b7caf9df43e54c",
+      "after_sha256": "8b90ef555e32b91fb5070a3f75112a93dbc2e5e52d274ca4fb45b32587015ca0"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/BenDrowned/BenContent.h",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "df6dbc02f7bf0628bec6945f4355eb6cba84da406786427ee2a9e043a0ceded9"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/BenDrowned/BenCore.h",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "f4ebf5500a7101e084269e3c1506ba64acc0a85ebdc01b3b6681a02917562942"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/BenDrowned/BenDrowned.cpp",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "1647eda8a83818348e1484189e03966270d855f1f0b00cfbc40d2c46059ba15e"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/BenDrowned/BenDrowned.h",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "3fc52b6e87a5a17d83f29e1c5b102c1ea57561ba8b172a2b6ce8ffafc733ce12"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/BenDrowned/BenHud.cpp",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "87cd430115051fd231aa1300edc691b240044b80f1b11ccf7edd705853a1e3a3"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/BenDrowned/BenHud.h",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "2e578ed0338ced7be722969a81dcd816986f593d6609a59aa95539c9b5e31b10"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/BenDrowned/BenJson.h",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "8873daa4777281b620d382b9f1e6d9dafd1ea0fde48b996c0c26baaba60967f8"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/BenDrowned/BenSaveData.h",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "9826c45960a64d5dc92d86e181fc9495e64bd6502784ccbf73f417fd3d1f369f"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/BenDrowned/BenWorld.cpp",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "f0d3a15610d7a2f0505db904e7ba8130859253aeb77c584532de4758421a5e50"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/BenDrowned/BenWorld.h",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "44f46ab16e4508213d7667acde3160a265c0e5d95d0db205dd90573f61f9dfd2"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/Graphics/EnemyHealthBars.cpp",
+      "status": "modified",
+      "before_sha256": "8408fbb652959cfb06c11b34a3352455b023d9d96031f82644c2f54acace5394",
+      "after_sha256": "cfef6cf3e29e74cad761b74925d6dadb2c6e2ff68fed5602fda5a5f1b30fd69b"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/PlayerBots/PlayerBots.cpp",
+      "status": "modified",
+      "before_sha256": "6e87b84faedd59d2124928c11e08b3106fa37a6f0fbad7c1c92eebdca56170ab",
+      "after_sha256": "1e112079ad0cf89d89d0c07c101f0fa71cecab58063dbe203fef4e5deed3a168"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/PlayerBots/PlayerBots.h",
+      "status": "modified",
+      "before_sha256": "3371f24be2e5569cbaa2a147112d2029d001ad9bc26f11e84778b4efd9663f61",
+      "after_sha256": "5614e34ca7a9b297fe97e21e5fca91d3fe358a8ba16f7f8a298e006bb38e7ecc"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/RpgFramework/RpgWorldBoss.cpp",
+      "status": "modified",
+      "before_sha256": "5f41c07214aee2bcb5755c6cf884fe4ef38bce477e769df8629999c403bf5ea7",
+      "after_sha256": "4564447ca8503b1b9361084be38efb896da7efbb510dc5986821b57bb9efc1eb"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/Songs/BetterOwlWarpMenu.cpp",
+      "status": "modified",
+      "before_sha256": "f2d295aa966bf35ffea3bf915140ed30b85b314350524f9f7cfc2cef71c345b7",
+      "after_sha256": "9d2121fe4175d6d5dc4fd750d44b45a2b029f32a0394300692dec2df5218298d"
+    },
+    {
+      "path": "mm/2s2h/Enhancements/Songs/PauseOwlWarp.cpp",
+      "status": "modified",
+      "before_sha256": "86cd6fde0743e990f11e60fb73052f946c851370e25ebbe27120c397ca5beacf",
+      "after_sha256": "657fbf3a38b73d979979affee0abfb2ae2e36602228d7ae7a38bee66c922d78f"
+    },
+    {
+      "path": "mm/2s2h/GameInteractor/GameInteractor.cpp",
+      "status": "modified",
+      "before_sha256": "98aa8ec6280b53651bcfa8f1f02036b4c6eae47004cd6ade4c322c4fb64093af",
+      "after_sha256": "cfaf31989b0ed2946a1ae044565a295428a3086b49bdefb9518126b2d19fce27"
+    },
+    {
+      "path": "mm/2s2h/NameTag/NameTag.cpp",
+      "status": "modified",
+      "before_sha256": "a108948e8fe64c2facd1aed1643cae5fd252857ad360a094aebb8a3fb099d20f",
+      "after_sha256": "f6a6a176563e77d4fd1c9fcd5cb3d850a91aef004306eef0c19d6c5bd4262ed5"
+    },
+    {
+      "path": "mm/2s2h/Rando/CheckTracker/CheckTracker.h",
+      "status": "modified",
+      "before_sha256": "564e7682c31f230e9feef30cb068837307e1c7b85f7d5a32500578b8e91032d4",
+      "after_sha256": "010b0101cba3f8af40c7ad1c7faefe6c0f11e008c539f319a5968bd2f10f4560"
+    },
+    {
+      "path": "mm/2s2h/Rando/Logic/Logic.h",
+      "status": "modified",
+      "before_sha256": "ca8e8eda74273f9e2412115ee9f2d8810ca350b7b4b8c5b3cb2ceb22823dec05",
+      "after_sha256": "a751210b4616f2bad9f97320fb4c6f13081a81870111e80083fb8ab95bc722c3"
+    },
+    {
+      "path": "mm/2s2h/Rando/Menu.cpp",
+      "status": "modified",
+      "before_sha256": "546191ec3b943aa3fad71c8369865c8a139a2af8bc120bdd8cef9678721d580b",
+      "after_sha256": "327a2964fe37487cabd4c088ee44637387352a33053fb2c9c048b781dc3f6afc"
+    },
+    {
+      "path": "mm/2s2h/SaveManager/Migrations/10.cpp",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "123d2aec169e80b5da62b0ea7e2831719bef12009be4cd0fe909207c18fbf497"
+    },
+    {
+      "path": "mm/2s2h/SaveManager/SaveManager.cpp",
+      "status": "modified",
+      "before_sha256": "24097c8e67f7d2e85b45d0beac341cd2bf287b799dbadfb043b8e52c44dee881",
+      "after_sha256": "b56db8617582d93df68430ca8e9f7922ff45dd2c044f55e83617d03a7577abf4"
+    },
+    {
+      "path": "mm/2s2h/mixer.c",
+      "status": "modified",
+      "before_sha256": "c8de1372bf662c0b85f2238addd9e1137dfea2b091a5f2b6d512abb28c55f2cf",
+      "after_sha256": "d54858e68710aaa8c59331d9eec05d873b54362ed23c04303b9bf707e2b193b2"
+    },
+    {
+      "path": "mm/include/gfx.h",
+      "status": "modified",
+      "before_sha256": "12615332d7f04d8416ea201990c031b45907e1e140d71f40ea816ca56c8bce94",
+      "after_sha256": "5586f239deb8c47968a64a4d701145ef61493f77c2a8dac8add1b9052b89f057"
+    },
+    {
+      "path": "mm/include/z64save.h",
+      "status": "modified",
+      "before_sha256": "d717483c796c67d3f101494e046472b66871361275ae40232b51288ade2552fe",
+      "after_sha256": "a548729b235967fd669e08f8deb7ac6afc7906e875b2bbeed3b03113cce60ace"
+    },
+    {
+      "path": "mm/src/audio/lib/synthesis.c",
+      "status": "modified",
+      "before_sha256": "acc06e07f4d770b7f6b995f4645b9abf76839f173c65d2b7f2bad0a532dcbb99",
+      "after_sha256": "1974156d91043c383b29b0b3ab1808143e9230bcec5cbc23f0a513cf36934f22"
+    },
+    {
+      "path": "mm/src/code/z_actor.c",
+      "status": "modified",
+      "before_sha256": "5bfebc51c8939a7a5ec416c0cf468e128357de9ca9c0650de41729395eb8c7b7",
+      "after_sha256": "f7bb2fe6aab6ebbe96b2b0309352814442a6142fddf360c0aecd07c7b0ea3b4d"
+    },
+    {
+      "path": "mm/src/code/z_kankyo.c",
+      "status": "modified",
+      "before_sha256": "d5ec810418743f1171b4787045a3c312e56464243930a51371c90d8e5742f693",
+      "after_sha256": "99ced5df4e71a8f4aa3de0181413b96e06a90bd336cae2d2fa6eb7b139bbd888"
+    },
+    {
+      "path": "mm/src/code/z_map_disp.c",
+      "status": "modified",
+      "before_sha256": "4abde3ab6c6d0f6589528ce3d0b3cd0feaf48c8abcfdd610bd004f76c93aa707",
+      "after_sha256": "92df47f9ea21969ce394970019959dfbfd2ea076eb4c8ae9e22a0920ff31c937"
+    },
+    {
+      "path": "mm/src/code/z_parameter.c",
+      "status": "modified",
+      "before_sha256": "d050566b27ebc298481bde9e97166277bb838a40f3c38151a0b7edf8f0f14d5e",
+      "after_sha256": "2b946311d0610f9c96111af89d77d7d429418798eceacaa6ffd3c86191d2fafb"
+    },
+    {
+      "path": "mm/src/code/z_play.c",
+      "status": "modified",
+      "before_sha256": "f18fca7e74b0e5ff993ed1638dcfeb1c13903c3da09e343cdd606e0d3bd7fbd9",
+      "after_sha256": "c8474ab3080bd3688afb4bbf33e113804f41984b047469d04fddd7bc3ee56730"
+    },
+    {
+      "path": "mm/src/code/z_view.c",
+      "status": "modified",
+      "before_sha256": "d106dcc550f9662b7860533b3e5516bc5e054a33ab9fe651a3d5a3ea694c3413",
+      "after_sha256": "6b682eefeed9fd995eeddbf0ceffcba79d76c32fafd5a1f43791a5d0542a7f25"
+    },
+    {
+      "path": "mm/src/overlays/actors/ovl_En_Fsn/z_en_fsn.c",
+      "status": "modified",
+      "before_sha256": "abf86122bacc82417efaef552249c6d2d370bcee0a3de043eaa88dced602d4e9",
+      "after_sha256": "01965e6a2beaf6bb11f7689cbbdc8546702ab75f1febe2e1a3f2f2af2afccf84"
+    },
+    {
+      "path": "mm/src/overlays/actors/ovl_En_Gakufu/z_en_gakufu.c",
+      "status": "modified",
+      "before_sha256": "03b41ca4ad70feef6903a11d68206e2ca01b9e5ab7003ea9b898ab4348563c5c",
+      "after_sha256": "d9573c36dcd2717b58fcdafc394f4266eda0b0a80991e8b29cafbd48f31ed32a"
+    },
+    {
+      "path": "mm/src/overlays/actors/ovl_En_Ossan/z_en_ossan.c",
+      "status": "modified",
+      "before_sha256": "03644a593ca806cc1a7b3f43d2ecd295917ac57e4c935ff323c935dffcba26d1",
+      "after_sha256": "37fd1700e6a418c89e2eb4f0c47f069f0af5866e3f5b71c3a4cd5aa5b8556eb4"
+    },
+    {
+      "path": "mm/src/overlays/actors/ovl_En_Sob1/z_en_sob1.c",
+      "status": "modified",
+      "before_sha256": "b395cb22d964861063161c511c06ae1ceb8b7271e910d6ac9a61a830ab9933f5",
+      "after_sha256": "a0e475e7a0701fdfdf6c31a38d869d53a010b551e8329877416f9d9d367e8ff2"
+    },
+    {
+      "path": "mm/src/overlays/actors/ovl_En_Trt/z_en_trt.c",
+      "status": "modified",
+      "before_sha256": "af37bf4556cd630b0aea8d5de89fe6d65de45901725c617a6151f8a0e99729e9",
+      "after_sha256": "0ee4ae4d8785fa47f1c4fb7f9b049bc3628a35462230c48cf0f141d8af379910"
+    },
+    {
+      "path": "mm/src/overlays/actors/ovl_player_actor/z_player.c",
+      "status": "modified",
+      "before_sha256": "396f65aa4e55a6b04a31f28720779474ebec03239b8682dc6d6e4e8e03355869",
+      "after_sha256": "e3608abd4e9b45bd4aeff06ddde9292c0e97883229f11801cff7122a31d0eca2"
+    },
+    {
+      "path": "mm/src/overlays/fbdemos/ovl_fbdemo_wipe5/z_fbdemo_wipe5.c",
+      "status": "modified",
+      "before_sha256": "9a19c71209d986d3714b9e4d8e6966f01557649d9cd2bb293216320b6c95ceb1",
+      "after_sha256": "9682cfd90fdf0e59458fa85badaca09a2ae9f6aa0e54e7a202af76440c462b4d"
+    },
+    {
+      "path": "mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_map.c",
+      "status": "modified",
+      "before_sha256": "6ef03ef09dcd9ff330cd64bc8521392b77f0094ea34fcf3b9401fd5d7419b490",
+      "after_sha256": "40522f3a56734d124a27e156dcb6f62d359257a77f4afcefa2ae0a19c80e726f"
+    },
+    {
+      "path": "mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c",
+      "status": "modified",
+      "before_sha256": "428578a536533f716aefcc9c08582c276b8fd1dfdedf788b0b639a0820b6adc7",
+      "after_sha256": "d1d8b12d746b8059910ea6f7a8e4018378316ddd032182ecf7a41336af1b9789"
+    },
+    {
+      "path": "tests/ben_drowned/CMakeLists.txt",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "93cdcd88931bfa700c6edd7bbc37efbe393c2b5d169d3d6860d1dc801c654388"
+    },
+    {
+      "path": "tests/ben_drowned/core_tests.cpp",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "3e19381ce4acff2f64640a7934bb9d620e185307ad70b8b403bc8ad171b4976d"
+    },
+    {
+      "path": "tests/ben_drowned/interpolation_link_stubs.c",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "28929434aa74750bc87f907c3aa5eca65ff2614010b86b1fb28819d8038fd562"
+    },
+    {
+      "path": "tests/ben_drowned/run_tests.py",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "8acc4cd8bebf5ffa187540711eba23f26a55ffb26d1e35b3ffc837cc3c384054"
+    },
+    {
+      "path": "tests/ben_drowned/run_ui_tests.py",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "d72044ef68c9fca34db803705e432beadb98391f4f871d1863c50a914c510bd5"
+    },
+    {
+      "path": "tests/ben_drowned/runtime_tests.cpp",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "f723eca8c884a2c26bf9f894e9ecb05e4b546cb05a0f4489c4d01366e1a2709b"
+    },
+    {
+      "path": "tests/ben_drowned/save_tests.cpp",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "8e9b0a14b00882bd24b23f3ad8d03b3933870d3c23350b4b00b50b0207010b7e"
+    },
+    {
+      "path": "tests/ben_drowned/ui_tests.cpp",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "93e72de2dec56f6ac73f7debd45c79c5020d7b059c4d55500272df0928c5eec8"
+    },
+    {
+      "path": "tests/ben_drowned/validation/bots-combat_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "145166ac5af3197214dfa0396940ceb77ebc67429eb4a67550aebab7db7c84ac"
+    },
+    {
+      "path": "tests/ben_drowned/validation/bots-core_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "f5fbf5d7a5f153533a8e7bf132f0ccad249396ba8857086cc3bd72e9180e816c"
+    },
+    {
+      "path": "tests/ben_drowned/validation/bots-report.json",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "4bc4e0633d58e92d94f6c6d68aa7ded2c570effb0942316f5d5fc2d9e89300ca"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_BenDrowned.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_BenWorld.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_PlayerBots.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_synthesis.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_z_actor.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_z_en_fsn.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_z_en_gakufu.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_z_en_ossan.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_z_en_sob1.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_z_en_trt.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_z_kaleido_map.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_z_kaleido_scope_NES.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_z_kankyo.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_z_map_disp.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_z_parameter.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_z_play.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_z_sram_NES.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/compile_z_view.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/core_build.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/core_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "cc2f57f4ea163797ef357fd41a92c4cc07f1f0773519a5efacc78152180e0dad"
+    },
+    {
+      "path": "tests/ben_drowned/validation/extra-BenGui.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "b52a4ef6c34a60d5681da4c73f3aa0c5b47a59918306ad69dd28ef98592ebd4f"
+    },
+    {
+      "path": "tests/ben_drowned/validation/extra-BenMenu.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "16fffad1cc82688ad44b59f675f9128fedfd80ef74d7036df39c6d02a706c191"
+    },
+    {
+      "path": "tests/ben_drowned/validation/extra-BetterOwlWarpMenu.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/extra-EnemyHealthBars.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/extra-GameInteractor.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "f686ee2b3c080a06b34b13edf91b9266bfafda50f229c51b3891627d24852da7"
+    },
+    {
+      "path": "tests/ben_drowned/validation/extra-NameTag.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/extra-PauseOwlWarp.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/extra-engine-report.json",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "8beb80f2f8bdf5378e520033b4274149705bf1d27e06907b1d7520fb6b45181e"
+    },
+    {
+      "path": "tests/ben_drowned/validation/full-configure.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "dd5f630b943553ba919243a5b1853301cc9b6e190de16717e7e1b32cb98f9ce7"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-compile-fix/before-report.json",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "f6f1fba69e849dadef96b09bb68dc8c716d2f32a3b6370bb8e3546db480ee727"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-compile-fix/notification/notification_extracted.cpp",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "6393380eb60096be7a9f3d5c064a5cf5345c879b5e09e0a34bba88cd97a6c35d"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-compile-fix/notification/result.txt",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "2171fd3d981d175160aabecf25949911f1de861228364f4c0d8d177b83278dcc"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-compile-fix/notification/run_notification_check.py",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "596c0c076e88e23cd5cbfe3396b85667bbf2e87edb57dece64ab2c39b801312d"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-compile-fix/runtime/report.json",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "42e632e71c583c27666399d445e80333aa21709b8fbc49bb27124e70e19548dd"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-compile-fix/runtime/runtime_build.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-compile-fix/runtime/runtime_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "c9ae87c3583fdc7ab44c088872ad8b2eb41645efc2821690f599812f1b719626"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-compile-fix/runtime/signed_day_compile.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "4e185c84c3648f37a98ad415fa9e06829299d5a39b200034c71018c72791cf8e"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-compile-fix/runtime/signed_day_report.json",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "3890af8e97e1f8a4e19d6a364dea00eb6b5629243899d1d54ba2faa77d48f4c0"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-compile-fix/ui/report.json",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "1fa5d4dc6b20617f0e25d07ba09f747db2a22385e43c31d3f72e49ecedaaa907"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-compile-fix/ui/ui_build.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-compile-fix/ui/ui_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "40429dcc91665a4c7ce76f9977fa9b2f2636339bc4d4bda2c4f85b90608c05ae"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-compile-fix/ui/ui_windows_small_macro.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-compile-fix/ui_windows_small_macro_before.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "5714d54d5084f2382b964abd462f20c86a41ae5f25df72f680a5a935fd7a106e"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/ben-regression/core_build.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/ben-regression/core_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "cc2f57f4ea163797ef357fd41a92c4cc07f1f0773519a5efacc78152180e0dad"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/ben-regression/report.json",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "9d8ccb5205d2b0134ec1a3e16000c9c7c8708d444f33e54497aa16aa7eefe78c"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/ben-regression/runtime_build.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/ben-regression/runtime_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "c9ae87c3583fdc7ab44c088872ad8b2eb41645efc2821690f599812f1b719626"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/ben-regression/save_build.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/ben-regression/save_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "9f6afd39f596f44cbe95ef1996a2a1a7acdd5cb58bc343271a73cb6ec5824d9b"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/ben-regression/world_build.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/ben-regression/world_c_linkage_build.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/ben-regression/world_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e1e7fe9c3d15bfcc3f13b3a28b2f4109d6a2df8edaa2b4a35f242c8147c4159a"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/cmake/build.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "7794c40fb5d8cc08226e06fb38fdbdac28b550fcc5cc6c8b513b16f922a5baca"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/cmake/configure.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "f4acde6b7a7b6e8b0386dee444f20385ac38aa556365f6965ecbebbdf254b269"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/cmake/ctest.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "9981ec843aac4ea1364e584ff1e6a8ea8acc615e6e49e910d9a553a35f589d76"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/cmake/report.json",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "1dc5438f61bbb4c95017483ec840505c20a61593c462994146f5b96e90f22ebd"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/draw/0.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/draw/1.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/draw/2.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e1e7fe9c3d15bfcc3f13b3a28b2f4109d6a2df8edaa2b4a35f242c8147c4159a"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/draw/before_link.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "78fed9c143d22313fd2ff25201d0b5a78d2ba3fba1e0817ce650afa387d51303"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/draw/no_gc_build.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/draw/no_gc_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e1e7fe9c3d15bfcc3f13b3a28b2f4109d6a2df8edaa2b4a35f242c8147c4159a"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/draw/report.json",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "9f670fa7e47737cf110cbe76e4967df464786e4693af660792ca1e9c3bf17bac"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/linkage/BenWorld-before-symbols.txt",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "75672da761d34ef2473ebc776a3031e05fd2f4bdd479a4981cb2252f3f07b594"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/linkage/BenWorld-compile.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/linkage/BenWorld-symbols.txt",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e46b94f0a27d94310a741f879ea9effd318730e14417d1e06589f63cb9e5e539"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/linkage/PlayerBots-compile.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/linkage/PlayerBots-symbols.txt",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "5ff79b102482b068d2ddf114b32fc9fcaac427635db6f5c6fd422e3b4c19901a"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/linkage/RpgWorldBoss-compile.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/linkage/RpgWorldBoss-symbols.txt",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "97436da85184dc96840f92bfca81e166dcfd07127c4f0258f80e9be4c6f3c8c1"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/linkage/report.json",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "55445be0c53fe5446e0f922b51e7ce4d1ca552403f87dbf0681d985f0fc0f65e"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/native-warnings/SUMMARY.txt",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "c1bb5b591cbe7dd9a4eee7a8aa3b3a09454641fe5fe56d8b5740c5ec173e0dd4"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/native-warnings/before-after-report.json",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "3344019ce9af563f69067a1f60d64c91f53dddd54ac9aaabf576dd154790998c"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/native-warnings/z_fbdemo_wipe5.after.diagnostics.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e338f66492e7ca4392c75d135a1dce0d71fd8f60bd94a953a22aae3adba1e901"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/native-warnings/z_fbdemo_wipe5.before.diagnostics.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "74e460db556fad4a0c63a5ee463ba4e5872a567bded719b6e6a655843fad809e"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/native-warnings/z_player.after.diagnostics.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "2e04e4e415a23f9431063fbdf232ba91c9b025e887995b7adcf99f6899da81ef"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/native-warnings/z_player.before.diagnostics.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "dbf5e5d23b78784de42af24d4db646938e233cc3ce52d74c4eef33b89b47d03e"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/rando-warnings/RESULTS.txt",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "0bedac7c1681d48ab9995d922077dcc15c48142c64a355047f93f2f848c9dd13"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/rando-warnings/clock_modes.cpp",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "3167a4d047efe46d9cc129c4d4a175a0863ea9554686e236fa25596fc8f80a8d"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/rando-warnings/clock_modes_build.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "34144d1c94d36cbdabfe9b944f2e750f166f77db977093a8dfd58ac5fe6f9401"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/rando-warnings/clock_modes_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "85783fef9fe3f2e3798c88376c7b57417364234fc8f8228f328fdb7ab135c2c4"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/rando-warnings/compile-report.json",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "2d809369f6f40a6d1d75a238dcd618979850c62ccdadf76cdeb917f7b7b59274"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/rando-warnings/compile_checks.py",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "679e9dd7d050dc8a66f46e779f9036bc77eddf0b1101cad1d1febe6b399cffcb"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/rando-warnings/focused-report.json",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "04485a9c00a51aa2e772507e24b4f48f0b467ccf288240f2e73ac95e9e9f05a7"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/rando-warnings/focused_checks.py",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "3f6e0fff9c2137ad3b5843e190efae606b1ea08be680728f2b5bb910fd2e2394"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/rando-warnings/headers.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "6db73a8b012d4c46abb14f739cf8f969ba1f7360fa610098173f0e3c8a3d952f"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/rando-warnings/kaleido.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "589526ecc5940674886792d6acaf57cc25dac97973796c6cc205f60db70c61f0"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/rando-warnings/menu.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "225aa068855697a887dd83dd02716c561df28799b96f303350509e0ac7dbb507"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/rando-warnings/mixer.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "16f5a777ae8c1e6833b9bb52b8c4a0f8fd30ad0b366b5ab46fe9dc8ffd437b17"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/rando-warnings/mixer_msvc_guard.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "5b40202a1b3c50fd1997674a6f26fb5c4adcefb9e617a24f74194b93021d9250"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/rando-warnings/pool_metrics.cpp",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "f7a68ab1bb547497fb423a2da3cd79263a1e025ad7982000b83c3eb3611d98b8"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/rando-warnings/pool_metrics_build.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/rando-warnings/pool_metrics_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "d4aa754faff606fea52971833d2be4993a313f0f257fb83e54ae1968fa99698e"
+    },
+    {
+      "path": "tests/ben_drowned/validation/msvc-link-fix/rando-warnings/z_kaleido_scope_NES_msvc_guard.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "3fc512774fa4f8fe3f693b8d28f953294fcef748541a34a6665846ad3632d3c3"
+    },
+    {
+      "path": "tests/ben_drowned/validation/patch-newline-repairs.txt",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "d534318eafe30b407d101b9b3e449f02e0e7824f0a921e297158f8c00934c5cb"
+    },
+    {
+      "path": "tests/ben_drowned/validation/report.json",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "1eec60c08ece103f32147b0344431747faa116b09f0889b3a1ad8201cbda87c4"
+    },
+    {
+      "path": "tests/ben_drowned/validation/rpg-boss_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "cd107102aa1e9d35020aadb2af1d4abbe5883fc2179d845b970a4ed6130d1f85"
+    },
+    {
+      "path": "tests/ben_drowned/validation/rpg-core_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "631a21a9aabdde5d3d89ed127864222fb0e16c57576b3d5095cc96849ae71568"
+    },
+    {
+      "path": "tests/ben_drowned/validation/rpg-raid_roster_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "87bd2108bc4be55e2a1349f1daf89ac3e82fe390a06e5089624682fa331d8871"
+    },
+    {
+      "path": "tests/ben_drowned/validation/rpg-report.json",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "a62770cd35db244eec8b1dc91cc6ea6166918428a37ec74a61349d7b942b67fc"
+    },
+    {
+      "path": "tests/ben_drowned/validation/rpg-runtime_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "ba53f6799d975947dba1efd4c87666add94640f54074dc4ba98e43bd4189d37e"
+    },
+    {
+      "path": "tests/ben_drowned/validation/rpg-save_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "a679dd3407480b9723e639c95a6df096ef8319a92a841d6aaf8577a19bab44bc"
+    },
+    {
+      "path": "tests/ben_drowned/validation/rpg-source_wiring_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "3455adc9741cd757bd0af9e9dba7767dc38ebda40e8409a5fd0a869a59a7be86"
+    },
+    {
+      "path": "tests/ben_drowned/validation/runtime_build.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/runtime_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "c9ae87c3583fdc7ab44c088872ad8b2eb41645efc2821690f599812f1b719626"
+    },
+    {
+      "path": "tests/ben_drowned/validation/save_build.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/save_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "9f6afd39f596f44cbe95ef1996a2a1a7acdd5cb58bc343271a73cb6ec5824d9b"
+    },
+    {
+      "path": "tests/ben_drowned/validation/ui-report.json",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "71be9483d6495aaa7000ee09f854097aa87bb1956c763a44b9d46280d5e7f55f"
+    },
+    {
+      "path": "tests/ben_drowned/validation/ui_build.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "ff4ea4b55414676332d03ea96a80357acdbfd16c3bce99367a74b8079cbfdb01"
+    },
+    {
+      "path": "tests/ben_drowned/validation/ui_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "40429dcc91665a4c7ce76f9977fa9b2f2636339bc4d4bda2c4f85b90608c05ae"
+    },
+    {
+      "path": "tests/ben_drowned/validation/world_build.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/ben_drowned/validation/world_run.log",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "7a6b0644a164f92de4a2ca26590b53953364a122d4f505f01117fb63f183c326"
+    },
+    {
+      "path": "tests/ben_drowned/world_tests.cpp",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "df4f46092efcf18738ce4c80bffec6ffb24922387f98af9a66d743407f4fd69d"
+    },
+    {
+      "path": "tests/player_bots/__pycache__/run_tests.cpython-312.pyc",
+      "status": "added",
+      "before_sha256": null,
+      "after_sha256": "64c1d9448758d4d202d54ee42cd4ca65c051e53ebc8488ceca710bc91dd3904b"
+    },
+    {
+      "path": "tests/rpg_framework/source_checks.py",
+      "status": "modified",
+      "before_sha256": "d5c0172d6fe8d801ba7e1406deed0d65d1e2e71941483a23dc480a404cec8cad",
+      "after_sha256": "cf0873cca84602d067aed752e5c440f140274872c802c54a31cbdd40982e5422"
+    }
+  ]
+}

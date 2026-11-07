@@ -1,3 +1,4 @@
+#include "2s2h/Enhancements/BenDrowned/BenDrowned.h"
 /*
  * File: z_en_gakufu.c
  * Overlay: ovl_En_Gakufu
@@ -267,7 +268,7 @@ void EnGakufu_Draw(Actor* thisx, PlayState* play) {
     gSPSegment(POLY_XLU_DISP++, 0x02, play->interfaceCtx.parameterSegment);
 
     // Invert the whole music staff, so the notes appear correctly in mirrored world
-    if (CVarGetInteger("gModes.MirroredWorld.State", 0)) {
+    if (Ben_MirrorState(CVarGetInteger("gModes.MirroredWorld.State", 0))) {
         Matrix_Scale(-1.0f, 1.0f, 1.0f, MTXMODE_APPLY);
     }
 

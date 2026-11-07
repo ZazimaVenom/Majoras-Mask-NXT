@@ -1,9 +1,13 @@
+#include "2s2h/Enhancements/RpgFramework/RpgFramework.h"
+#include "2s2h/Enhancements/BenDrowned/BenDrowned.h"
+#include "2s2h/Enhancements/RpgFramework/RpgWorldBoss.h"
 /*
  * File: z_actor.c
  * Description:
  */
 
 #include "z64actor.h"
+#include "2s2h/Enhancements/PlayerBots/PlayerBots.h"
 #include "z64door.h"
 
 #include "prevent_bss_reordering.h"
@@ -1319,10 +1323,11 @@ void Actor_SetMovementScale(s32 scale) {
  */
 void Actor_UpdatePos(Actor* actor) {
     f32 speedRate = sActorMovementScale;
+    f32 rpgMovement = Rpg_MovementMultiplier(actor);
 
-    actor->world.pos.x += (actor->velocity.x * speedRate) + actor->colChkInfo.displacement.x;
+    actor->world.pos.x += (actor->velocity.x * speedRate * rpgMovement) + actor->colChkInfo.displacement.x;
     actor->world.pos.y += (actor->velocity.y * speedRate) + actor->colChkInfo.displacement.y;
-    actor->world.pos.z += (actor->velocity.z * speedRate) + actor->colChkInfo.displacement.z;
+    actor->world.pos.z += (actor->velocity.z * speedRate * rpgMovement) + actor->colChkInfo.displacement.z;
 }
 
 /**
@@ -1862,8 +1867,7 @@ void Actor_UpdateBgCheckInfo(PlayState* play, Actor* actor, f32 wallCheckHeight,
         func_800B7678(play, actor, &pos, updBgCheckInfoFlags);
         y = actor->world.pos.y;
 
-        if (BgCheck_GetWaterSurfaceNoBgIdAlt(play, &play->colCtx, actor->world.pos.x, actor->world.pos.z, &y,
-                                             &waterbox)) {
+        if (WaterBox_GetSurface1(play, &play->colCtx, actor->world.pos.x, actor->world.pos.z, &y, &waterbox)) {
             actor->depthInWater = y - actor->world.pos.y;
             if (actor->depthInWater <= 0.0f) {
                 actor->bgCheckFlags &= ~(BGCHECKFLAG_WATER | BGCHECKFLAG_WATER_TOUCH);
@@ -1893,8 +1897,7 @@ void Actor_UpdateBgCheckInfo(PlayState* play, Actor* actor, f32 wallCheckHeight,
         WaterBox* waterbox;
         f32 y = actor->world.pos.y;
 
-        if (BgCheck_GetWaterSurfaceNoBgIdAlt(play, &play->colCtx, actor->world.pos.x, actor->world.pos.z, &y,
-                                             &waterbox)) {
+        if (WaterBox_GetSurface1(play, &play->colCtx, actor->world.pos.x, actor->world.pos.z, &y, &waterbox)) {
             actor->depthInWater = y - actor->world.pos.y;
 
             if (actor->depthInWater < 0.0f) {
@@ -2674,8 +2677,6 @@ void Actor_SpawnSetupActors(PlayState* play, ActorContext* actorCtx) {
             currentActorListIndex = i;
 
             actorEntryHalfDayBit = ((actorEntry->rot.x & 7) << 7) | (actorEntry->rot.z & 0x7F);
-            // 2S2H [Enhancement] Let hooks override the half-days this entry exists in
-            GameInteractor_ExecuteOnActorEntryHalfDaysBits(actorEntry, &actorEntryHalfDayBit);
             if (actorEntryHalfDayBit == 0) {
                 actorEntryHalfDayBit = HALFDAYBIT_ALL;
             }
@@ -2775,7 +2776,11 @@ Actor* Actor_UpdateActor(UpdateActor_Params* params) {
                 }
 
                 if (GameInteractor_ShouldActorUpdate(actor)) {
+                    Rpg_BeginActorUpdate(play, actor);
+                    PlayerBots_BeginEnemyUpdate(play, actor);
                     actor->update(actor, play);
+                    PlayerBots_EndEnemyUpdate(play, actor);
+                    Rpg_EndActorUpdate(play, actor);
                     GameInteractor_ExecuteOnActorUpdate(actor);
                 }
                 DynaPoly_UnsetAllInteractFlags(play, &play->colCtx.dyna, actor);
@@ -2840,6 +2845,10 @@ void Actor_UpdateAll(PlayState* play, ActorContext* actorCtx) {
     }
 
     Actor_SpawnSetupActors(play, actorCtx);
+    Rpg_Update(play);
+    PlayerBots_Update(play);
+    Ben_Update(play);
+    RpgWorldBoss_UpdateDirector(play);
 
     if (actorCtx->unk2 != 0) {
         actorCtx->unk2--;
@@ -2926,6 +2935,10 @@ extern void Player_Action_95(Player* this, PlayState* play);
 
 void Actor_Draw(PlayState* play, Actor* actor) {
     Lights* light;
+    u16 drawFilterParams = actor->colorFilterParams;
+    u8 drawFilterTimer = actor->colorFilterTimer;
+    // A berserk tint must not become native stun or invulnerability state.
+    Rpg_GetDrawColorFilter(actor, &drawFilterParams, &drawFilterTimer);
 
     FrameInterpolation_RecordOpenChild(actor, 0);
     OPEN_DISPS(play->state.gfxCtx);
@@ -2967,37 +2980,38 @@ void Actor_Draw(PlayState* play, Actor* actor) {
     gSPSegment(POLY_OPA_DISP++, 0x06, play->objectCtx.slots[actor->objectSlot].segment);
     gSPSegment(POLY_XLU_DISP++, 0x06, play->objectCtx.slots[actor->objectSlot].segment);
 
-    if (actor->colorFilterTimer != 0) {
-        s32 colorFlag = COLORFILTER_GET_COLORFLAG(actor->colorFilterParams);
+    if (drawFilterTimer != 0) {
+        s32 colorFlag = COLORFILTER_GET_COLORFLAG(drawFilterParams);
         Color_RGBA8 actorDefaultHitColor = { 0, 0, 0, 255 };
 
         if (colorFlag == COLORFILTER_COLORFLAG_GRAY) {
             actorDefaultHitColor.r = actorDefaultHitColor.g = actorDefaultHitColor.b =
-                COLORFILTER_GET_COLORINTENSITY(actor->colorFilterParams) | 7;
+                COLORFILTER_GET_COLORINTENSITY(drawFilterParams) | 7;
         } else if (colorFlag == COLORFILTER_COLORFLAG_RED) {
-            actorDefaultHitColor.r = COLORFILTER_GET_COLORINTENSITY(actor->colorFilterParams) | 7;
+            actorDefaultHitColor.r = COLORFILTER_GET_COLORINTENSITY(drawFilterParams) | 7;
         } else if (colorFlag == COLORFILTER_COLORFLAG_NONE) {
             actorDefaultHitColor.b = actorDefaultHitColor.g = actorDefaultHitColor.r = 0;
         } else {
-            actorDefaultHitColor.b = COLORFILTER_GET_COLORINTENSITY(actor->colorFilterParams) | 7;
+            actorDefaultHitColor.b = COLORFILTER_GET_COLORINTENSITY(drawFilterParams) | 7;
         }
 
-        if (actor->colorFilterParams & COLORFILTER_BUFFLAG_XLU) {
-            func_800AE778(play, &actorDefaultHitColor, actor->colorFilterTimer,
-                          COLORFILTER_GET_DURATION(actor->colorFilterParams));
+        if (drawFilterParams & COLORFILTER_BUFFLAG_XLU) {
+            func_800AE778(play, &actorDefaultHitColor, drawFilterTimer,
+                          COLORFILTER_GET_DURATION(drawFilterParams));
         } else {
-            func_800AE434(play, &actorDefaultHitColor, actor->colorFilterTimer,
-                          COLORFILTER_GET_DURATION(actor->colorFilterParams));
+            func_800AE434(play, &actorDefaultHitColor, drawFilterTimer,
+                          COLORFILTER_GET_DURATION(drawFilterParams));
         }
     }
 
     if (GameInteractor_ShouldActorDraw(actor)) {
         actor->draw(actor, play);
+        Rpg_DrawActorEffects(play, actor);
         GameInteractor_ExecuteOnActorDraw(actor);
     }
 
-    if (actor->colorFilterTimer != 0) {
-        if (actor->colorFilterParams & COLORFILTER_BUFFLAG_XLU) {
+    if (drawFilterTimer != 0) {
+        if (drawFilterParams & COLORFILTER_BUFFLAG_XLU) {
             func_800AE8EC(play);
         } else {
             func_800AE5A0(play);
@@ -3824,7 +3838,10 @@ Actor* Actor_SpawnAsChildAndCutscene(ActorContext* actorCtx, PlayState* play, s1
         actor->halfDaysBits = HALFDAYBIT_ALL;
     }
 
-    Actor_AddToCategory(actorCtx, actor, profile->type);
+    // Bot reinforcements must never enter the room-clear enemy list, even
+    // transiently before Actor_ChangeCategory's end-of-frame list migration.
+    Actor_AddToCategory(actorCtx, actor,
+                        PlayerBots_IsSpawningReinforcement(index) ? ACTORCAT_MISC : profile->type);
 
     {
         uintptr_t sp20 = gSegments[6];
@@ -3875,10 +3892,6 @@ Actor* Actor_SpawnEntry(ActorContext* actorCtx, ActorEntry* actorEntry, PlayStat
     s16 rotY = (actorEntry->rot.y >> 7) & 0x1FF;
     s16 rotZ = (actorEntry->rot.z >> 7) & 0x1FF;
 
-    // 2S2H [Enhancement] Let hooks override the half-days this entry exists in
-    s32 halfDaysBits = ((actorEntry->rot.x & 7) << 7) | (actorEntry->rot.z & 0x7F);
-    GameInteractor_ExecuteOnActorEntryHalfDaysBits(actorEntry, &halfDaysBits);
-
     if (!(actorEntry->id & 0x8000)) {
         rotY = DEG_TO_BINANG(rotY);
     } else if (rotY > 180) {
@@ -3899,7 +3912,8 @@ Actor* Actor_SpawnEntry(ActorContext* actorCtx, ActorEntry* actorEntry, PlayStat
 
     return Actor_SpawnAsChildAndCutscene(actorCtx, play, actorEntry->id & 0x1FFF, actorEntry->pos.x, actorEntry->pos.y,
                                          actorEntry->pos.z, rotX, rotY, rotZ, actorEntry->params & 0xFFFF,
-                                         actorEntry->rot.y & 0x7F, /* 2S2H (see above) */ halfDaysBits, NULL);
+                                         actorEntry->rot.y & 0x7F,
+                                         ((actorEntry->rot.x & 7) << 7) | (actorEntry->rot.z & 0x7F), NULL);
 }
 
 Actor* Actor_Delete(ActorContext* actorCtx, Actor* actor, PlayState* play) {
@@ -3909,6 +3923,8 @@ Actor* Actor_Delete(ActorContext* actorCtx, Actor* actor, PlayState* play) {
     ActorOverlay* overlayEntry = actor->overlayEntry;
 
     // Execute before actor memory is freed
+    Rpg_OnActorDestroyed(actor);
+    PlayerBots_OnActorDestroyed(actor);
     GameInteractor_ExecuteOnActorDestroy(actor);
 
     if ((player != NULL) && (actor == player->focusActor)) {
@@ -4290,6 +4306,15 @@ void func_800BBFB0(PlayState* play, Vec3f* position, f32 arg2, s32 arg3, s16 arg
 }
 
 void Actor_ChangeCategory(PlayState* play, ActorContext* actorCtx, Actor* actor, u8 actorCategory) {
+    // Wolfos explicitly changes itself back to ENEMY from its init routine.
+    // Keep both newly-spawning and established extras outside room-clear logic.
+    if ((actorCategory == ACTORCAT_ENEMY) &&
+        (PlayerBots_IsReinforcement(actor) || PlayerBots_IsSpawningReinforcement(actor->id))) {
+        actorCategory = ACTORCAT_MISC;
+    }
+    if (actor->category == actorCategory) {
+        return;
+    }
     actorCtx->actorLists[actor->category].categoryChanged = true;
     actor->category = actorCategory;
 }
@@ -5025,25 +5050,16 @@ void Npc_TrackPoint(Actor* actor, NpcInteractInfo* interactInfo, s16 presetIndex
 }
 
 // #region 2S2H - These DisplayLists are now extracted
-/**
- * A display list setting up for translucent drawing when a fading actor is partially faded,
- * overriding the opaque render mode from the calling display list.
- * Typically this DL is assigned to a segment that is called by the display lists from the assets.
- * @see gActorSetupOpaDL
- */
-// Gfx gActorSetupXluDL[] = {
-//     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_XLU_SURF2 | Z_UPD),
+// Gfx D_801AEF88[] = {
+//     gsDPSetRenderMode(AA_EN | Z_CMP | Z_UPD | IM_RD | CLR_ON_CVG | CVG_DST_WRAP | ZMODE_XLU | FORCE_BL |
+//                           G_RM_FOG_SHADE_A,
+//                       AA_EN | Z_CMP | Z_UPD | IM_RD | CLR_ON_CVG | CVG_DST_WRAP | ZMODE_XLU | FORCE_BL |
+//                           GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)),
 //     gsDPSetAlphaCompare(G_AC_THRESHOLD),
 //     gsSPEndDisplayList(),
 // };
-//
-/**
- * A no-op display list to use when a fading actor is fully opaque,
- * retaining the opaque render mode from the calling display list.
- * Typically this DL is assigned to a segment that is called by the display lists from the assets.
- * @see gActorSetupXluDL
- */
-// Gfx gActorSetupOpaDL[] = {
+
+// Gfx D_801AEFA0[] = {
 //     gsSPEndDisplayList(),
 // };
 // #endregion
@@ -5232,6 +5248,12 @@ s32 func_800BE184(PlayState* play, Actor* actor, f32 xzDist, s16 arg3, s16 arg4,
 }
 
 u8 Actor_ApplyDamage(Actor* actor) {
+    int rpgHealth = Rpg_ApplyActorDamage(actor, actor->colChkInfo.damage, false);
+    if (rpgHealth >= 0) {
+        actor->colChkInfo.health = rpgHealth;
+        return actor->colChkInfo.health;
+    }
+
     if (actor->colChkInfo.damage >= actor->colChkInfo.health) {
         actor->colChkInfo.health = 0;
     } else {

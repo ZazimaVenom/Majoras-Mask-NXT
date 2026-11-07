@@ -1,0 +1,21 @@
+Rando and compiler-specific warning fixes
+
+Modified only:
+- mm/2s2h/Rando/CheckTracker/CheckTracker.h: anonymous enum without nameless typedef; constants retain values 0 and 1.
+- mm/2s2h/Rando/Logic/Logic.h: explicitly convert the already-validated half-day index (0..5) to uint32_t before count comparisons.
+- mm/2s2h/Rando/Menu.cpp: use std::size_t counters through display, with %zu and explicit float conversions for ratios.
+- mm/2s2h/mixer.c: GCC pragmas now require __GNUC__ and exclude Clang. Existing GCC-only diagnostic exception is unchanged; no new warning suppression.
+- mm/src/overlays/kaleido_scope/ovl_kaleido_scope/z_kaleido_scope_NES.c: original IDO block-number pragma is guarded by __sgi, matching existing port compiler guards.
+All five files preserve CRLF line endings.
+
+Validation:
+PASS: real Kaleido NES C unit compiles to object under GCC with -Werror=unknown-pragmas. Existing unrelated pointer-conversion warnings remain in this Linux unit build.
+PASS: actual CheckTracker.h and Logic.h compile with real game, ImGui, JSON headers and -Werror=sign-compare. 3,072 clock-ownership cases pass under UBSan, including all 64 clock-flag combinations, three modes, shuffle on/off, valid and invalid half-day indices. Game save storage and Flags_GetRandoInf are explicit test doubles.
+PASS: 80,803 source-extracted pool balance and format cases (including counts above INT_MAX) compile with -Werror -Wconversion -Wformat=2 and pass UBSan. This is a focused source-extracted check, not compilation of the full Menu.cpp unit.
+PASS: exact compiler preprocessor directives extracted without #includes from mixer.c and Kaleido NES emit no GCC/IDO pragma under a simulated _MSC_VER macro environment. This is a preprocessor check, not an MSVC compiler run.
+
+Unavailable full unit checks:
+- Menu.cpp compilation stops in existing libultraship include at missing SDL2/SDL.h.
+- mixer.c compilation stops at missing opus/opus.h.
+The initial standalone headers.cpp attempt omitted nlohmann/json.hpp normally supplied by the project's PCH; the corrected actual-header clock test includes that real dependency and passes.
+No native Windows/MSVC compile or in-game validation was performed here.
