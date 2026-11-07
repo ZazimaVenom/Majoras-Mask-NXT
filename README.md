@@ -3,22 +3,17 @@
 
 # Zelda Majora's Mask NXT - NPC BOTS - JRPG Stats - Leveling EXP Progression - Battle Arena Season Mode
 
-## Done:
-
 - BOTS
-
-## To Do:
 
 - JRPG Stats
 
 - Leveling EXP Progression
 
-- Battle Arena Season Mode
+- Ben Drowned
 
+<img width="1660" height="933" alt="1" src="https://github.com/user-attachments/assets/6ff63235-2695-46fd-a174-3301846c8e67" />
 
-<img width="3840" height="2160" alt="image" src="https://github.com/user-attachments/assets/9549a42a-c73d-46b1-a4a2-a6d284a4ed16" />
-
-<img width="3840" height="2160" alt="1" src="https://github.com/user-attachments/assets/5e2501d5-385e-4bd7-af81-53b55fb8f1b7" />
+<img width="1658" height="936" alt="2" src="https://github.com/user-attachments/assets/b9b4e3e1-0527-41cb-9a91-b4464885ba52" />
 
 ## Discord
 
