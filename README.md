@@ -1,7 +1,7 @@
 [comment]: <> (Todo: Make Light Mode Image)
 [comment]: <> (Todo: Make Dark Mode Image)
 
-# Zelda Majora's Mask NXT - NPC BOTS - JRPG Stats - Leveling EXP Progression - Battle Arena Season Mode
+# Zelda Majora's Mask NXT - NPC BOTS - JRPG Stats - Leveling EXP Progression - Ben Drowned
 
 - BOTS
 
